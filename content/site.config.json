@@ -1,0 +1,152 @@
+{
+  "_comment": "사업자 정보를 여기서만 바꾸면 홈/소개/개인정보처리방침/푸터 전체에 반영됩니다. 전화·팩스·SNS 링크는 아직 자리표시(확정 후 교체).",
+  "siteUrl": "https://www.mediroad.co.kr",
+  "brand": {
+    "name": "메디로드",
+    "nameEn": "MediRoad",
+    "title": "메디로드 MediRoad",
+    "description": "입지선정부터 안정적인 운영까지, 병·의원 개원 컨설팅 메디로드",
+    "keywords": "메디로드, 개원컨설팅, 개원입지, 병원 개원, 의원 개원, 임대분양, 병원매매, 양수양도, 병원 마케팅",
+    "copyright": "MEDIROAD.",
+    "colors": {
+      "_comment": "메디로드 로고 색상 기준 팔레트. primary(포인트) / dark(호버·진한 배경) / light(어두운 배경 위 강조)",
+      "primary": "#1E4B7A",
+      "primaryRgb": "30,75,122",
+      "dark": "#0B2545",
+      "light": "#78C8F0",
+      "accent": "#0878C0"
+    },
+    "logo": {
+      "_comment": "헤더/푸터/파비콘 이미지 (메디로드 로고1·2 에서 생성). AI 원본을 받으면 같은 파일명으로 교체.",
+      "white": "/brand/logo-white.png",
+      "color": "/brand/logo-color.png",
+      "footer": "/brand/logo-color.png",
+      "symbol": "/brand/symbol.png",
+      "favicon": "/brand/favicon.png",
+      "og": "/brand/og.png"
+    }
+  },
+  "contact": {
+    "headerTel": "02-0000-0000",
+    "youtube": "#",
+    "blog": "#",
+    "propertyMap": "#",
+    "naverMap": "#"
+  },
+  "info": {
+    "_comment": "소개 페이지 하단 INFORMATION 박스와 오시는 길. 주소가 자리표시(00구)이면 OSM 기본 지도, 실제 주소이면 Google 지도.",
+    "name": "메디로드 개원 컨설팅",
+    "address": "서울특별시 강서구 마곡중앙6로 42, 11층 1122호 (마곡동, 사이언스타)",
+    "tel": "02-0000-0000",
+    "fax": "02-0000-0000",
+    "email": "su6975@naver.com"
+  },
+  "company": {
+    "_comment": "푸터 사업자 정보 (사업자등록증 기준)",
+    "name": "메디로드 개원 컨설팅",
+    "address": "서울특별시 강서구 마곡중앙6로 42, 11층 1122호 (마곡동, 사이언스타)",
+    "ceo": "김상수",
+    "bizNo": "778-52-00719",
+    "tel": "02-0000-0000",
+    "fax": "02-0000-0000",
+    "email": "su6975@naver.com"
+  },
+  "privacy": {
+    "companyName": "메디로드 개원 컨설팅",
+    "officer": "김상수",
+    "effectiveDate": "2026년 00월 00일"
+  },
+  "menu": {
+    "_comment": "헤더 메뉴 (PC 전체메뉴 패널, 모바일 메뉴에 공통 적용). en 은 PC 메뉴 아래 영문 표기.",
+    "items": [
+      { "label": "홈", "en": "Home", "href": "/" },
+      {
+        "label": "회사소개",
+        "en": "About Us",
+        "href": "/about",
+        "children": [
+          { "label": "회사소개", "href": "/about" },
+          { "label": "인사말", "href": "/about/greeting" },
+          { "label": "오시는 길", "href": "/about/location" }
+        ]
+      },
+      {
+        "label": "개원컨설팅",
+        "en": "Consulting",
+        "href": "/consulting",
+        "children": [
+          { "label": "개원컨설팅", "href": "/consulting" },
+          { "label": "병·의원 개원", "href": "/consulting/opening" },
+          { "label": "양수양도", "href": "/consulting/transfer" },
+          { "label": "폐업 컨설팅", "href": "/consulting/closure" },
+          { "label": "경영·마케팅", "href": "/consulting/marketing" },
+          { "label": "개원 로드맵 (회원)", "href": "/consulting/roadmap" }
+        ]
+      },
+      {
+        "label": "개원입지",
+        "en": "Location",
+        "href": "/location",
+        "children": [
+          { "label": "임대분양정보", "href": "/location?type=lease" },
+          { "label": "병원매매정보", "href": "/location?type=sale" }
+        ]
+      },
+      { "label": "상담신청", "en": "Contact", "href": "/contact" }
+    ],
+    "contactButton": { "label": "CONTACT US", "href": "/contact" }
+  },
+  "pages": {
+    "_comment": "하위 페이지 상단 비주얼 문구.",
+    "/about": { "en": "About MediRoad", "title": "메디로드 소개", "desc": "메디로드는 단순한 컨설팅을 넘어 브랜드 성장과 경영 성공을 설계하는 메디컬 파트너입니다" },
+    "/consulting": { "en": "Consulting", "title": "개원컨설팅", "desc": "입지 분석부터 인허가, 인테리어, 마케팅까지 개원 전 과정을 함께합니다" },
+    "/contact": { "en": "Contact Us", "title": "상담신청", "desc": "진료과·희망 지역·예산을 알려주시면 가능한 입지와 일정을 정리해 드립니다" },
+    "/terms": { "en": "Terms", "title": "이용약관", "desc": "" },
+    "/privacy": { "en": "Privacy Policy", "title": "개인정보처리방침", "desc": "" }
+  },
+  "home": {
+    "_comment": "홈 화면 섹션 문구. services 는 4개 카드(디자인상 2x2 배치) → 각각 /consulting/<slug> 로 이동.",
+    "services": {
+      "title": "개원컨설팅",
+      "en": "Consulting",
+      "desc": "입지 선정부터 안정적인 운영까지, 개원의 전 과정을 원스톱으로 지원합니다.",
+      "items": [
+        { "en": "Clinic Opening Consulting", "title": "병·의원 개원 컨설팅", "desc": ["진료 컨셉과 예산에 맞춘 개원 계획 수립부터", "인허가, 인테리어, 장비까지 전 과정을 지원합니다"], "href": "/consulting/opening" },
+        { "en": "Transfer & Acquisition", "title": "병·의원 양수양도", "desc": ["운영 중인 병·의원의 양도와 양수를", "안전한 절차와 검증된 정보로 연결합니다"], "href": "/consulting/transfer" },
+        { "en": "Closure Consulting", "title": "병·의원 폐업 컨설팅", "desc": ["폐업 신고, 자산 정리, 임대차 종료까지", "손실을 최소화하는 정리 절차를 안내합니다"], "href": "/consulting/closure" },
+        { "en": "Management & Marketing", "title": "병·의원 경영·마케팅", "desc": ["개원 이후 경영 안정과 환자 유입을 위한", "운영 관리와 마케팅 전략을 제안합니다"], "href": "/consulting/marketing" }
+      ]
+    },
+    "location": {
+      "en": "Location",
+      "title": "추천 개원지",
+      "desc": "자사 네트워크를 기반으로 최적의 병·의원 임대·분양 매물과 병원 매매 정보를 선별하여 제공합니다",
+      "more": "/location"
+    },
+    "expert": {
+      "title": "전문가 그룹",
+      "en": "Expert Advisory",
+      "desc": "다양한 분야의 전문가 그룹이 협업하여 체계적인 솔루션을 제시합니다.",
+      "items": [
+        { "label": "부동산 자문", "en": ["Clinic Location", "Strategy"], "href": "/location", "img": "/images/photo-expert-docs.jpg" },
+        { "label": "지적재산권 자문", "en": ["Brand &", "IP Protection"], "href": "/consulting/marketing", "img": "/images/photo-expert-steth.jpg" },
+        { "label": "세무 자문", "en": ["Tax Planning", "for Doctors"], "href": "/consulting/marketing", "img": "/images/photo-expert-laptop.jpg" },
+        { "label": "금융 자문", "en": ["Opening Finance", "Consulting"], "href": "/consulting/opening", "img": "/images/photo-expert-desk.jpg" },
+        { "label": "인테리어 자문", "en": ["Clinic Interior", "Planning"], "href": "/consulting/opening", "img": "/images/photo-expert-room.jpg" },
+        { "label": "의료장비 자문", "en": ["Medical Equipment", "Planning"], "href": "/consulting/opening", "img": "/images/photo-expert-reception.jpg" },
+        { "label": "노무 자문", "en": ["HR & Staff", "Compliance"], "href": "/consulting/marketing", "img": "/images/photo-expert-team.jpg" },
+        { "label": "법률 자문", "en": ["Medical Legal", "Support"], "href": "/consulting/transfer", "img": "/images/photo-expert-sign.jpg" }
+      ],
+      "box": {
+        "h": ["<b>검증된 전문가 그룹</b>이", "함께 만들어내는 신뢰할 수 있는", "솔루션을 제공합니다"],
+        "p": ["브랜드 성장과 경영 성공을 설계하는", "메디컬 파트너, 메디로드"]
+      }
+    },
+    "contact": {
+      "title": "상담신청",
+      "en": "Consultation",
+      "desc": "빠르고 정확한 전문가 상담을 제공합니다.",
+      "image": "/images/photo-contact-building.jpg"
+    }
+  }
+}
