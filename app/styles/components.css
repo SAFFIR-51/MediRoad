@@ -43,11 +43,12 @@
 }
 .sec_service .con .item .bg{filter:none;transform:none;}
 .sec_service .con .item:hover .bg{transform:scale(1.05);filter:none;}
-.sec_service .con .item a:before{content:'';position:absolute;inset:0;background:linear-gradient(to top, rgba(11,37,69,0.88) 0%, rgba(11,37,69,0.35) 55%, rgba(11,37,69,0.15) 100%);transition:background .4s;}
-.sec_service .con .item:hover a:before{background:linear-gradient(to top, rgba(30,75,122,0.92) 0%, rgba(30,75,122,0.4) 55%, rgba(30,75,122,0.2) 100%);}
+.sec_service .con .item a:before{content:'';position:absolute;inset:0;background:linear-gradient(to top, rgba(11,37,69,0.94) 0%, rgba(11,37,69,0.62) 50%, rgba(11,37,69,0.35) 100%);transition:background .4s;}
+.sec_service .con .item:hover a:before{background:linear-gradient(to top, rgba(30,75,122,0.94) 0%, rgba(30,75,122,0.55) 50%, rgba(30,75,122,0.3) 100%);}
 .sec_service .con .item a{align-items:flex-end;justify-content:flex-start;}
 .sec_service .con .item .txt{width:100%;max-width:none;text-align:left;padding:0 48px 46px;}
-.sec_service .con .item .txt em{display:block;font-family:'gont';font-size:0.7em;letter-spacing:0.18em;text-transform:uppercase;color:var(--light) !important;}
+.sec_service .con .item .txt em{display:block;font-family:'gont';font-size:0.7em;letter-spacing:0.18em;text-transform:uppercase;color:var(--light) !important;text-shadow:0 1px 8px rgba(0,0,0,0.35);}
+.sec_service .con .item .txt h4,.sec_service .con .item .txt p{text-shadow:0 1px 10px rgba(0,0,0,0.35);}
 .sec_service .con .item .txt h4{padding:14px 0 14px;font-size:1.8em;}
 .sec_service .con .item .txt p{color:rgba(255,255,255,0.75) !important;}
 .sec_service .con .item .txt i{margin:26px 0 0;width:48px;font-size:1em;border:1px solid rgba(255,255,255,0.5);background:transparent;}
