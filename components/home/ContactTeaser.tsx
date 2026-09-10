@@ -13,9 +13,9 @@ export default function ContactTeaser() {
           <div className="tt wht">
             <div>
               <h3><span><b>{c.title}</b></span></h3>
-              <h4>[ {c.en} ]</h4>
+              <h4 className="en">{c.en}</h4>
             </div>
-            <p>{c.desc}<br />진료과·희망 지역·예산만 알려주시면 가능한 입지와 일정을 정리해 드립니다.</p>
+            <p>{c.desc}<br />아직 계획이 구체적이지 않아도 괜찮습니다. 초기 상담은 무료입니다.</p>
           </div>
           <div className="act aos2">
             <em>초기 상담 무료 · 1영업일 내 회신</em>

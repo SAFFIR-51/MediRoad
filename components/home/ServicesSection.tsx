@@ -9,7 +9,7 @@ export default function ServicesSection() {
     <section className="main_con sec_service" id="consulting">
       <div className="tt taC">
         <h3><span><b>{s.title}</b></span></h3>
-        <h4>[ {s.en} ]</h4>
+        <h4 className="en">{s.en}</h4>
         <p>{s.desc}</p>
       </div>
       <div className="con aos">
@@ -18,7 +18,7 @@ export default function ServicesSection() {
             <Link href={it.href}>
               <div className="bg"></div>
               <div className="txt">
-                <em>[ {it.en} ]</em>
+                <em>{it.en}</em>
                 <h4>{it.title}</h4>
                 <p><Lines lines={it.desc} /></p>
                 <i className="xi-search"></i>

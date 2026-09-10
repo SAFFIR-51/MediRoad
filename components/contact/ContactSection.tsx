@@ -52,7 +52,7 @@ export default function ContactSection({ sub = false, steps = [] }: { sub?: bool
         <div className="tt wht">
           <div>
             <h3><span><b>{c.title}</b></span></h3>
-            <h4>[ {c.en} ]</h4>
+            <h4 className="en">{c.en}</h4>
           </div>
           <p>{c.desc}</p>
         </div>
@@ -132,6 +132,7 @@ export default function ContactSection({ sub = false, steps = [] }: { sub?: bool
                     <li><input type="radio" name="상담유형" value="신규개원" id="cate01" defaultChecked /> <label htmlFor="cate01">신규개원</label></li>
                     <li><input type="radio" name="상담유형" value="병원양도" id="cate02" /> <label htmlFor="cate02">병원 양도</label></li>
                     <li><input type="radio" name="상담유형" value="병원양수" id="cate03" /> <label htmlFor="cate03">병원 양수</label></li>
+                    <li><input type="radio" name="상담유형" value="약국개설" id="cate04" /> <label htmlFor="cate04">약국 개설</label></li>
                   </ul>
                 </dd></dl>
                 <dl><dt><span>추가 요청사항</span><i></i></dt><dd><textarea className="ta" id="say2" name="say" placeholder="요청사항을 자유롭게 적어주세요" ref={taRef}></textarea></dd></dl>
@@ -141,7 +142,7 @@ export default function ContactSection({ sub = false, steps = [] }: { sub?: bool
                   <input id="agree" name="agree" type="checkbox" required /><label htmlFor="agree">개인정보처리방침에 동의합니다.</label>
                   <a onClick={() => setShowPrivacy(true)}>[ 개인정보처리방침 ]</a>
                 </div>
-                <button type="submit" disabled={pending}>{pending ? "Sending" : "Send"}<i className="xi-long-arrow-right"></i></button>
+                <button type="submit" disabled={pending}>{pending ? "접수 중…" : "상담 신청하기"}<i className="xi-long-arrow-right"></i></button>
               </div>
               <input type="hidden" name="listing" value={listing} />
               <input type="text" name="website" tabIndex={-1} autoComplete="off" style={{ position: "absolute", left: "-9999px" }} aria-hidden="true" />

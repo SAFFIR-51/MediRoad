@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import SubTop from "@/components/layout/SubTop";
 import CeoBlock from "@/components/about/CeoBlock";
+import PortfolioSection from "@/components/home/PortfolioSection";
 import { Lines } from "@/components/ui/Text";
 import PlaceMap from "@/components/ui/PlaceMap";
 import { content, site, subtopFor, hasRealAddress } from "@/lib/site";
@@ -39,6 +40,7 @@ export default function AboutPage() {
         </div>
       </section>
       <CeoBlock />
+      <PortfolioSection sub />
       <section className="sub_con sec02" id="info">
         <div className="wrap">
           <div className="tt">

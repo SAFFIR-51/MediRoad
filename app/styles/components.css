@@ -6,6 +6,72 @@
 /* ---- 팔레트 보조 변수 ---- */
 :root{--light:#78C8F0;--dark:#0B2545;--accent:#0878C0;}
 
+/* =====================================================================
+   메디로드 고유 UI (참고 사이트와 구분되는 요소)
+   - 영문 소제목: [ 괄호 ] 대신 대문자·자간 라벨
+   - 섹션 배지: 채운 알약 대신 얇은 테두리 태그
+   - 버튼: 완전 둥근 알약 대신 모서리 8px
+   - 서브 비주얼: 영문 라벨 위 짧고 굵은 하늘색 선
+   - 푸터: 네이비 배경, 퀵메뉴: 하나의 흰 막대
+   - 홈 컨설팅 카드: 블러 대신 그라데이션 + 좌하단 정렬
+   ===================================================================== */
+.main_con .tt h4.en,.sub_con .tt h4.en{padding-top:12px;font-family:'gont';font-size:0.78em;font-weight:500;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);}
+.main_con .tt.wht h4.en{color:var(--light) !important;}
+.sub_con .tt em,.main_con .tt em{display:inline-flex;width:auto;height:34px;padding:0 14px;margin-bottom:26px;border-radius:4px;border:1px solid var(--gold);background:transparent;font-family:'gont';font-size:0.72em;font-weight:500;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold);}
+.sub_con .tt.taC em{margin:0 0 26px;}
+.sec_loc .tt em,.sec_promise .tt em,.mr-cta-band > .wrap > em,.sec_contact .mr-csteps .head em,.sec_svc_keys .mr-pill{border:1px solid rgba(255,255,255,0.55);background:transparent;color:#fff;}
+.mr-pill{border-radius:4px;height:34px;padding:0 14px;font-family:'gont';font-size:0.72em;letter-spacing:0.18em;text-transform:uppercase;background:transparent;border:1px solid var(--gold);color:var(--gold) !important;}
+.mr-btn,.mr-cta a,.sec_contact .bottom button,.mr-svc-others .list a,.mr-keys .nav button{border-radius:8px;}
+.subtop .txt em{font-style:normal;padding-bottom:22px;font-size:0.85em;letter-spacing:0.22em;text-transform:uppercase;}
+.subtop .txt em:after{width:28px;height:3px;background:var(--light);}
+.subtop .txt h2{padding-top:26px;}
+.footer{background:var(--dark);border-top:0;}
+.footer .container > img{width:150px;}
+.footer *{color:rgba(255,255,255,0.72);}
+.footer .container div > ul li:first-child,.footer .container div > ul li dl dt{color:#fff;}
+.footer .copy b{color:#fff;}
+@media (min-width:1024px){
+  .quick-nav ul{gap:0;padding:6px;border-radius:18px;background:#fff;box-shadow:0 12px 30px rgba(0,0,0,0.14);}
+  .quick-nav li{padding-left:0;}
+  .quick-nav li a{width:52px;height:52px;border:0;border-radius:12px;box-shadow:none;background:transparent;}
+  .quick-nav li a:hover{background:#eef3f8;}
+  .quick-nav li a img{width:30px;}
+  .quick-nav li a i{font-size:22px;}
+  .quick-nav a.h{left:-118px;top:6px;height:40px;line-height:40px;border-radius:8px;}
+  .quick-nav li.last{margin-top:6px;padding-top:6px;border-top:1px solid #eee;}
+  .quick-nav li.last a{width:52px;height:52px;border-radius:12px;background:var(--gold);}
+}
+.sec_service .con .item .bg{filter:none;transform:none;}
+.sec_service .con .item:hover .bg{transform:scale(1.05);filter:none;}
+.sec_service .con .item a:before{content:'';position:absolute;inset:0;background:linear-gradient(to top, rgba(11,37,69,0.88) 0%, rgba(11,37,69,0.35) 55%, rgba(11,37,69,0.15) 100%);transition:background .4s;}
+.sec_service .con .item:hover a:before{background:linear-gradient(to top, rgba(30,75,122,0.92) 0%, rgba(30,75,122,0.4) 55%, rgba(30,75,122,0.2) 100%);}
+.sec_service .con .item a{align-items:flex-end;justify-content:flex-start;}
+.sec_service .con .item .txt{width:100%;max-width:none;text-align:left;padding:0 48px 46px;}
+.sec_service .con .item .txt em{display:block;font-family:'gont';font-size:0.7em;letter-spacing:0.18em;text-transform:uppercase;color:var(--light) !important;}
+.sec_service .con .item .txt h4{padding:14px 0 14px;font-size:1.8em;}
+.sec_service .con .item .txt p{color:rgba(255,255,255,0.75) !important;}
+.sec_service .con .item .txt i{margin:26px 0 0;width:48px;font-size:1em;border:1px solid rgba(255,255,255,0.5);background:transparent;}
+@media all and (max-width:1024px){ .sec_service .con .item .txt{padding:0 22px 22px;} .sec_service .con .item .txt h4{font-size:1.3em;padding:8px 0;} .sec_service .con .item .txt i{margin-top:12px;width:36px;} }
+
+/* ---- 개원 실적 (함께 개원한 병·의원) ---- */
+.sec_portfolio{background:#f7f8fa;}
+.main_con.sec_portfolio .tt{padding-bottom:50px;}
+.mr-pf-stats{display:grid;grid-template-columns:repeat(3, minmax(0,1fr));gap:0;margin-bottom:50px;border-top:1px solid #111;border-bottom:1px solid #e6e6e6;background:#fff;}
+.mr-pf-stats .item{padding:36px 20px;text-align:center;border-right:1px solid #e6e6e6;}
+.mr-pf-stats .item:last-child{border-right:0;}
+.mr-pf-stats .item b{display:block;font-family:'gont';font-size:2.6em;font-weight:300;line-height:1;color:#111;}
+.mr-pf-stats .item b small{font-size:0.4em;font-weight:400;margin-left:4px;color:var(--accent);}
+.mr-pf-stats .item em{display:block;padding-top:12px;font-size:0.78em;color:#707070;}
+.mr-pf-groups{display:grid;grid-template-columns:repeat(3, minmax(0,1fr));gap:20px;}
+.mr-pf-groups .grp{padding:26px 26px 24px;background:#fff;border:1px solid #e6e6e6;border-radius:12px;}
+.mr-pf-groups .grp h5{display:flex;align-items:center;gap:8px;padding-bottom:14px;margin-bottom:14px;border-bottom:1px solid #111;font-size:0.95em;font-weight:700;}
+.mr-pf-groups .grp h5 i{color:var(--accent);}
+.mr-pf-groups .grp h5 small{margin-left:auto;font-family:'gont';font-size:0.8em;font-weight:400;color:#999;}
+.mr-pf-groups .grp ul{display:flex;flex-wrap:wrap;gap:6px;}
+.mr-pf-groups .grp li{display:inline-block;padding:6px 11px;border-radius:6px;font-size:0.72em;line-height:1.3;color:#333;background:#f1f4f8;}
+.mr-pf-note{padding-top:22px;text-align:center;font-size:0.72em;color:#999;}
+@media all and (max-width:1024px){ .mr-pf-stats{grid-template-columns:repeat(3,1fr);margin-bottom:26px;} .mr-pf-stats .item{padding:20px 8px;} .mr-pf-stats .item b{font-size:1.7em;} .mr-pf-stats .item em{font-size:0.68em;} .mr-pf-groups{grid-template-columns:1fr;gap:12px;} .mr-pf-groups .grp{padding:18px 16px;} }
+
 /* ---- 서브 비주얼 오버레이 (야경 사진 위 글자 가독성) ---- */
 .subtop .bg:after{content:'';position:absolute;inset:0;background:linear-gradient(to bottom, rgba(0,0,0,0.46) 0%, rgba(0,0,0,0.34) 55%, rgba(0,0,0,0.40) 100%);}
 .subtop.compact{height:380px;}
@@ -36,7 +102,6 @@
 .sec_service .con{display:grid;grid-template-columns:repeat(6, minmax(0,1fr));}
 .sec_service .con .item{width:auto;height:520px;grid-column:span 2;}
 .sec_service .con .item01,.sec_service .con .item02{grid-column:span 3;}
-.sec_service .con .item .txt{padding:0 24px;}
 .sec_service .con .item .txt h4{padding:30px 0 26px;font-size:2em;}
 .sec_service .con .item .txt p{font-size:0.85em;line-height:170%;}
 .sec_service .con .item .txt i{margin-top:30px;width:64px;}

@@ -10,7 +10,7 @@ export default function ListingsSection() {
   return (
     <section className="main_con sec_pf" id="location">
       <div className="tt taC">
-        <h4>[ {lc.en} ]</h4>
+        <h4 className="en">{lc.en}</h4>
         <h3><span><b>{lc.title}</b></span></h3>
         <p>{lc.desc}</p>
       </div>

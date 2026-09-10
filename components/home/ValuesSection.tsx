@@ -10,7 +10,7 @@ export default function ValuesSection() {
     <section className="main_con sec_vision">
       <div className="tt taC wht">
         <h3><span dangerouslySetInnerHTML={{ __html: v.title }} /></h3>
-        <h4>[ {v.en} ]</h4>
+        <h4 className="en">{v.en}</h4>
       </div>
       <div className="con aos">
         {v.items.map((it, i) => (

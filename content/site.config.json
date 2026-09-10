@@ -140,7 +140,7 @@
     "/about": {
       "en": "About MediRoad",
       "title": "메디로드 소개",
-      "desc": "메디로드는 단순한 컨설팅을 넘어 브랜드 성장과 경영 성공을 설계하는 메디컬 파트너입니다"
+      "desc": "개원 현장 경험과 데이터로 입지 선정부터 개원 후 운영까지 함께 설계하는 개원 파트너입니다"
     },
     "/consulting": {
       "en": "Consulting",
@@ -223,13 +223,13 @@
     "location": {
       "en": "Location",
       "title": "추천 개원지",
-      "desc": "자사 네트워크를 기반으로 최적의 병·의원 임대·분양 매물과 병원 매매 정보를 선별하여 제공합니다",
+      "desc": "메디로드가 직접 확인한 병·의원 전용 임대·분양 매물과 병원 매매 정보를 선별해 소개합니다",
       "more": "/location"
     },
     "contact": {
       "title": "상담신청",
       "en": "Consultation",
-      "desc": "빠르고 정확한 전문가 상담을 제공합니다.",
+      "desc": "진료과와 희망 지역, 예산만 알려주시면 1영업일 안에 담당자가 연락드립니다.",
       "image": "/images/photo-contact-building.jpg"
     },
     "expert_unused": {

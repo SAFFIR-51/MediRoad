@@ -21,7 +21,7 @@ export default function StepsSection() {
     <section className="main_con sec_steps" id="process">
       <div className="tt taC">
         <h3><span><b>{st.title}</b></span></h3>
-        <h4>[ {st.en} ]</h4>
+        <h4 className="en">{st.en}</h4>
         <p>{st.desc}</p>
       </div>
       <div className="wrap"><StepsGrid /></div>
