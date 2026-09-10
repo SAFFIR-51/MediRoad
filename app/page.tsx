@@ -3,7 +3,6 @@ import MessageSection from "@/components/home/MessageSection";
 import ValuesSection from "@/components/home/ValuesSection";
 import ServicesSection from "@/components/home/ServicesSection";
 import StepsSection from "@/components/home/StepsSection";
-import ExpertSection from "@/components/home/ExpertSection";
 import ListingsSection from "@/components/home/ListingsSection";
 import ContactTeaser from "@/components/home/ContactTeaser";
 import OpenPopup from "@/components/layout/OpenPopup";
@@ -16,7 +15,6 @@ export default function HomePage() {
       <ValuesSection />
       <ServicesSection />
       <StepsSection />
-      <ExpertSection />
       <ListingsSection />
       <ContactTeaser />
       <OpenPopup />

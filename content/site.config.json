@@ -226,7 +226,13 @@
       "desc": "자사 네트워크를 기반으로 최적의 병·의원 임대·분양 매물과 병원 매매 정보를 선별하여 제공합니다",
       "more": "/location"
     },
-    "expert": {
+    "contact": {
+      "title": "상담신청",
+      "en": "Consultation",
+      "desc": "빠르고 정확한 전문가 상담을 제공합니다.",
+      "image": "/images/photo-contact-building.jpg"
+    },
+    "expert_unused": {
       "title": "전문가 그룹",
       "en": "Expert Advisory",
       "desc": "다양한 분야의 전문가 그룹이 협업하여 체계적인 솔루션을 제시합니다.",
@@ -315,12 +321,6 @@
           "메디컬 파트너, 메디로드"
         ]
       }
-    },
-    "contact": {
-      "title": "상담신청",
-      "en": "Consultation",
-      "desc": "빠르고 정확한 전문가 상담을 제공합니다.",
-      "image": "/images/photo-contact-building.jpg"
     }
   }
 }

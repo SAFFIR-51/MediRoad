@@ -30,7 +30,7 @@ npm run build && npm start     # 운영
 
 | 경로 | 내용 |
 | --- | --- |
-| `/` | 홈: 히어로 슬라이드(3), 브랜드 메시지, 3대 가치, 개원컨설팅 4분야, 개원 프로세스, 전문가 그룹, 추천 개원지(최신 매물 6건), 상담 안내(→ /contact), 오픈 팝업 |
+| `/` | 홈: 히어로 슬라이드(3), 브랜드 메시지, 3대 가치, 개원컨설팅 4분야, 개원 프로세스, 추천 개원지(최신 매물 6건), 상담 안내(→ /contact), 오픈 팝업 |
 | `/about` · `/about/greeting` · `/about/location` | 회사소개(슬로건·MISSION/VISION/ACTION·CEO 메시지·INFORMATION), 인사말, 오시는 길(지도·교통·방문 안내) |
 | `/consulting` | 컨설팅 소개: 5개 분야, 개원 프로세스, 다섯 가지 약속, FAQ |
 | `/consulting/opening` `pharmacy` `transfer` `closure` `marketing` | 분야별 상세 페이지 5종. 구성은 닥터힐 핵심 서비스 페이지를 참고: 소개(배지·헤드라인·큰 사진) → 필요성과 가치 → 핵심 제공 서비스(어두운 배경 카드 캐러셀) → 진행 절차 → 약속(인용문+Contact) → FAQ. 문구·이미지는 `content/services.json` |
