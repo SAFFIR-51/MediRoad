@@ -5,7 +5,7 @@ export default function Footer() {
   return (
     <footer className="footer">
       <div className="container">
-        <img src={site.brand.logo.white} alt={site.brand.name} />
+        <img src={site.brand.logo.footer} alt={site.brand.name} />
         <div className="addr">
           <ul>
             <li>{c.name}</li>

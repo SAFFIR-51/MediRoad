@@ -12,7 +12,7 @@
    - 섹션 배지: 채운 알약 대신 얇은 테두리 태그
    - 버튼: 완전 둥근 알약 대신 모서리 8px
    - 서브 비주얼: 영문 라벨 위 짧고 굵은 하늘색 선
-   - 푸터: 네이비 배경, 퀵메뉴: 하나의 흰 막대
+   - 퀵메뉴: 하나의 흰 막대 (푸터는 흰 배경 유지)
    - 홈 컨설팅 카드: 블러 배경 + 그라데이션 + 좌하단 정렬
    ===================================================================== */
 .main_con .tt h4.en,.sub_con .tt h4.en{padding-top:12px;font-family:'gont';font-size:0.78em;font-weight:500;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);}
@@ -25,11 +25,8 @@
 .subtop .txt em{font-style:normal;padding-bottom:22px;font-size:0.85em;letter-spacing:0.22em;text-transform:uppercase;}
 .subtop .txt em:after{width:28px;height:3px;background:var(--light);}
 .subtop .txt h2{padding-top:26px;}
-.footer{background:var(--dark);border-top:0;}
+/* 푸터는 흰 배경 유지 (네이비 대신 얇은 상단 선 + 로고만 축소) */
 .footer .container > img{width:150px;}
-.footer *{color:rgba(255,255,255,0.72);}
-.footer .container div > ul li:first-child,.footer .container div > ul li dl dt{color:#fff;}
-.footer .copy b{color:#fff;}
 @media (min-width:1024px){
   .quick-nav ul{gap:0;padding:6px;border-radius:18px;background:#fff;box-shadow:0 12px 30px rgba(0,0,0,0.14);}
   .quick-nav li{padding-left:0;}
