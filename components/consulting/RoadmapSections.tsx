@@ -1,6 +1,9 @@
 import { roadmap } from "@/lib/site";
 
-/** 개원 로드맵(6단계 체크리스트) + 개원 타임라인. 병·의원 개원 컨설팅 페이지(/consulting/opening) 하단에 붙는다. */
+/**
+ * 개원 로드맵: 6단계를 아이콘 흐름도로 한눈에, 분야별 체크 포인트는 아이콘 타일로.
+ * 세부 체크리스트(content/roadmap.json 의 items)는 화면에 펼치지 않고 상담 시 제공한다.
+ */
 export default function RoadmapSections() {
   const r = roadmap;
   return (
@@ -10,39 +13,34 @@ export default function RoadmapSections() {
           <div className="tt taC">
             <em>ROADMAP</em>
             <h3><span><b>개원 Roadmap</b></span></h3>
-            <p>{r.desc}</p>
+            <p>입지 확정부터 가오픈까지, 메디로드가 함께 가는 6단계입니다.</p>
           </div>
-          <div className="mr-roadmap aos">
-            {r.steps.map((s) => (
-              <div className="step" key={s.no}>
-                <div className="head"><em>{s.no}</em><h5>{s.title}</h5></div>
-                <p className="sum">{s.summary}</p>
-                <div className="body">
-                  {s.items.map((it) => (
-                    <div className="grp" key={it.h}>
-                      <h6>{it.h}</h6>
-                      <ul>{it.p.map((p) => <li key={p}>{p}</li>)}</ul>
-                    </div>
-                  ))}
-                </div>
-              </div>
+          <ol className="mr-flow aos">
+            {r.steps.map((s, i) => (
+              <li key={s.no}>
+                <div className="ic"><i className={s.icon}></i><em>{String(i + 1).padStart(2, "0")}</em></div>
+                <h5>{s.short}</h5>
+                <p>{s.brief}</p>
+              </li>
             ))}
-          </div>
+          </ol>
+          <p className="mr-flow-note">단계별 세부 체크리스트는 상담 시 원장님 일정에 맞춰 드립니다.</p>
         </div>
       </section>
 
       <section className="sub_con sec_timeline">
         <div className="wrap">
           <div className="tt taC">
-            <em>TIMELINE</em>
-            <h3><span><b>{r.timeline.title}</b></span></h3>
-            <p>{r.timeline.desc}</p>
+            <em>CHECK POINTS</em>
+            <h3><span><b>분야별 체크 포인트</b></span></h3>
+            <p>개원 준비에서 반드시 거치는 아홉 가지 영역입니다.</p>
           </div>
-          <div className="mr-timeline2 aos">
+          <div className="mr-areas aos">
             {r.timeline.rows.map((row) => (
-              <div className="row" key={row.label}>
-                <div className="lb">{row.label}</div>
-                <div className="items">{row.items.map((it) => <span key={it}>{it}</span>)}</div>
+              <div className="item" key={row.label}>
+                <i className={row.icon}></i>
+                <h5>{row.label}</h5>
+                <p>{row.brief}</p>
               </div>
             ))}
           </div>

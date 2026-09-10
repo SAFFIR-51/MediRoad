@@ -218,7 +218,7 @@
           "href": "/consulting/marketing"
         }
       ],
-      "_comment": "홈 컨설팅 5개 카드 (PC: 위 3개 + 아래 2개, 모바일: 세로 나열)."
+      "_comment": "홈 컨설팅 5개 카드 (PC: 위 2개 + 아래 3개, 모바일: 세로 나열)."
     },
     "location": {
       "en": "Location",

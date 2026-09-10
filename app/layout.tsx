@@ -4,6 +4,7 @@ import { site } from "@/lib/site";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import QuickNav from "@/components/layout/QuickNav";
+import CtaBand from "@/components/layout/CtaBand";
 import ScrollEffects from "@/components/effects/ScrollEffects";
 import BodyClass from "@/components/effects/BodyClass";
 
@@ -29,6 +30,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <BodyClass />
         <Header />
         {children}
+        <CtaBand />
         <QuickNav />
         <Footer />
         <ScrollEffects />

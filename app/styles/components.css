@@ -32,10 +32,10 @@
 .main_visual .hero-count b{color:#fff;font-weight:600;}
 @media all and (max-width: 1024px) { .main_visual .hero-count{display:none;} .main_visual .slick-dots{bottom:22px;} }
 
-/* ---- 홈 개원컨설팅 5개 카드 (위 3 + 아래 2, 모두 화면 폭을 꽉 채움) ---- */
+/* ---- 홈 컨설팅 5개 카드 (위 2 + 아래 3, 모두 화면 폭을 꽉 채움) ---- */
 .sec_service .con{display:grid;grid-template-columns:repeat(6, minmax(0,1fr));}
 .sec_service .con .item{width:auto;height:520px;grid-column:span 2;}
-.sec_service .con .item04,.sec_service .con .item05{grid-column:span 3;}
+.sec_service .con .item01,.sec_service .con .item02{grid-column:span 3;}
 .sec_service .con .item .txt{padding:0 24px;}
 .sec_service .con .item .txt h4{padding:30px 0 26px;font-size:2em;}
 .sec_service .con .item .txt p{font-size:0.85em;line-height:170%;}
@@ -358,6 +358,23 @@
   .quick-nav li a i{font-size:22px;margin-bottom:2px;}
 }
 
+/* ---- 파란(네이비) 배경 위 글자는 모두 흰색: 원본 .main_con *, .sub_con * 의 #111 상속을 덮어씀 ---- */
+.mr-btn,.mr-btn *{color:#fff !important;}
+.mr-btn.line,.mr-btn.line *{color:#111 !important;}
+.sec_contact .mr-teaser .act .btns .mr-btn.line,.sec_contact .mr-teaser .act .btns .mr-btn.line *{color:#fff !important;}
+.mr-points .item em{color:var(--light);}
+.sec_loc .tt em,.sec_svc_keys .mr-pill{background:var(--accent);}
+.mr-pill,.mr-pill *{color:#fff;}
+
+/* ---- 공통 CTA 띠 (하위 페이지 마지막) ---- */
+.mr-cta-band{padding:120px 0;background:#0B2545 url(/images/bg-dark.jpg) no-repeat center center/cover;}
+.mr-cta-band > .wrap > em{display:inline-flex;align-items:center;height:34px;padding:0 16px;margin-bottom:22px;border-radius:34px;font-size:0.7em;letter-spacing:0.1em;color:#fff;background:rgba(255,255,255,0.14);}
+.mr-cta-band h4{font-size:2em;}
+.mr-cta-band .btns a.line{color:#fff;background:transparent;border:1px solid rgba(255,255,255,0.45);}
+.mr-cta-band .btns a.line span,.mr-cta-band .btns a.line i{color:#fff;}
+.mr-cta-band .btns a.line:hover{background:rgba(255,255,255,0.12);}
+@media all and (max-width:1024px){ .mr-cta-band{padding:70px 20px;} .mr-cta-band h4{font-size:1.4em;} .mr-cta-band .btns{flex-direction:column;align-items:center;} }
+
 /* ---- 개인정보 팝업(상담 폼 링크) ---- */
 .mr-modal{position:fixed;inset:0;z-index:100001;display:flex;justify-content:center;align-items:center;padding:20px;background:rgba(0,0,0,0.55);}
 .mr-modal .box{width:min(760px,94vw);max-height:86vh;display:flex;flex-direction:column;background:#fff;}
@@ -529,7 +546,27 @@
 .mr-svc-others .list a:hover{border-color:#111;color:#111;}
 @media all and (max-width:1024px){ .mr-svc-intro{grid-template-columns:1fr;gap:26px;} .mr-svc-intro .txt h4{font-size:1.5em;} .mr-svc-points{grid-template-columns:1fr;} .mr-svc-points .item{margin-right:0;border-right:0;padding:22px 0;} }
 
-/* ---- 개원 로드맵 ---- */
+/* ---- 개원 로드맵: 아이콘 흐름도 + 분야별 타일 ---- */
+.mr-flow{position:relative;display:grid;grid-template-columns:repeat(6, minmax(0,1fr));gap:0;list-style:none;margin:0;padding:0;}
+.mr-flow:before{content:'';position:absolute;left:8.33%;right:8.33%;top:44px;height:1px;background:#d9dee5;}
+.mr-flow li{position:relative;padding:0 14px;text-align:center;}
+.mr-flow .ic{position:relative;width:88px;height:88px;margin:0 auto;border:1px solid #111;border-radius:50%;background:#fff;display:flex;justify-content:center;align-items:center;transition:all .3s;}
+.mr-flow .ic i{font-size:1.7em;color:var(--gold);transition:color .3s;}
+.mr-flow .ic em{position:absolute;right:-4px;top:-4px;display:flex;justify-content:center;align-items:center;width:28px;height:28px;border-radius:50%;font-family:'gont';font-size:0.62em;font-weight:500;color:#fff;background:var(--gold);}
+.mr-flow li:hover .ic{background:var(--gold);border-color:var(--gold);}
+.mr-flow li:hover .ic i{color:#fff;}
+.mr-flow h5{padding-top:22px;font-size:1em;font-weight:700;color:#111;}
+.mr-flow p{padding-top:8px;font-size:0.74em;line-height:160%;color:#777;word-break:keep-all;}
+.mr-flow-note{padding-top:44px;text-align:center;font-size:0.76em;color:#999;}
+.mr-areas{display:grid;grid-template-columns:repeat(3, minmax(0,1fr));gap:0;max-width:1100px;margin:0 auto;border-top:1px solid #111;border-left:1px solid #e6e6e6;}
+.mr-areas .item{display:flex;align-items:center;gap:18px;padding:26px 24px;border-right:1px solid #e6e6e6;border-bottom:1px solid #e6e6e6;background:#fff;}
+.mr-areas .item i{display:inline-flex;justify-content:center;align-items:center;flex:none;width:54px;height:54px;border-radius:50%;font-size:1.3em;color:var(--gold);background:#eef3f8;}
+.mr-areas .item h5{font-size:0.95em;font-weight:700;color:#111;}
+.mr-areas .item p{padding-top:5px;font-size:0.74em;color:#777;line-height:150%;}
+@media all and (max-width:1280px){ .mr-flow{grid-template-columns:repeat(3, minmax(0,1fr));row-gap:40px;} .mr-flow:before{display:none;} }
+@media all and (max-width:1024px){ .mr-flow{grid-template-columns:repeat(2, minmax(0,1fr));row-gap:30px;} .mr-flow .ic{width:70px;height:70px;} .mr-flow .ic i{font-size:1.4em;} .mr-flow h5{padding-top:14px;font-size:0.95em;} .mr-flow-note{padding-top:28px;} .mr-areas{grid-template-columns:1fr;} .mr-areas .item{padding:16px 14px;} .mr-areas .item i{width:44px;height:44px;} }
+
+/* ---- (구) 개원 로드맵 체크리스트 스타일 ---- */
 .sec_roadmap{background:#fff;}
 .mr-roadmap{display:grid;grid-template-columns:repeat(3, minmax(0,1fr));gap:24px;}
 .mr-roadmap .step{border:1px solid #e6e6e6;border-top:2px solid #111;padding:26px 26px 30px;background:#fff;}
