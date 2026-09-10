@@ -15,7 +15,7 @@ CACHE = os.path.expanduser('~/Library/Caches/mediroad-stock')
 OUT = os.path.join(ROOT, 'public', 'images')
 os.makedirs(CACHE, exist_ok=True); os.makedirs(OUT, exist_ok=True)
 
-# name → (unsplash id, 설명, 출력 최대 가로, 크롭 비율(w:h) or None)
+# name → (unsplash id, 설명, 출력 최대 가로, 크롭 비율(w:h) or None[, 크롭 기준 'left'|'right'|'top'|'bottom' 또는 상대 박스 (x0,y0,x1,y1) 0~1 (기본 가운데)])
 # 화면 표시 폭의 약 2배(레티나) 기준. 히어로·서브비주얼 2560, 큰 사진 1920, 카드 1600, 정사각 1200.
 PHOTOS = {
   'hero-seoul':        ('1594476800502-a8c927d0acc0', '서울 도심 항공 전경 (메인 슬라이드 1)', 2560, (16, 9)),
@@ -45,9 +45,9 @@ PHOTOS = {
   'building-2':        ('1777108329437-a93e8765a698', '메디컬 빌딩 2', 1200, (3, 4)),
   'building-3':        ('1597807037496-c56a1d8bc29a', '메디컬 빌딩 3', 1200, (3, 4)),
   'field-opening':     ('1764885517847-79d62138cc58', '병·의원 개원 컨설팅', 2400, (21, 9)),
-  'field-pharmacy':    ('1765031092161-a9ebe556117e', '약국 컨설팅', 2400, (21, 9)),
+  'field-pharmacy':    ('1765031092161-a9ebe556117e', '약국 컨설팅 (우측 간판 제외 박스 크롭)', 2400, (21, 9), (0, 0, 0.78, 1)),
   'field-transfer':    ('1758691463198-dc663b8a64e4', '병·의원 양수양도', 2400, (21, 9)),
-  'field-closure':     ('1777269749032-d8d458ae594d', '병·의원 폐업 컨설팅', 2400, (21, 9)),
+  'field-closure':     ('1771574204208-b47e2d863bc5', '병·의원 폐업 컨설팅 (빈 대기실)', 2400, (21, 9)),
   'field-marketing':   ('1758691461990-03b49d969495', '병·의원 경영·마케팅', 2400, (21, 9)),
   'listing-dental-1':  ('1704455306251-b4634215d98f', '치과 진료실', 1600, (4, 3)),
   'listing-dental-2':  ('1704455306925-1401c3012117', '치과 장비', 1600, (4, 3)),
@@ -59,10 +59,10 @@ PHOTOS = {
   'listing-wait':      ('1762625570087-6d98fca29531', '대기실', 1600, (4, 3)),
   'listing-reception': ('1764727291644-5dcb0b1a0375', '접수 데스크', 1600, (4, 3)),
   'listing-corridor':  ('1719934398679-d764c1410770', '밝은 복도', 1600, (4, 3)),
-  'listing-hallway':   ('1777269749032-d8d458ae594d', '병원 복도', 1600, (4, 3)),
+  'listing-hallway':   ('1719934398679-d764c1410770', '병원 복도', 1600, (4, 3)),
   'listing-building-1':('1662414185445-b9a05e26dba0', '메디컬 빌딩 외관 A', 1600, (4, 3)),
   'listing-building-2':('1777108329437-a93e8765a698', '메디컬 빌딩 외관 B', 1600, (4, 3)),
-  'listing-pharmacy':  ('1765031092161-a9ebe556117e', '약국 내부', 1600, (4, 3)),
+  'listing-pharmacy':  ('1580281657529-557a6abb6387', '약국 내부 (조제 선반)', 1600, (4, 3)),
   'listing-chairs':    ('1771574204208-b47e2d863bc5', '대기 의자', 1600, (4, 3)),
   'greeting-1':        ('1573496267526-08a69e46a409', '상담 미팅', 1600, (4, 3)),
   'greeting-2':        ('1758691736933-bb0f88fe2e0c', '로비에서의 만남', 1600, (4, 3)),
@@ -93,27 +93,31 @@ def fetch(uid):
         raise RuntimeError(f'download failed: {uid}')
     return src
 
-def crop_ratio(im, ratio):
+def crop_ratio(im, ratio, anchor='center'):
     if not ratio: return im
     w, h = im.size; rw, rh = ratio
     target = rw / rh
     if w / h > target:
-        nw = int(h * target); x = (w - nw) // 2; return im.crop((x, 0, x + nw, h))
-    nh = int(w / target); y = (h - nh) // 2; return im.crop((0, y, w, y + nh))
+        nw = int(h * target); x = {'left': 0, 'right': w - nw}.get(anchor, (w - nw) // 2); return im.crop((x, 0, x + nw, h))
+    nh = int(w / target); y = {'top': 0, 'bottom': h - nh}.get(anchor, (h - nh) // 2); return im.crop((0, y, w, y + nh))
 
-def photo(name, uid, desc, maxw, ratio):
+def photo(name, uid, desc, maxw, ratio, anchor='center'):
     im = Image.open(fetch(uid)).convert('RGB')
-    im = crop_ratio(im, ratio)
+    if isinstance(anchor, tuple):  # 상대 박스 선크롭 후 비율 크롭
+        w, h = im.size; x0, y0, x1, y1 = anchor
+        im = im.crop((int(w * x0), int(h * y0), int(w * x1), int(h * y1))); anchor = 'center'
+    im = crop_ratio(im, ratio, anchor)
     if im.size[0] > maxw: im = im.resize((maxw, int(im.size[1] * maxw / im.size[0])), Image.LANCZOS)
     out = os.path.join(OUT, f'photo-{name}.jpg'); im.save(out, quality=82, optimize=True, progressive=True)
     return {'file': f'/images/photo-{name}.jpg', 'desc': desc, 'source': f'https://unsplash.com/photos/{uid}', 'size': list(im.size), 'kb': os.path.getsize(out) // 1024}
 
 only = set(sys.argv[1:])
 inventory = []
-for name, (uid, desc, maxw, ratio) in PHOTOS.items():
+for name, spec in PHOTOS.items():
     if only and name not in only: continue
+    uid, desc, maxw, ratio = spec[:4]; anchor = spec[4] if len(spec) > 4 else 'center'
     try:
-        item = photo(name, uid, desc, maxw, ratio); inventory.append(item)
+        item = photo(name, uid, desc, maxw, ratio, anchor); inventory.append(item)
         print(f"ok   {name:20s} {item['size'][0]}x{item['size'][1]} {item['kb']}KB")
     except Exception as e:
         print(f"FAIL {name:20s} {e}")

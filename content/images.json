@@ -273,13 +273,13 @@
     },
     {
       "file": "/images/photo-field-pharmacy.jpg",
-      "desc": "약국 컨설팅",
+      "desc": "약국 컨설팅 (우측 간판 제외 박스 크롭)",
       "source": "https://unsplash.com/photos/1765031092161-a9ebe556117e",
       "size": [
-        2400,
-        1028
+        2184,
+        935
       ],
-      "kb": 287
+      "kb": 221
     },
     {
       "file": "/images/photo-field-transfer.jpg",
@@ -293,13 +293,13 @@
     },
     {
       "file": "/images/photo-field-closure.jpg",
-      "desc": "병·의원 폐업 컨설팅",
-      "source": "https://unsplash.com/photos/1777269749032-d8d458ae594d",
+      "desc": "병·의원 폐업 컨설팅 (빈 대기실)",
+      "source": "https://unsplash.com/photos/1771574204208-b47e2d863bc5",
       "size": [
         2400,
         1028
       ],
-      "kb": 181
+      "kb": 309
     },
     {
       "file": "/images/photo-field-marketing.jpg",
@@ -414,12 +414,12 @@
     {
       "file": "/images/photo-listing-hallway.jpg",
       "desc": "병원 복도",
-      "source": "https://unsplash.com/photos/1777269749032-d8d458ae594d",
+      "source": "https://unsplash.com/photos/1719934398679-d764c1410770",
       "size": [
         1600,
         1200
       ],
-      "kb": 150
+      "kb": 123
     },
     {
       "file": "/images/photo-listing-building-1.jpg",
@@ -443,13 +443,13 @@
     },
     {
       "file": "/images/photo-listing-pharmacy.jpg",
-      "desc": "약국 내부",
-      "source": "https://unsplash.com/photos/1765031092161-a9ebe556117e",
+      "desc": "약국 내부 (조제 선반)",
+      "source": "https://unsplash.com/photos/1580281657529-557a6abb6387",
       "size": [
         1600,
         1200
       ],
-      "kb": 233
+      "kb": 181
     },
     {
       "file": "/images/photo-listing-chairs.jpg",
