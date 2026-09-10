@@ -1,46 +1,51 @@
-/** 매물 조회 (서버 전용) */
-import { and, desc, eq, ne, sql } from "drizzle-orm";
-import { getDb, schema, getSetting } from "@/lib/db";
-import { parseListing, type Listing } from "@/lib/listing-utils";
+/**
+ * 매물 데이터 (프론트 전용 단계: content/listings.json 정적 데이터)
+ * TODO(서버 연동): 이 파일의 함수 구현만 API 호출로 바꾸면 페이지 코드는 그대로 쓸 수 있다.
+ */
+import { seedListings } from "@/lib/site";
+import type { Listing, ListingType } from "@/lib/listing-utils";
 
 export * from "@/lib/listing-utils";
 
-export async function allListings(opts: { includeHidden?: boolean } = {}): Promise<Listing[]> {
-  const db = await getDb();
-  const rows = await db.select().from(schema.listings)
-    .where(opts.includeHidden ? undefined : ne(schema.listings.status, "hidden"))
-    .orderBy(desc(schema.listings.sortOrder), desc(schema.listings.dateListed), desc(schema.listings.id));
-  return rows.map(parseListing);
+type Raw = (typeof seedListings)[number];
+
+function toListing(it: Raw): Listing {
+  return {
+    code: it.id,
+    type: (it.type === "sale" ? "sale" : "lease") as ListingType,
+    category: it.category,
+    title: it.title,
+    region: it.region,
+    address: it.address ?? "",
+    dateListed: it.date,
+    deposit: it.deposit ?? "",
+    rent: it.rent ?? "",
+    area: it.area ?? "",
+    floor: it.floor ?? "",
+    features: Array.isArray(it.features) ? it.features.map(String) : [],
+    images: Array.isArray(it.images) ? it.images.map(String) : [],
+    description: it.description ?? "",
+    lat: typeof it.lat === "number" ? it.lat : null,
+    lng: typeof it.lng === "number" ? it.lng : null,
+    isSample: !!it.sample,
+    status: "open",
+  };
 }
 
-export async function recentListings(limit = 6): Promise<Listing[]> {
-  const db = await getDb();
-  const rows = await db.select().from(schema.listings).where(eq(schema.listings.status, "open"))
-    .orderBy(desc(schema.listings.sortOrder), desc(schema.listings.dateListed), desc(schema.listings.id)).limit(limit);
-  return rows.map(parseListing);
+const ALL: Listing[] = seedListings.map(toListing).sort((a, b) => (a.dateListed < b.dateListed ? 1 : a.dateListed > b.dateListed ? -1 : 0));
+
+export function allListings(): Listing[] {
+  return ALL;
 }
 
-export async function findListing(code: string): Promise<Listing | null> {
-  const db = await getDb();
-  const row = await db.query.listings.findFirst({ where: eq(schema.listings.code, code) });
-  return row ? parseListing(row) : null;
+export function recentListings(limit = 6): Listing[] {
+  return ALL.filter((l) => l.status === "open").slice(0, limit);
 }
 
-export async function relatedListings(l: Listing, limit = 3): Promise<Listing[]> {
-  const db = await getDb();
-  const rows = await db.select().from(schema.listings)
-    .where(and(eq(schema.listings.type, l.type), ne(schema.listings.id, l.id), eq(schema.listings.status, "open")))
-    .orderBy(desc(schema.listings.dateListed)).limit(limit);
-  return rows.map(parseListing);
+export function findListing(code: string): Listing | null {
+  return ALL.find((l) => l.code === code) ?? null;
 }
 
-export async function bumpViews(id: number) {
-  const db = await getDb();
-  await db.update(schema.listings).set({ views: sql`${schema.listings.views} + 1` }).where(eq(schema.listings.id, id));
-}
-
-/** 매물 열람 정책: detail(상세만 회원) | all(목록도 회원) | none(전체 공개) */
-export async function listingGate(): Promise<"detail" | "all" | "none"> {
-  const v = await getSetting("listing_gate", "detail");
-  return v === "all" || v === "none" ? v : "detail";
+export function relatedListings(l: Listing, limit = 3): Listing[] {
+  return ALL.filter((o) => o.type === l.type && o.code !== l.code && o.status === "open").slice(0, limit);
 }

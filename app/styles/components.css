@@ -249,28 +249,96 @@
 .mr-popup .foot label{display:flex;align-items:center;gap:6px;cursor:pointer;}
 .mr-popup .foot .x{font-weight:600;color:#111;}
 
-/* ---- 헤더 로그인/회원가입 ---- */
-#header .container-fluid .btn-area{position:absolute;}
-#header .container-fluid .btn-area .sns li.mr-member{position:absolute;right:0;top:-34px;display:flex;justify-content:flex-end;gap:14px;width:300px;}
-#header .container-fluid .btn-area .sns li.mr-member a,#header .container-fluid .btn-area .sns li.mr-member span{display:inline;width:auto;height:auto;padding:0;border-radius:0;background:none;font-size:13px;letter-spacing:0;color:rgba(255,255,255,0.85);}
-#header .container-fluid .btn-area .sns li.mr-member a:hover{opacity:1;color:#fff;text-decoration:underline;}
-body.scrolled #header .container-fluid .btn-area .sns li.mr-member a,body.scrolled #header .container-fluid .btn-area .sns li.mr-member span{color:#333;}
-.site-map .container-fluid .v-align ul.mr-member-m{position:absolute;display:flex;gap:16px;bottom:60px;left:0;}
-.site-map .container-fluid .v-align ul.mr-member-m li{padding:0;border:0;}
-.site-map .container-fluid .v-align ul.mr-member-m li a,.site-map .container-fluid .v-align ul.mr-member-m li span{width:auto;padding:0;font-size:15px;color:rgba(255,255,255,0.8);}
-@media (max-width: 1279px) {
-  #header .container-fluid .btn-area .sns li.mr-member{display:none;}
-  .site-map .container-fluid .v-align ul.mr-member-m{position:static;padding:24px 0 0;flex-wrap:wrap;}
-}
+/* ---- 상담신청 페이지 (/contact) ---- */
+.sec_contact_page{background:#f7f8fa;overflow:visible;} /* sticky 사이드가 동작하도록 overflow 해제 */
+.mr-contact{display:grid;grid-template-columns:380px minmax(0,1fr);gap:60px;align-items:start;}
+.mr-contact .side{position:sticky;top:130px;}
+.mr-contact .side .badge{display:inline-flex;align-items:center;height:34px;padding:0 16px;border-radius:34px;font-size:0.68em;letter-spacing:0.08em;color:#fff;background:var(--gold);}
+.mr-contact .side h4{padding-top:22px;font-size:1.9em;font-weight:600;line-height:140%;}
+.mr-contact .side h4 b{font-weight:700;color:var(--gold);}
+.mr-contact .side > p{padding-top:16px;font-size:0.85em;color:#666;line-height:170%;}
+.mr-contact .points{margin-top:26px;padding-top:18px;border-top:1px solid #111;}
+.mr-contact .points li{display:flex;align-items:center;gap:10px;padding:7px 0;font-size:0.8em;color:#333;}
+.mr-contact .points li i{display:inline-flex;justify-content:center;align-items:center;flex:none;width:20px;height:20px;border-radius:50%;font-size:11px;color:#fff;background:var(--gold);}
+.mr-contact .info{margin-top:20px;border-top:1px solid #e6e6e6;}
+.mr-contact .info > div{display:flex;gap:14px;padding:14px 0;border-bottom:1px solid #e6e6e6;font-size:0.8em;}
+.mr-contact .info dt{flex:none;display:flex;align-items:center;gap:6px;width:80px;color:#888;}
+.mr-contact .info dt i{color:var(--gold);}
+.mr-contact .info dd{color:#111;line-height:150%;word-break:break-all;}
+.mr-contact .info dd a{color:#111;}
+.mr-contact .info dd.tel a{font-family:'gont';font-size:1.3em;font-weight:500;color:var(--gold);}
+.mr-contact .side .btns{display:flex;gap:8px;padding-top:22px;}
+.mr-contact .side .btns .mr-btn{min-width:0;flex:1;justify-content:center;gap:8px;}
+.mr-contact .side .btns .mr-btn:after{content:none;}
+.mr-contact .side .btns .mr-btn i{font-size:1em;color:var(--gold);}
 
-/* ---- 상담 페이지: 홈 상담 섹션을 서브 페이지에서 재사용 ---- */
-.page-contact .sec_contact .tt h3 span{transform:none;}
-.sec_contact .con form .bottom .privacy a{cursor:pointer;}
+.mr-cform{position:relative;padding:44px 50px 50px;background:#fff;border:1px solid #e6e6e6;border-top:2px solid #111;}
+.mr-cform fieldset{border:0;padding:0;margin:0 0 38px;min-width:0;}
+.mr-cform legend{display:flex;align-items:baseline;gap:12px;width:100%;padding-bottom:14px;margin-bottom:4px;border-bottom:1px solid #111;font-size:1em;font-weight:600;}
+.mr-cform legend em{font-family:'gont';font-size:0.85em;font-weight:400;color:var(--gold);letter-spacing:0.05em;}
+.mr-cform legend small{margin-left:auto;font-size:0.7em;font-weight:400;color:#999;}
+.mr-cform .grid{display:grid;grid-template-columns:1fr 1fr;gap:0 36px;}
+.mr-cform .row{padding:18px 0 0;}
+.mr-cform .row.full{grid-column:1 / -1;}
+.mr-cform label.lb{display:block;padding-bottom:2px;font-size:0.76em;font-weight:500;color:#333;}
+.mr-cform label.lb i{color:var(--gold);font-style:normal;margin-left:3px;}
+.mr-cform input[type=text],.mr-cform input[type=tel],.mr-cform input[type=email],.mr-cform select{width:100%;height:46px;padding:0;font-size:0.85em;border:0;border-bottom:1px solid #ccc;border-radius:0;background:transparent;color:#111;}
+.mr-cform select{padding-right:24px;background:transparent url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='6'><path d='M1 1l4 4 4-4' fill='none' stroke='%23666' stroke-width='1.2'/></svg>") no-repeat right 6px center;-webkit-appearance:none;appearance:none;}
+.mr-cform textarea{width:100%;height:150px;margin-top:8px;padding:12px;font-size:0.85em;line-height:160%;border:1px solid #ddd;border-radius:0;background:#fff;color:#111;resize:vertical;}
+.mr-cform input:focus,.mr-cform select:focus,.mr-cform textarea:focus{outline:0;border-color:#111;}
+.mr-cform input::placeholder,.mr-cform textarea::placeholder{color:#b5b5b5;}
+.mr-cform .pills{display:flex;flex-wrap:wrap;gap:8px;padding-top:10px;}
+.mr-cform .pills span{position:relative;}
+.mr-cform .pills input{position:absolute;opacity:0;width:0;height:0;}
+.mr-cform .pills label{display:inline-flex;align-items:center;height:36px;padding:0 16px;border:1px solid #ddd;border-radius:36px;font-size:0.76em;color:#555;cursor:pointer;transition:all .2s;}
+.mr-cform .pills label:hover{border-color:#111;color:#111;}
+.mr-cform .pills input:checked + label{color:#fff;background:var(--gold);border-color:var(--gold);}
+.mr-cform .pills input:focus-visible + label{outline:2px solid #111;outline-offset:2px;}
+.mr-cform .foot{display:flex;justify-content:space-between;align-items:center;gap:20px;padding-top:4px;}
+.mr-cform .agree{display:flex;align-items:center;gap:8px;font-size:0.78em;color:#444;cursor:pointer;}
+.mr-cform .agree input{width:15px;height:15px;accent-color:#1E4B7A;}
+.mr-cform .agree a{color:var(--gold);text-decoration:underline;}
+.mr-cform .foot .mr-btn{width:246px;border:0;}
+.mr-cform .foot .mr-btn:disabled{opacity:.6;cursor:default;}
+.mr-cform .mr-flash{max-width:none;margin:0 0 14px;padding:12px 14px;border:0;background:#fdf1f0;font-size:0.8em;}
+.mr-cform .hp{position:absolute;left:-9999px;}
 .mr-done{max-width:760px;margin:0 auto;padding:60px 40px;text-align:center;border:1px solid #e6e6e6;background:#fff;}
 .mr-done i{display:block;font-size:2em;color:var(--gold);padding-bottom:14px;}
 .mr-done h4{font-size:1.3em;font-weight:600;}
-.mr-done p{padding:12px 0 24px;font-size:0.85em;color:#777;}
+.mr-done p{padding:12px 0 24px;font-size:0.85em;color:#777;line-height:170%;}
 .mr-done .btns{display:flex;justify-content:center;gap:10px;}
+@media (max-width:1400px){ .mr-contact{grid-template-columns:320px minmax(0,1fr);gap:36px;} .mr-cform{padding:34px 30px 40px;} }
+@media (max-width:1024px){
+  .mr-contact{grid-template-columns:1fr;gap:30px;}
+  .mr-contact .side{position:static;}
+  .mr-contact .side h4{font-size:1.5em;}
+  .mr-cform{padding:24px 18px 30px;}
+  .mr-cform .grid{grid-template-columns:1fr;}
+  .mr-cform fieldset{margin-bottom:28px;}
+  .mr-cform .foot{flex-direction:column;align-items:stretch;gap:14px;}
+  .mr-cform .foot .mr-btn{width:100%;}
+}
+
+/* ---- 홈 하단 상담 안내 (폼 대신 /contact 로 유도) ---- */
+.sec_contact .mr-teaser{display:flex;justify-content:space-between;align-items:flex-end;gap:40px;}
+.sec_contact .mr-teaser .tt{padding-bottom:0;}
+.sec_contact .mr-teaser .act{flex:none;width:420px;padding:32px 34px;border:1px solid rgba(255,255,255,0.22);background:rgba(255,255,255,0.04);}
+.sec_contact .mr-teaser .act em{display:block;font-size:0.72em;letter-spacing:0.06em;color:var(--light);}
+.sec_contact .mr-teaser .act .tel{display:flex;align-items:center;gap:10px;padding:12px 0 22px;font-family:'gont';font-size:1.8em;font-weight:400;color:#fff;}
+.sec_contact .mr-teaser .act .tel i{font-size:0.6em;color:var(--light);}
+.sec_contact .mr-teaser .act .btns{display:flex;flex-direction:column;gap:8px;}
+.sec_contact .mr-teaser .act .btns .mr-btn{width:100%;}
+.sec_contact .mr-teaser .act .btns .mr-btn.line{background:transparent;color:#fff !important;border-color:rgba(255,255,255,0.4);}
+.sec_contact .mr-teaser .act .btns .mr-btn.line:hover{background:rgba(255,255,255,0.1);}
+@media (max-width:1024px){ .sec_contact .mr-teaser{display:block;} .sec_contact .mr-teaser .act{width:100%;margin-top:26px;padding:22px;} .sec_contact .mr-teaser .act .tel{font-size:1.4em;padding-bottom:16px;} }
+
+/* ---- 플로팅 퀵메뉴: 아이콘 폰트 항목 ---- */
+.quick-nav li a figure{display:flex;flex-direction:column;align-items:center;justify-content:center;margin:0;}
+.quick-nav li a i{font-size:26px;line-height:1;color:#1E4B7A;}
+@media (max-width:1023px){
+  .quick-nav ul li{width:calc(100% / 6);}
+  .quick-nav li a i{font-size:22px;margin-bottom:2px;}
+}
 
 /* ---- 개인정보 팝업(상담 폼 링크) ---- */
 .mr-modal{position:fixed;inset:0;z-index:100001;display:flex;justify-content:center;align-items:center;padding:20px;background:rgba(0,0,0,0.55);}
@@ -381,7 +449,7 @@ body.scrolled #header .container-fluid .btn-area .sns li.mr-member a,body.scroll
 .mr-svc-others .list a:hover{border-color:#111;color:#111;}
 @media all and (max-width:1024px){ .mr-svc-intro{grid-template-columns:1fr;gap:26px;} .mr-svc-intro .txt h4{font-size:1.5em;} .mr-svc-points{grid-template-columns:1fr;} .mr-svc-points .item{margin-right:0;border-right:0;padding:22px 0;} }
 
-/* ---- 개원 로드맵 (회원 전용 자료) ---- */
+/* ---- 개원 로드맵 ---- */
 .sec_roadmap{background:#fff;}
 .mr-roadmap{display:grid;grid-template-columns:repeat(3, minmax(0,1fr));gap:24px;}
 .mr-roadmap .step{border:1px solid #e6e6e6;border-top:2px solid #111;padding:26px 26px 30px;background:#fff;}

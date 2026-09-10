@@ -1,34 +1,36 @@
 "use client";
 
-/** 홈 오픈 팝업: /api/popup 에서 게시 중인 팝업을 받아 표시. '오늘 하루 보지 않기'는 쿠키(mr_popup_hide). */
+/** 홈 오픈 팝업: content/popup.json 의 게시 중인 항목을 표시. '오늘 하루 보지 않기'는 쿠키(mr_popup_hide). */
 import { useEffect, useState } from "react";
+import { popups } from "@/lib/site";
 
-type Item = { id: number; title: string; content: string | null; image: string | null; link: string | null };
+type Item = { id: string; active: boolean; title: string; content: string; image: string; link: string; start: string; end: string };
 
 function hiddenIds(): string[] {
   const m = document.cookie.match(/(?:^|; )mr_popup_hide=([^;]*)/);
   return m ? decodeURIComponent(m[1]).split(",").filter(Boolean) : [];
 }
 
+function isLive(p: Item, today: string) {
+  return p.active && (!p.start || p.start <= today) && (!p.end || p.end >= today);
+}
+
 export default function OpenPopup() {
   const [items, setItems] = useState<Item[]>([]);
-  const [today, setToday] = useState<Record<number, boolean>>({});
+  const [today, setToday] = useState<Record<string, boolean>>({});
 
   useEffect(() => {
-    fetch("/api/popup", { credentials: "same-origin" })
-      .then((r) => (r.ok ? r.json() : { items: [] }))
-      .then((d: { items: Item[] }) => {
-        const hide = hiddenIds();
-        setItems((d.items || []).filter((p) => !hide.includes(String(p.id))));
-      })
-      .catch(() => {});
+    const d = new Date();
+    const t = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
+    const hide = hiddenIds();
+    setItems((popups as Item[]).filter((p) => isLive(p, t) && !hide.includes(p.id)));
   }, []);
 
   if (!items.length) return null;
 
   const close = (p: Item) => {
     if (today[p.id]) {
-      const ids = [...hiddenIds(), String(p.id)];
+      const ids = [...hiddenIds(), p.id];
       document.cookie = `mr_popup_hide=${encodeURIComponent(ids.join(","))};path=/;max-age=86400`;
     }
     setItems((list) => list.filter((x) => x.id !== p.id));

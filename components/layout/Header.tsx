@@ -10,22 +10,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { menuItems, site } from "@/lib/site";
 
-export type MemberInfo = { name: string; role: string } | null;
-
-function MemberLinks({ member, mobile }: { member: MemberInfo; mobile?: boolean }) {
-  const links = member
-    ? [
-        <span key="who" className="who">{member.name}님</span>,
-        <Link key="my" href="/member/mypage">마이페이지</Link>,
-        ...(member.role === "admin" ? [<Link key="adm" href="/admin">관리자</Link>] : []),
-        <a key="out" href="/member/logout">로그아웃</a>,
-      ]
-    : [<Link key="in" href="/member/login">로그인</Link>, <Link key="join" href="/member/join">회원가입</Link>];
-  if (mobile) return <ul className="mr-member-m">{links.map((l, i) => <li key={i}>{l}</li>)}</ul>;
-  return <>{links}</>;
-}
-
-export default function Header({ member }: { member: MemberInfo }) {
+export default function Header() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
   const headerRef = useRef<HTMLElement>(null);
@@ -93,16 +78,8 @@ export default function Header({ member }: { member: MemberInfo }) {
             </div>
           </div>
           <div className="btn-area">
-            <div className="member">
-              <ul>
-                {member
-                  ? <><li><Link href="/member/mypage">마이페이지</Link></li><li><a href="/member/logout">로그아웃</a></li></>
-                  : <><li><Link href="/member/login">로그인</Link></li><li><Link href="/member/join">회원가입</Link></li></>}
-              </ul>
-            </div>
             <div className="sns">
               <ul>
-                <li className="mr-member" id="mr-member"><MemberLinks member={member} /></li>
                 <li className="contact"><Link href={site.menu.contactButton.href}><span>{site.menu.contactButton.label}</span></Link></li>
                 <li className="tel"><a href={`tel:${tel}`}><i className="xi-call"></i><span>{tel}</span></a></li>
               </ul>
@@ -132,7 +109,6 @@ export default function Header({ member }: { member: MemberInfo }) {
                 </li>
               ))}
             </ul>
-            <MemberLinks member={member} mobile />
           </div>
         </div>
       </nav>

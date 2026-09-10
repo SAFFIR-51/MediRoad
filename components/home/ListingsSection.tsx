@@ -3,10 +3,10 @@ import { site } from "@/lib/site";
 import { recentListings } from "@/lib/listings";
 import ListingCard from "@/components/listings/ListingCard";
 
-/** 홈 추천 개원지: DB 의 최신 매물 6건 */
-export default async function ListingsSection() {
+/** 홈 추천 개원지: 최신 매물 6건 (content/listings.json) */
+export default function ListingsSection() {
   const lc = site.home.location;
-  const items = await recentListings(6);
+  const items = recentListings(6);
   return (
     <section className="main_con sec_pf" id="location">
       <div className="tt taC">
@@ -16,7 +16,7 @@ export default async function ListingsSection() {
       </div>
       <div className="wrap">
         <div className="mr-cards aos" id="home-listings">
-          {items.map((l) => <ListingCard l={l} key={l.id} />)}
+          {items.map((l) => <ListingCard l={l} key={l.code} />)}
         </div>
       </div>
       <Link className="link aos" href={lc.more}>

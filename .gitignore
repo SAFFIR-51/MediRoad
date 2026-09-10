@@ -30,8 +30,4 @@ yarn-error.log*
 # vercel
 .vercel
 
-# mediroad
-/data/
-/public/uploads/*
-!/public/uploads/.gitkeep
 /.next.nosync

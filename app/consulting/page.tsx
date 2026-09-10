@@ -3,7 +3,6 @@ import Link from "next/link";
 import SubTop from "@/components/layout/SubTop";
 import { StepsGrid } from "@/components/home/StepsSection";
 import Faq from "@/components/ui/Faq";
-import CtaSection from "@/components/ui/CtaSection";
 import { content, subtopFor } from "@/lib/site";
 
 export const metadata: Metadata = { title: "개원컨설팅", description: "병·의원 개원, 약국, 양수양도, 폐업, 경영·마케팅까지 개원의 전 과정을 지원하는 메디로드 개원컨설팅" };
@@ -76,10 +75,6 @@ export default function ConsultingPage() {
           <Faq items={c.faq} />
         </div>
       </section>
-      <CtaSection title="개원, 어디서부터 시작해야 할지 막막하신가요?" desc="진료과·희망 지역·예산만 알려주시면 가능한 입지와 일정을 정리해 드립니다. 초기 상담은 무료입니다.">
-        <Link href="/contact"><span>상담 신청하기</span><i className="xi-long-arrow-right"></i></Link>
-        <Link className="line" href="/consulting/roadmap"><span>개원 로드맵 보기</span><i className="xi-long-arrow-right"></i></Link>
-      </CtaSection>
     </>
   );
 }

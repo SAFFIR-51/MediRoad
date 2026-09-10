@@ -3,6 +3,9 @@
 병·의원 개원컨설팅 · 개원입지 정보 사이트. 닥터힐(gdrhill.com) 사이트의 디자인·인터랙션을 그대로 옮기고,
 헤더 구성과 콘텐츠를 개원컨설팅/개원입지 사업에 맞게 재구성한 뒤 **Next.js 16 (App Router) + TypeScript** 로 구현했습니다.
 
+> **현재 단계: 프론트 전용.** 회원 시스템·관리자·DB·메일 발송은 2026-09-10 에 모두 걷어냈고, 서버는 나중에 따로 붙일 예정입니다.
+> 매물·팝업은 `content/*.json` 정적 데이터를 읽고, 상담 신청은 검증 후 서버 로그에만 남깁니다 (`app/actions/consult.ts` 의 TODO 참고).
+
 ## 기술 구성
 
 | 영역 | 내용 |
@@ -10,48 +13,39 @@
 | 프레임워크 | Next.js 16 (App Router, React 19, Turbopack), TypeScript |
 | 스타일 | 원본 사이트 CSS 를 그대로 가져온 `app/styles/legacy.css` + 추가 컴포넌트 `components.css` (전역 CSS, Tailwind 미사용) |
 | 인터랙션 | GSAP ScrollTrigger(섹션 페이드인·제목 리빌), 자체 페이드 슬라이더, SVG 도넛(전문가 그룹), Leaflet 지도 |
-| DB | SQLite (libsql) + Drizzle ORM. 첫 요청 시 테이블 생성·관리자 계정·예시 매물 자동 시드 |
-| 인증 | 서명된 JWT 세션 쿠키(`jose`) + bcrypt 비밀번호. `proxy.ts` 가 `/admin`, `/member/mypage` 1차 차단 |
-| 폼 | React Server Actions (`app/actions/*.ts`) — 상담 신청, 회원, 관리자 CRUD |
-| 업로드 | `public/uploads/` 에 저장 (매물 사진, 팝업 이미지) |
-| 메일 | nodemailer (SMTP 설정 시 상담 접수 알림·비밀번호 재설정 메일) |
+| 데이터 | `content/listings.json`(매물) · `content/popup.json`(오픈 팝업) 정적 JSON. `lib/listings.ts` 함수만 API 호출로 바꾸면 서버 연동 가능 |
+| 폼 | React Server Action (`app/actions/consult.ts`) — 상담 신청 검증 후 로그 (서버 연동 전) |
 | SEO | Metadata API, `app/sitemap.ts`, `app/robots.ts`, OG 이미지 |
 
 ## 실행
 
 ```bash
-cp .env.example .env.local     # 환경변수 (세션 키, 관리자 초기 계정, DB, SMTP)
+cp .env.example .env.local     # NEXT_PUBLIC_SITE_URL 만 있음
 npm install
 npm run dev                    # http://localhost:3000
 npm run build && npm start     # 운영
 ```
 
-관리자 초기 계정은 `.env.local` 의 `ADMIN_ID` / `ADMIN_PASSWORD` (기본 `admin` / `mediroad1234!`).
-첫 로그인 후 **관리자 > 설정** 에서 비밀번호를 꼭 변경하세요. `SESSION_SECRET` 도 운영 배포 전 긴 임의 문자열로 바꿔야 합니다.
-
 ## 페이지 구성 (견적서 항목 대응)
 
 | 경로 | 내용 |
 | --- | --- |
-| `/` | 홈: 히어로 슬라이드(3), 브랜드 메시지, 3대 가치, 연혁·실적, 개원컨설팅 4분야, 개원 프로세스, 전문가 그룹, 추천 개원지(최신 매물 6건), 상담신청 폼, 오픈 팝업 |
+| `/` | 홈: 히어로 슬라이드(3), 브랜드 메시지, 3대 가치, 연혁·실적, 개원컨설팅 4분야, 개원 프로세스, 전문가 그룹, 추천 개원지(최신 매물 6건), 상담 안내(→ /contact), 오픈 팝업 |
 | `/about` · `/about/greeting` · `/about/location` | 회사소개(슬로건·MISSION/VISION/ACTION·CEO 메시지·INFORMATION), 인사말, 오시는 길(지도·교통·방문 안내) |
 | `/consulting` | 개원컨설팅: 5개 분야, 개원 프로세스, 다섯 가지 약속, FAQ, 상담 CTA |
 | `/consulting/opening` `transfer` `closure` `marketing` | 홈 4개 카드에서 이동하는 분야별 상세 페이지 (소개·6가지 서비스·절차·FAQ). 문구는 `content/services.json` |
-| `/consulting/roadmap` | **회원 전용** 개원 로드맵: 대표님 자료(6단계 체크리스트·분야별 타임라인). 비회원은 단계 제목·요약만 보임. 내용은 `content/roadmap.json` |
-| `/location` · `/location?type=lease|sale` · `/location/[매물번호]` | 개원입지: 지도(Leaflet/OSM) + 유형 탭 + 지역·업종 필터, 매물 상세(회원 전용) |
-| `/contact` | 상담신청 (절차 안내 + 폼) |
+| `/consulting/roadmap` | 개원 로드맵: 대표님 자료(6단계 체크리스트·분야별 타임라인). 내용은 `content/roadmap.json` (서버 연동 후 회원 전용 전환 예정) |
+| `/location` · `/location?type=lease|sale` · `/location/[매물번호]` | 개원입지: 지도(Leaflet/OSM) + 유형 탭 + 지역·업종 필터, 매물 상세 (전체 공개) |
+| `/contact` | 상담신청: 안내 사이드(연락처·혜택) + 4단계 폼 + 상담 절차 + FAQ. 하단 CTA 띠는 각 페이지에서 제거하고 이 페이지와 플로팅 버튼으로 통일 |
 | `/terms` · `/privacy` | 이용약관 · 개인정보처리방침 |
-| `/member/login` `join` `find` `reset` `mypage` `logout` | 로그인, 회원가입, 아이디·비밀번호 찾기, 재설정, 정보수정·비밀번호 변경·탈퇴 |
-| `/admin` … | 대시보드, 매물 관리(등록·수정·사진·상태·삭제), 회원 관리(차단·초기화·메모·삭제), 상담 접수 처리, 팝업 관리, 설정(열람 정책·알림 메일·관리자 비밀번호) |
-
-매물 열람 정책은 관리자 > 설정에서 바꿀 수 있습니다: `상세만 회원(기본)` / `목록·상세 모두 회원` / `전체 공개`.
 
 ## 콘텐츠·사업자 정보 수정
 
 - `content/site.config.json` — 상호, 연락처, 주소, 사업자번호, 메뉴, 페이지 상단 문구, 홈 카드 문구. 사업자등록증 기준으로 상호·대표·사업자번호·주소·이메일을 넣어 두었고, 전화·팩스(`02-0000-0000`)와 SNS 링크(`#`)만 자리표시입니다. 주소가 실제 주소이면 회사소개·오시는 길에 Google 지도가, 자리표시이면 OpenStreetMap 기본 지도가 표시됩니다.
 - `content/services.json` · `content/roadmap.json` — 분야별 컨설팅 페이지 문구, 회원 전용 개원 로드맵·타임라인.
 - `content/content.json` — 히어로 슬라이드, 메시지, 가치, 프로세스, 컨설팅 분야·약속·FAQ, 연혁·실적 숫자, 인사말, 약관 등 문구.
-- `content/listings.json` — DB 가 비어 있을 때 한 번 들어가는 예시 매물. 실제 매물은 관리자 페이지에서 등록하고, 대시보드의 "예시 매물 삭제"로 정리합니다.
+- `content/listings.json` — 매물 데이터(현재 예시 8건). `sample: true` 면 카드에 "예시" 배지가 붙습니다.
+- `content/popup.json` — 홈 오픈 팝업 (`active`, 게시 기간, 이미지, 링크).
 - `lib/privacy.ts` — 개인정보처리방침 본문.
 
 ## 디자인 원칙
@@ -64,19 +58,16 @@ npm run build && npm start     # 운영
 ## 폴더
 
 ```
-app/               라우트 (page.tsx), 서버 액션(actions/), API(api/), 전역 CSS(globals.css, styles/)
-components/        layout(헤더·푸터·퀵메뉴·서브비주얼·팝업), home(홈 섹션), listings, member, admin, ui, effects
-lib/               site(설정·문구), db(스키마·연결·시드), auth(세션), listings, board, upload, mail, privacy
-content/           site.config.json · content.json · listings.json
-public/            images/ brand/ fonts/ uploads/
-proxy.ts           회원·관리자 경로 접근 제어
+app/               라우트 (page.tsx), 서버 액션(actions/consult.ts), 전역 CSS(globals.css, styles/)
+components/        layout(헤더·푸터·퀵메뉴·서브비주얼·팝업), home(홈 섹션), contact(상담 폼), listings, ui, effects
+lib/               site(설정·문구), listings(정적 매물), listing-utils, privacy
+content/           site.config.json · content.json · services.json · roadmap.json · listings.json · popup.json
+public/            images/ brand/ fonts/
 ```
 
 ## 배포
 
-- **Node 서버 (권장, 카페24 Node 호스팅·VPS 등)**: `npm run build` 후 `npm start`. SQLite 파일(`data/mediroad.db`)과 `public/uploads/` 가 서버 디스크에 남습니다.
-- **Vercel 등 서버리스**: 디스크가 유지되지 않으므로 `DATABASE_URL` 을 Turso(libsql) 주소로 바꾸고, 업로드는 Vercel Blob 같은 외부 스토리지로 교체해야 합니다 (`lib/upload.ts` 한 곳만 수정).
-- 카페24 일반 PHP 호스팅에서는 Next.js 를 실행할 수 없습니다. 이전 HTML+PHP 버전은 2026-09-10 정리 때 삭제했습니다(휴지통 `MediRoad_정리_*` 폴더).
+- 정적 데이터만 쓰므로 Vercel 등 어디든 `npm run build` 로 배포할 수 있습니다. 서버(회원·관리자·DB·메일)는 추후 별도로 붙입니다.
 
 ## 프로젝트 위치
 

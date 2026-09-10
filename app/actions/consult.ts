@@ -1,9 +1,10 @@
 "use server";
 
-/** 상담 신청 접수: DB 저장 + (설정 시) 메일 발송 */
-import { getDb, schema, now, getSetting } from "@/lib/db";
-import { sendMail } from "@/lib/mail";
-import { site } from "@/lib/site";
+/**
+ * 상담 신청 접수 (프론트 전용 단계).
+ * 지금은 입력값 검증만 하고 서버 로그에 남긴다.
+ * TODO(서버 연동): 아래 `// 전송` 자리에서 별도 백엔드 API 로 전달하도록 교체.
+ */
 
 export type ConsultState = { ok: boolean; message?: string } | null;
 
@@ -24,16 +25,9 @@ export async function submitConsult(_prev: ConsultState, formData: FormData): Pr
 
   const fields: Record<string, string> = {};
   for (const k of EXTRA) { const v = s(k); if (v) fields[k] = v; }
-  const message = s("say");
-  const listingCode = s("listing");
+  const payload = { name, phone, ...fields, message: s("say"), listingCode: s("listing") || null, receivedAt: new Date().toISOString() };
 
-  const db = await getDb();
-  await db.insert(schema.inquiries).values({ name, phone, email, fields: JSON.stringify(fields), message, listingCode: listingCode || null, status: "new", createdAt: now() });
-
-  const to = (await getSetting("mail_to", "")) || process.env.MAIL_TO || "";
-  if (to) {
-    const lines = [`[${site.brand.name}] 상담 신청`, "", `성함: ${name}`, `연락처: ${phone}`, ...Object.entries(fields).map(([k, v]) => `${k}: ${v}`), listingCode ? `매물: ${listingCode}` : "", "", "추가 요청사항:", message || "-", "", `접수 시각: ${now()}`];
-    await sendMail(to, `[${site.brand.name}] 상담 신청 - ${name}`, lines.join("\n")).catch(() => {});
-  }
+  // 전송: 서버 연동 전까지는 로그만 남긴다.
+  console.log("[consult]", JSON.stringify(payload));
   return { ok: true };
 }

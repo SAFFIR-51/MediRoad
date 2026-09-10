@@ -5,48 +5,27 @@ import SubTop from "@/components/layout/SubTop";
 import ListingCard, { Badges } from "@/components/listings/ListingCard";
 import Gallery from "@/components/listings/Gallery";
 import ConsultLink from "@/components/listings/ConsultLink";
-import { findListing, relatedListings, listingGate, bumpViews, fmtDate, typeLabel, priceLabel } from "@/lib/listings";
-import { currentMember } from "@/lib/auth";
+import { allListings, findListing, relatedListings, fmtDate, typeLabel, priceLabel } from "@/lib/listings";
 import { site } from "@/lib/site";
 
 type Props = { params: Promise<{ code: string }> };
 
+export function generateStaticParams() {
+  return allListings().map((l) => ({ code: l.code }));
+}
+
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { code } = await params;
-  const l = await findListing(decodeURIComponent(code));
+  const l = findListing(decodeURIComponent(code));
   return l ? { title: l.title, description: `${typeLabel(l.type)} · ${l.category} · ${l.region}` } : { title: "매물" };
 }
 
 export default async function ListingDetailPage({ params }: Props) {
   const { code } = await params;
-  const l = await findListing(decodeURIComponent(code));
-  if (!l || l.status === "hidden") notFound();
-  const [gate, member] = await Promise.all([listingGate(), currentMember()]);
+  const l = findListing(decodeURIComponent(code));
+  if (!l) notFound();
   const tLabel = typeLabel(l.type);
-
-  if (gate !== "none" && !member) {
-    return (
-      <>
-        <SubTop en={tLabel} title="회원 전용 매물 정보" desc="" compact />
-        <section className="sub_con mr-page">
-          <div className="wrap">
-            <div className="mr-gate">
-              <i className="xi-lock"></i>
-              <h4>{l.title}</h4>
-              <p>소재지·임대 조건·사진 등 매물 상세 정보는 회원 로그인 후 열람하실 수 있습니다. 가입은 무료입니다.</p>
-              <div className="btns">
-                <Link className="mr-btn" href={`/member/login?next=${encodeURIComponent(`/location/${l.code}`)}`}>로그인</Link>
-                <Link className="mr-btn line" href="/member/join">회원가입</Link>
-              </div>
-            </div>
-          </div>
-        </section>
-      </>
-    );
-  }
-
-  await bumpViews(l.id);
-  const others = await relatedListings(l, 3);
+  const others = relatedListings(l, 3);
   const { label, value } = priceLabel(l.deposit);
   const rows: [string, React.ReactNode][] = [
     ["매물번호", l.code],
@@ -88,7 +67,7 @@ export default async function ListingDetailPage({ params }: Props) {
           {others.length > 0 && (
             <div className="mr-related">
               <h4>함께 볼 만한 매물</h4>
-              <div className="mr-cards">{others.map((o) => <ListingCard l={o} key={o.id} />)}</div>
+              <div className="mr-cards">{others.map((o) => <ListingCard l={o} key={o.code} />)}</div>
             </div>
           )}
         </div>

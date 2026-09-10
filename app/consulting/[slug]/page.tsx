@@ -3,7 +3,6 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import SubTop from "@/components/layout/SubTop";
 import Faq from "@/components/ui/Faq";
-import CtaSection from "@/components/ui/CtaSection";
 import { services } from "@/lib/site";
 
 type Props = { params: Promise<{ slug: string }> };
@@ -76,15 +75,11 @@ export default async function ServicePage({ params }: Props) {
             <h5>다른 컨설팅 분야</h5>
             <div className="list">
               {others.map((o) => <Link key={o.slug} href={`/consulting/${o.slug}`}>{o.title}<i className="xi-long-arrow-right"></i></Link>)}
-              <Link href="/consulting/roadmap">개원 로드맵 (회원 전용)<i className="xi-long-arrow-right"></i></Link>
+              <Link href="/consulting/roadmap">개원 로드맵<i className="xi-long-arrow-right"></i></Link>
             </div>
           </div>
         </div>
       </section>
-      <CtaSection title={`${s.title}, 지금 상담해 보세요`} desc="진료과 · 희망 지역 · 예산만 알려주시면 가능한 방향과 일정을 정리해 드립니다. 초기 상담은 무료입니다.">
-        <Link href="/contact"><span>상담 신청하기</span><i className="xi-long-arrow-right"></i></Link>
-        <Link className="line" href="/location"><span>개원입지 보기</span><i className="xi-long-arrow-right"></i></Link>
-      </CtaSection>
     </>
   );
 }

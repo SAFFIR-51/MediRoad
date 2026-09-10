@@ -80,7 +80,7 @@
           { "label": "양수양도", "href": "/consulting/transfer" },
           { "label": "폐업 컨설팅", "href": "/consulting/closure" },
           { "label": "경영·마케팅", "href": "/consulting/marketing" },
-          { "label": "개원 로드맵 (회원)", "href": "/consulting/roadmap" }
+          { "label": "개원 로드맵", "href": "/consulting/roadmap" }
         ]
       },
       {

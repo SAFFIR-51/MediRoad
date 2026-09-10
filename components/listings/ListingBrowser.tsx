@@ -46,7 +46,7 @@ export default function ListingBrowser({ items, initialType }: { items: Listing[
         </div>
       </div>
       <div className="mr-cards" id="cards">
-        {filtered.map((l) => <ListingCard l={l} key={l.id} />)}
+        {filtered.map((l) => <ListingCard l={l} key={l.code} />)}
       </div>
       <div className={`mr-empty${filtered.length ? "" : " show"}`}>조건에 맞는 매물이 없습니다. 상담을 신청해 주시면 비공개 매물을 안내해 드립니다.</div>
     </>
