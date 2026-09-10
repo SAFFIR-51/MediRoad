@@ -1,0 +1,635 @@
+{
+  "_comment": "tools/images.py 가 생성한 사진 목록. 모두 Unsplash 무료 라이선스(상업 이용 가능, 출처 표기 불필요). 원본 캐시: ~/Library/Caches/mediroad-stock",
+  "items": [
+    {
+      "file": "/images/photo-hero-seoul.jpg",
+      "desc": "서울 도심 항공 전경 (메인 슬라이드 1)",
+      "source": "https://unsplash.com/photos/1594476800502-a8c927d0acc0",
+      "size": [
+        2560,
+        1440
+      ],
+      "kb": 624
+    },
+    {
+      "file": "/images/photo-hero-tower.jpg",
+      "desc": "유리 커튼월 오피스 타워 (메인 슬라이드 2)",
+      "source": "https://unsplash.com/photos/1597807037496-c56a1d8bc29a",
+      "size": [
+        2100,
+        1181
+      ],
+      "kb": 722
+    },
+    {
+      "file": "/images/photo-hero-meeting.jpg",
+      "desc": "컨설팅 미팅 (메인 슬라이드 3)",
+      "source": "https://unsplash.com/photos/1714974528718-b3b52f91c334",
+      "size": [
+        2560,
+        1440
+      ],
+      "kb": 293
+    },
+    {
+      "file": "/images/photo-value-plan.jpg",
+      "desc": "개원 계획 작성",
+      "source": "https://unsplash.com/photos/1450101499163-c8848c66ca85",
+      "size": [
+        1600,
+        1054
+      ],
+      "kb": 140
+    },
+    {
+      "file": "/images/photo-value-city.jpg",
+      "desc": "서울 시내 스카이라인",
+      "source": "https://unsplash.com/photos/1724416823399-a4ca50ebfe62",
+      "size": [
+        1600,
+        1054
+      ],
+      "kb": 332
+    },
+    {
+      "file": "/images/photo-value-doctor.jpg",
+      "desc": "진료실 상담",
+      "source": "https://unsplash.com/photos/1758691461935-202e2ef6b69f",
+      "size": [
+        1600,
+        1054
+      ],
+      "kb": 140
+    },
+    {
+      "file": "/images/photo-service-hospital.jpg",
+      "desc": "병원 건물 외관",
+      "source": "https://unsplash.com/photos/1764885517847-79d62138cc58",
+      "size": [
+        1920,
+        1080
+      ],
+      "kb": 379
+    },
+    {
+      "file": "/images/photo-service-handshake.jpg",
+      "desc": "사무실 악수",
+      "source": "https://unsplash.com/photos/1577415124269-fc1140a69e91",
+      "size": [
+        1920,
+        1080
+      ],
+      "kb": 213
+    },
+    {
+      "file": "/images/photo-service-sign.jpg",
+      "desc": "계약서 서명",
+      "source": "https://unsplash.com/photos/1521791055366-0d553872125f",
+      "size": [
+        1920,
+        1080
+      ],
+      "kb": 113
+    },
+    {
+      "file": "/images/photo-service-team.jpg",
+      "desc": "오피스 팀 협업",
+      "source": "https://unsplash.com/photos/1758518731706-be5d5230e5a5",
+      "size": [
+        1920,
+        1080
+      ],
+      "kb": 204
+    },
+    {
+      "file": "/images/photo-expert-docs.jpg",
+      "desc": "서류 검토",
+      "source": "https://unsplash.com/photos/1681505504714-4ded1bc247e7",
+      "size": [
+        1200,
+        1200
+      ],
+      "kb": 143
+    },
+    {
+      "file": "/images/photo-expert-steth.jpg",
+      "desc": "청진기를 든 의료진",
+      "source": "https://unsplash.com/photos/1638202993928-7267aad84c31",
+      "size": [
+        1200,
+        1200
+      ],
+      "kb": 85
+    },
+    {
+      "file": "/images/photo-expert-laptop.jpg",
+      "desc": "노트북 회의",
+      "source": "https://unsplash.com/photos/1517245386807-bb43f82c33c4",
+      "size": [
+        1200,
+        1200
+      ],
+      "kb": 138
+    },
+    {
+      "file": "/images/photo-expert-desk.jpg",
+      "desc": "진료 데스크",
+      "source": "https://unsplash.com/photos/1576091160550-2173dba999ef",
+      "size": [
+        1200,
+        1200
+      ],
+      "kb": 106
+    },
+    {
+      "file": "/images/photo-expert-room.jpg",
+      "desc": "진료실 인테리어",
+      "source": "https://unsplash.com/photos/1665231795856-769fb08a90bc",
+      "size": [
+        1200,
+        1200
+      ],
+      "kb": 140
+    },
+    {
+      "file": "/images/photo-expert-reception.jpg",
+      "desc": "리셉션 데스크",
+      "source": "https://unsplash.com/photos/1758448500688-3ababa93fd67",
+      "size": [
+        1200,
+        1200
+      ],
+      "kb": 229
+    },
+    {
+      "file": "/images/photo-expert-team.jpg",
+      "desc": "팀 미팅",
+      "source": "https://unsplash.com/photos/1624555130581-1d9cca783bc0",
+      "size": [
+        1200,
+        1200
+      ],
+      "kb": 151
+    },
+    {
+      "file": "/images/photo-expert-sign.jpg",
+      "desc": "서명하는 손",
+      "source": "https://unsplash.com/photos/1562564055-71e051d33c19",
+      "size": [
+        1200,
+        1200
+      ],
+      "kb": 171
+    },
+    {
+      "file": "/images/photo-contact-building.jpg",
+      "desc": "유리 빌딩 파사드 (상담 섹션)",
+      "source": "https://unsplash.com/photos/1615770949303-a4eb0ba7aa2e",
+      "size": [
+        2400,
+        749
+      ],
+      "kb": 367
+    },
+    {
+      "file": "/images/photo-about-hero.jpg",
+      "desc": "서울 야경 (서브 비주얼)",
+      "source": "https://unsplash.com/photos/1575493089581-f6ed9a9661e4",
+      "size": [
+        2560,
+        1440
+      ],
+      "kb": 770
+    },
+    {
+      "file": "/images/photo-about-hero-m.jpg",
+      "desc": "서울 노을 항공 (서브 비주얼 모바일)",
+      "source": "https://unsplash.com/photos/1504107435030-c7cd582601b8",
+      "size": [
+        1181,
+        1575
+      ],
+      "kb": 271
+    },
+    {
+      "file": "/images/photo-about-building.jpg",
+      "desc": "현대식 오피스 빌딩 (회사소개)",
+      "source": "https://unsplash.com/photos/1662414185445-b9a05e26dba0",
+      "size": [
+        2400,
+        1050
+      ],
+      "kb": 433
+    },
+    {
+      "file": "/images/photo-ceo-handshake.jpg",
+      "desc": "대표 인사 (CEO 메시지)",
+      "source": "https://unsplash.com/photos/1577415124269-fc1140a69e91",
+      "size": [
+        1600,
+        1920
+      ],
+      "kb": 262
+    },
+    {
+      "file": "/images/photo-building-1.jpg",
+      "desc": "메디컬 빌딩 1",
+      "source": "https://unsplash.com/photos/1615770949303-a4eb0ba7aa2e",
+      "size": [
+        1200,
+        1599
+      ],
+      "kb": 349
+    },
+    {
+      "file": "/images/photo-building-2.jpg",
+      "desc": "메디컬 빌딩 2",
+      "source": "https://unsplash.com/photos/1777108329437-a93e8765a698",
+      "size": [
+        1200,
+        1599
+      ],
+      "kb": 402
+    },
+    {
+      "file": "/images/photo-building-3.jpg",
+      "desc": "메디컬 빌딩 3",
+      "source": "https://unsplash.com/photos/1597807037496-c56a1d8bc29a",
+      "size": [
+        1200,
+        1600
+      ],
+      "kb": 472
+    },
+    {
+      "file": "/images/photo-field-opening.jpg",
+      "desc": "병·의원 개원 컨설팅",
+      "source": "https://unsplash.com/photos/1764885517847-79d62138cc58",
+      "size": [
+        2400,
+        1028
+      ],
+      "kb": 432
+    },
+    {
+      "file": "/images/photo-field-pharmacy.jpg",
+      "desc": "약국 컨설팅",
+      "source": "https://unsplash.com/photos/1765031092161-a9ebe556117e",
+      "size": [
+        2400,
+        1028
+      ],
+      "kb": 287
+    },
+    {
+      "file": "/images/photo-field-transfer.jpg",
+      "desc": "병·의원 양수양도",
+      "source": "https://unsplash.com/photos/1758691463198-dc663b8a64e4",
+      "size": [
+        2400,
+        1028
+      ],
+      "kb": 163
+    },
+    {
+      "file": "/images/photo-field-closure.jpg",
+      "desc": "병·의원 폐업 컨설팅",
+      "source": "https://unsplash.com/photos/1777269749032-d8d458ae594d",
+      "size": [
+        2400,
+        1028
+      ],
+      "kb": 181
+    },
+    {
+      "file": "/images/photo-field-marketing.jpg",
+      "desc": "병·의원 경영·마케팅",
+      "source": "https://unsplash.com/photos/1758691461990-03b49d969495",
+      "size": [
+        2400,
+        1028
+      ],
+      "kb": 144
+    },
+    {
+      "file": "/images/photo-listing-dental-1.jpg",
+      "desc": "치과 진료실",
+      "source": "https://unsplash.com/photos/1704455306251-b4634215d98f",
+      "size": [
+        1600,
+        1200
+      ],
+      "kb": 184
+    },
+    {
+      "file": "/images/photo-listing-dental-2.jpg",
+      "desc": "치과 장비",
+      "source": "https://unsplash.com/photos/1704455306925-1401c3012117",
+      "size": [
+        1600,
+        1200
+      ],
+      "kb": 246
+    },
+    {
+      "file": "/images/photo-listing-clinic-1.jpg",
+      "desc": "의원 대기 공간",
+      "source": "https://unsplash.com/photos/1731514709874-30eead90613b",
+      "size": [
+        1600,
+        1200
+      ],
+      "kb": 134
+    },
+    {
+      "file": "/images/photo-listing-clinic-2.jpg",
+      "desc": "의원 복도",
+      "source": "https://unsplash.com/photos/1731514721772-329626f84c8b",
+      "size": [
+        1600,
+        1200
+      ],
+      "kb": 116
+    },
+    {
+      "file": "/images/photo-listing-room.jpg",
+      "desc": "진료실",
+      "source": "https://unsplash.com/photos/1665231795856-769fb08a90bc",
+      "size": [
+        1600,
+        1200
+      ],
+      "kb": 183
+    },
+    {
+      "file": "/images/photo-listing-lobby-1.jpg",
+      "desc": "빌딩 로비",
+      "source": "https://unsplash.com/photos/1749310726959-d8fccfef7ee4",
+      "size": [
+        1600,
+        1200
+      ],
+      "kb": 215
+    },
+    {
+      "file": "/images/photo-listing-lobby-2.jpg",
+      "desc": "오피스 라운지",
+      "source": "https://unsplash.com/photos/1774953037913-af0cf688491a",
+      "size": [
+        1600,
+        1200
+      ],
+      "kb": 226
+    },
+    {
+      "file": "/images/photo-listing-wait.jpg",
+      "desc": "대기실",
+      "source": "https://unsplash.com/photos/1762625570087-6d98fca29531",
+      "size": [
+        1600,
+        1200
+      ],
+      "kb": 201
+    },
+    {
+      "file": "/images/photo-listing-reception.jpg",
+      "desc": "접수 데스크",
+      "source": "https://unsplash.com/photos/1764727291644-5dcb0b1a0375",
+      "size": [
+        1600,
+        1200
+      ],
+      "kb": 84
+    },
+    {
+      "file": "/images/photo-listing-corridor.jpg",
+      "desc": "밝은 복도",
+      "source": "https://unsplash.com/photos/1719934398679-d764c1410770",
+      "size": [
+        1600,
+        1200
+      ],
+      "kb": 123
+    },
+    {
+      "file": "/images/photo-listing-hallway.jpg",
+      "desc": "병원 복도",
+      "source": "https://unsplash.com/photos/1777269749032-d8d458ae594d",
+      "size": [
+        1600,
+        1200
+      ],
+      "kb": 150
+    },
+    {
+      "file": "/images/photo-listing-building-1.jpg",
+      "desc": "메디컬 빌딩 외관 A",
+      "source": "https://unsplash.com/photos/1662414185445-b9a05e26dba0",
+      "size": [
+        1600,
+        1200
+      ],
+      "kb": 378
+    },
+    {
+      "file": "/images/photo-listing-building-2.jpg",
+      "desc": "메디컬 빌딩 외관 B",
+      "source": "https://unsplash.com/photos/1777108329437-a93e8765a698",
+      "size": [
+        1600,
+        1200
+      ],
+      "kb": 432
+    },
+    {
+      "file": "/images/photo-listing-pharmacy.jpg",
+      "desc": "약국 내부",
+      "source": "https://unsplash.com/photos/1765031092161-a9ebe556117e",
+      "size": [
+        1600,
+        1200
+      ],
+      "kb": 233
+    },
+    {
+      "file": "/images/photo-listing-chairs.jpg",
+      "desc": "대기 의자",
+      "source": "https://unsplash.com/photos/1771574204208-b47e2d863bc5",
+      "size": [
+        1600,
+        1200
+      ],
+      "kb": 227
+    },
+    {
+      "file": "/images/photo-greeting-1.jpg",
+      "desc": "상담 미팅",
+      "source": "https://unsplash.com/photos/1573496267526-08a69e46a409",
+      "size": [
+        1600,
+        1200
+      ],
+      "kb": 176
+    },
+    {
+      "file": "/images/photo-greeting-2.jpg",
+      "desc": "로비에서의 만남",
+      "source": "https://unsplash.com/photos/1758691736933-bb0f88fe2e0c",
+      "size": [
+        1600,
+        1200
+      ],
+      "kb": 190
+    },
+    {
+      "file": "/images/photo-greeting-3.jpg",
+      "desc": "진료실 대화",
+      "source": "https://unsplash.com/photos/1666214277730-e9c7e755e5a3",
+      "size": [
+        1600,
+        1200
+      ],
+      "kb": 157
+    },
+    {
+      "file": "/images/photo-dir-lobby.jpg",
+      "desc": "사무실 라운지 (오시는 길)",
+      "source": "https://unsplash.com/photos/1774953037913-af0cf688491a",
+      "size": [
+        1600,
+        1200
+      ],
+      "kb": 226
+    },
+    {
+      "file": "/images/photo-dir-reception.jpg",
+      "desc": "리셉션 (오시는 길)",
+      "source": "https://unsplash.com/photos/1758448500688-3ababa93fd67",
+      "size": [
+        1600,
+        1200
+      ],
+      "kb": 336
+    },
+    {
+      "file": "/images/photo-dir-exterior.jpg",
+      "desc": "건물 외관 (오시는 길)",
+      "source": "https://unsplash.com/photos/1777108329437-a93e8765a698",
+      "size": [
+        1600,
+        1200
+      ],
+      "kb": 432
+    },
+    {
+      "file": "/images/photo-benefit-clinic.jpg",
+      "desc": "진료실 (핵심 서비스 카드)",
+      "source": "https://unsplash.com/photos/1704455306251-b4634215d98f",
+      "size": [
+        1600,
+        1200
+      ],
+      "kb": 184
+    },
+    {
+      "file": "/images/photo-benefit-map.jpg",
+      "desc": "입지 분석 지도 (핵심 서비스 카드)",
+      "source": "https://unsplash.com/photos/1579734018708-b83a1ce43504",
+      "size": [
+        1600,
+        1200
+      ],
+      "kb": 471
+    },
+    {
+      "file": "/images/photo-benefit-docs.jpg",
+      "desc": "서류 검토 (핵심 서비스 카드)",
+      "source": "https://unsplash.com/photos/1681505504714-4ded1bc247e7",
+      "size": [
+        1600,
+        1200
+      ],
+      "kb": 184
+    },
+    {
+      "file": "/images/photo-benefit-meeting.jpg",
+      "desc": "미팅 (핵심 서비스 카드)",
+      "source": "https://unsplash.com/photos/1517048676732-d65bc937f952",
+      "size": [
+        1600,
+        1200
+      ],
+      "kb": 179
+    },
+    {
+      "file": "/images/photo-board-1.jpg",
+      "desc": "개원 서식",
+      "source": "https://unsplash.com/photos/1450101499163-c8848c66ca85",
+      "size": [
+        1600,
+        1200
+      ],
+      "kb": 166
+    },
+    {
+      "file": "/images/photo-board-2.jpg",
+      "desc": "인허가 가이드",
+      "source": "https://unsplash.com/photos/1666886573531-48d2e3c2b684",
+      "size": [
+        1600,
+        1200
+      ],
+      "kb": 126
+    },
+    {
+      "file": "/images/photo-board-3.jpg",
+      "desc": "계약 체크리스트",
+      "source": "https://unsplash.com/photos/1521791055366-0d553872125f",
+      "size": [
+        1600,
+        1200
+      ],
+      "kb": 106
+    },
+    {
+      "file": "/images/photo-contact-consult.jpg",
+      "desc": "상담 절차: 접수",
+      "source": "https://unsplash.com/photos/1758691463198-dc663b8a64e4",
+      "size": [
+        1600,
+        1000
+      ],
+      "kb": 117
+    },
+    {
+      "file": "/images/photo-contact-tour.jpg",
+      "desc": "상담 절차: 입지 투어",
+      "source": "https://unsplash.com/photos/1623934970212-3a1740a45cc4",
+      "size": [
+        1600,
+        1000
+      ],
+      "kb": 351
+    },
+    {
+      "file": "/images/photo-contact-plan.jpg",
+      "desc": "상담 절차: 제안",
+      "source": "https://unsplash.com/photos/1517048676732-d65bc937f952",
+      "size": [
+        1600,
+        1000
+      ],
+      "kb": 165
+    },
+    {
+      "file": "/images/photo-location-hero.jpg",
+      "desc": "도시 항공 (개원입지 상단)",
+      "source": "https://unsplash.com/photos/1591875720377-2435bc306b33",
+      "size": [
+        2560,
+        1440
+      ],
+      "kb": 612
+    }
+  ]
+}
