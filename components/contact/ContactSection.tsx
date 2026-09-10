@@ -11,7 +11,9 @@ import { site } from "@/lib/site";
 import { submitConsult } from "@/app/actions/consult";
 import PrivacyModal from "@/components/ui/PrivacyModal";
 
-export default function ContactSection({ sub = false }: { sub?: boolean }) {
+type Step = { img: string; no?: string; title: string; desc: string };
+
+export default function ContactSection({ sub = false, steps = [] }: { sub?: boolean; steps?: Step[] }) {
   const c = site.home.contact;
   const [state, action, pending] = useActionState(submitConsult, null);
   const [showPrivacy, setShowPrivacy] = useState(false);
@@ -147,6 +149,19 @@ export default function ContactSection({ sub = false }: { sub?: boolean }) {
           )}
         </div>
       </div>
+      {steps.length > 0 && (
+        <div className="wrap mr-csteps aos2">
+          <div className="head"><em>PROCESS</em><h4>상담은 이렇게 진행됩니다</h4><p>접수부터 입지 투어까지, 세 단계로 빠르게 답을 드립니다.</p></div>
+          <div className="list">
+            {steps.map((st) => (
+              <div className="item" key={st.title}>
+                <div className="pic"><img src={st.img} alt={st.title} loading="lazy" /></div>
+                <div className="txt">{st.no ? <em>{st.no}</em> : null}<h5>{st.title}</h5><p>{st.desc}</p></div>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
       {showPrivacy && <PrivacyModal onClose={() => setShowPrivacy(false)} />}
     </section>
   );
