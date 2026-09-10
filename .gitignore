@@ -5,6 +5,7 @@
 .pnp.*
 
 # next.js
+/.next
 /.next/
 /out/
 
