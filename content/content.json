@@ -51,7 +51,7 @@
     },
     "fields": [
       { "no": "01", "title": "병·의원 개원 컨설팅", "en": "Clinic Opening", "desc": "개원 계획부터 정식 오픈까지, 개원의 모든 단계를 통합 컨설팅합니다.", "points": ["진료과별 최적 입지 분석", "공간 설계·동선·평형 구성 자문", "수익 구조 설계·사업계획 수립", "인허가 절차 안내", "인테리어·장비·인력 네트워크 연결"], "image": "/images/photo-field-opening.jpg", "href": "/consulting/opening" },
-      { "no": "02", "title": "약국 컨설팅", "en": "Pharmacy", "desc": "약국 개설을 위한 입지 분석과 인허가 절차, 초기 운영을 지원합니다.", "points": ["처방전 유입 분석 및 입지 선정", "병원 동반 입점 매물 연결", "약국 개설 등록 절차 안내", "초기 재고·운영 세팅 자문"], "image": "/images/photo-field-pharmacy.jpg", "href": "/consulting/opening" },
+      { "no": "02", "title": "약국 컨설팅", "en": "Pharmacy", "desc": "약국 개설을 위한 입지 분석과 인허가 절차, 초기 운영을 지원합니다.", "points": ["처방전 유입 분석 및 입지 선정", "병원 동반 입점 매물 연결", "약국 개설 등록 절차 안내", "초기 재고·운영 세팅 자문"], "image": "/images/photo-field-pharmacy.jpg", "href": "/consulting/pharmacy" },
       { "no": "03", "title": "병·의원 양수양도", "en": "Transfer & Acquisition", "desc": "포괄양수양도와 일반양수양도, 영업권 분석, 자산 평가 등 사안별로 정확하게 진단합니다.", "points": ["매출·비용 구조 검토", "장비·인테리어 자산 평가", "직원 승계 및 계약 조건 협의", "양수도 계약서 검토"], "image": "/images/photo-field-transfer.jpg", "href": "/consulting/transfer" },
       { "no": "04", "title": "병·의원 폐업 컨설팅", "en": "Closure", "desc": "불가피한 상황의 폐업을 자산 매각과 신고 절차까지 깔끔하게 마무리하도록 돕습니다.", "points": ["폐업 신고 및 행정 절차", "장비·인테리어 매각", "임대차 종료 협상", "진료기록 이관 안내"], "image": "/images/photo-field-closure.jpg", "href": "/consulting/closure" },
       { "no": "05", "title": "병·의원 경영·마케팅", "en": "Management & Marketing", "desc": "신환 유치와 구환 관리를 위한 효과적인 마케팅과 경영 전략을 제공합니다.", "points": ["온라인 마케팅(검색·지도·SNS) 세팅", "환자 관리(CRM) 체계 구축", "세무·노무·보험청구 자문 연결", "매출 분석 및 이전·확장 전략"], "image": "/images/photo-field-marketing.jpg", "href": "/consulting/marketing" }

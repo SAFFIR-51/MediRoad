@@ -443,7 +443,69 @@
   .sec02 .box .txt dt{width:85px;}
 }
 
-/* ---- 개원컨설팅 분야별 페이지 ---- */
+/* ---- 컨설팅 분야별 페이지 (참고: 닥터힐 핵심 서비스 페이지 구성) ---- */
+.mr-pill{display:inline-flex;align-items:center;height:40px;padding:0 22px;border-radius:40px;font-size:0.8em;font-weight:500;color:#fff;background:var(--gold);}
+.sec_svc_hero{background:#f7f8fa url(/images/bg-light-wave.jpg) no-repeat center top/cover;padding-bottom:110px;}
+.mr-svc-head{padding:26px 0 40px;font-size:2.1em;line-height:145%;font-weight:300;}
+.mr-svc-head span{display:block;font-size:inherit;font-weight:300;color:#222;}
+.mr-svc-head b{display:block;font-size:inherit;font-weight:700;color:#111;}
+.mr-svc-head b i{font-size:inherit;font-style:normal;font-weight:inherit;color:var(--gold);}
+.mr-svc-photo{aspect-ratio:21/9;border-radius:20px;overflow:hidden;}
+.mr-svc-photo img{display:block;width:100%;height:100%;object-fit:cover;}
+.mr-svc-value{display:grid;grid-template-columns:380px minmax(0,1fr);gap:40px;align-items:start;padding-top:60px;}
+.mr-svc-value .lb{display:flex;align-items:center;gap:22px;}
+.mr-svc-value .lb i{display:inline-flex;justify-content:center;align-items:center;flex:none;width:60px;height:60px;border:1px solid #111;border-radius:50%;font-size:1em;color:#111;transform:rotate(-45deg);}
+.mr-svc-value .lb h5{font-size:1.6em;font-weight:700;line-height:1.2;}
+.mr-svc-value .lb em{display:block;padding-top:6px;font-size:0.8em;color:#777;}
+.mr-svc-value p{font-size:0.9em;line-height:185%;color:#444;}
+.mr-svc-value p b{font-weight:700;color:#111;}
+.sec_svc_keys{position:relative;background:#111 url(/images/bg-dark-lines.jpg) no-repeat center center/cover;}
+.mr-keys-head{display:grid;grid-template-columns:420px minmax(0,1fr);gap:40px;align-items:end;padding-bottom:50px;}
+.mr-keys-head h3{padding-top:18px;font-size:2.3em;font-weight:700;color:#fff;line-height:1.2;}
+.mr-keys-head p{font-size:0.9em;line-height:180%;color:rgba(255,255,255,0.8);}
+.mr-keys{position:relative;}
+.mr-keys .track{display:flex;gap:20px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;padding-bottom:4px;}
+.mr-keys .track::-webkit-scrollbar{display:none;}
+.mr-keys .card{position:relative;flex:0 0 calc((100% - 40px) / 3);aspect-ratio:4/3;border-radius:16px;overflow:hidden;scroll-snap-align:start;background:#333 no-repeat center center/cover;}
+.mr-keys .card:before{content:'';position:absolute;inset:0;background:linear-gradient(to bottom, rgba(10,16,30,0.35) 0%, rgba(10,16,30,0.7) 100%);transition:background .4s;}
+.mr-keys .card:hover:before{background:linear-gradient(to bottom, rgba(10,16,30,0.2) 0%, rgba(10,16,30,0.6) 100%);}
+.mr-keys .card .in{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;align-items:center;padding:30px;text-align:center;}
+.mr-keys .card em{display:inline-flex;align-items:center;height:34px;padding:0 18px;border-radius:34px;font-size:0.75em;color:#fff;background:rgba(255,255,255,0.18);backdrop-filter:blur(4px);}
+.mr-keys .card h5{padding-top:22px;font-size:1.3em;font-weight:700;color:#fff;line-height:1.3;}
+.mr-keys .card p{padding-top:12px;font-size:0.8em;line-height:165%;color:rgba(255,255,255,0.85);}
+.mr-keys .nav{display:flex;gap:14px;padding-top:34px;}
+.mr-keys .nav button{display:inline-flex;justify-content:center;align-items:center;width:54px;height:54px;border:1px solid rgba(255,255,255,0.4);border-radius:50%;background:none;color:#fff;font-size:1em;cursor:pointer;transition:all .3s;}
+.mr-keys .nav button:hover{background:#fff;color:#111;}
+.sec_svc_promise{position:relative;padding:150px 0;background:#ddd no-repeat center center/cover;}
+.sec_svc_promise:before{content:'';position:absolute;inset:0;background:linear-gradient(to right, rgba(255,255,255,0.92) 0%, rgba(255,255,255,0.8) 55%, rgba(255,255,255,0.35) 100%);}
+.sec_svc_promise .wrap{position:relative;}
+.sec_svc_promise .in{max-width:900px;margin:0 auto;text-align:center;}
+.sec_svc_promise h3{font-family:'gont';font-size:2.8em;font-weight:300;color:#111;letter-spacing:-0.01em;}
+.sec_svc_promise em{display:block;padding-top:10px;font-size:0.9em;color:#555;}
+.sec_svc_promise .bar{display:block;width:50px;height:1px;margin:34px auto;background:#111;}
+.sec_svc_promise p{font-size:1.25em;line-height:170%;font-weight:500;color:#222;word-break:keep-all;}
+.sec_svc_promise .mr-btn{margin-top:40px;width:246px;}
+@media all and (max-width:1400px){ .mr-svc-value{grid-template-columns:300px 1fr;} .mr-keys-head{grid-template-columns:320px 1fr;} }
+@media all and (max-width:1024px){
+  .sec_svc_hero{padding-bottom:70px;}
+  .mr-pill{height:32px;padding:0 14px;font-size:0.75em;}
+  .mr-svc-head{padding:18px 0 24px;font-size:1.45em;}
+  .mr-svc-photo{aspect-ratio:16/10;border-radius:12px;}
+  .mr-svc-value{grid-template-columns:1fr;gap:18px;padding-top:34px;}
+  .mr-svc-value .lb i{width:46px;height:46px;}
+  .mr-svc-value .lb h5{font-size:1.3em;}
+  .mr-keys-head{grid-template-columns:1fr;gap:14px;padding-bottom:26px;}
+  .mr-keys-head h3{font-size:1.7em;}
+  .mr-keys .card{flex-basis:84%;}
+  .mr-keys .card h5{font-size:1.1em;}
+  .mr-keys .nav{padding-top:20px;}
+  .mr-keys .nav button{width:44px;height:44px;}
+  .sec_svc_promise{padding:80px 0;}
+  .sec_svc_promise h3{font-size:1.9em;}
+  .sec_svc_promise p{font-size:1em;}
+}
+
+/* ---- (구) 분야별 페이지 보조 스타일 ---- */
 .sec_svc_intro{background:#fff;}
 .mr-svc-intro{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;}
 .mr-svc-intro .pic{aspect-ratio:4/3;overflow:hidden;}
@@ -509,5 +571,3 @@ body.menu-open #header .gnb-all{display:block;}
 #header #gnb > ul > li > div{display:none !important;}
 @media (max-width:1279px){ #header .gnb-all{display:none !important;} }
 
-/* 5번째 메뉴(상담신청) 영문 표기 — 원본 CSS 의 [ Archive ] 를 덮어씀 */
-#gnb > ul > li:nth-child(5) > a:after{content:'[ Contact ]';}
