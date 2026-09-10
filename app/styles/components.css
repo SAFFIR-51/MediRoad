@@ -49,12 +49,29 @@
 @media all and (max-width:1024px){ .sec_service .con{display:block;} .sec_service .con .item{height:250px;} .sec_service .con .item .txt h4{font-size:1.4em;padding:16px 0 12px;} .sec_service .con .item .txt p{font-size:0.8em;} .sec_service .con .item .txt i{margin-top:16px;width:48px;} }
 
 /* ---- 매물 목록/상세/컨설팅 섹션 배경 ---- */
-.sec_loc{background:url(/images/bg-dark-lines.jpg) no-repeat center center/cover;}
+/* 개원입지: 소개(.sec_loc) + 매물 목록(.sec_list) 을 한 덩어리의 어두운 배경 위에 올린다 */
+.mr-loc-dark{background:#0f1218 url(/images/bg-dark-lines.jpg) no-repeat center top/cover;}
+.sec_loc{background:transparent;padding-bottom:0;}
 .sec_loc .tt h4{color:#fff;}
 .sec_loc .tt h4 b{color:var(--light);}
 .sec_loc .tt p{color:rgba(255,255,255,0.75);}
-.sec_list{padding-top:0;}
+.sec_loc .mr-points{margin-bottom:0;}
+.sec_list{background:transparent;padding-top:80px;}
+.sec_list .mr-map{border:1px solid rgba(255,255,255,0.12);}
+.sec_list .mr-filter{border-bottom-color:rgba(255,255,255,0.35);}
+.sec_list .mr-filter .tabs button{color:rgba(255,255,255,0.5);}
+.sec_list .mr-filter .tabs button.on{color:#fff;}
+.sec_list .mr-filter .tabs button:after{background:var(--light);}
+.sec_list .mr-filter select{color:#fff;border-bottom-color:rgba(255,255,255,0.35);background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='6'><path d='M1 1l4 4 4-4' fill='none' stroke='%23ffffff' stroke-width='1.2'/></svg>");}
+.sec_list .mr-filter select option{color:#111;}
+.sec_list .mr-filter .count{color:rgba(255,255,255,0.6);}
+.sec_list .mr-filter .count b{color:#fff;}
+.sec_list .mr-card{border-color:transparent;}
+.sec_list .mr-card:hover{border-color:var(--light);}
+.sec_list .mr-empty{color:rgba(255,255,255,0.6);}
+.sec_list .mr-notice{color:rgba(255,255,255,0.55);}
 .mr-empty.show{display:block;}
+@media all and (max-width:1024px){ .sec_list{padding-top:40px;} }
 .sec_detail{background:#f7f8fa;}
 .sec_cintro{background:url(/images/bg-light-wave.jpg) no-repeat center top/cover;}
 .sec_cintro .tt{max-width:1100px;margin:0 auto;padding-bottom:0;}

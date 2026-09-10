@@ -27,6 +27,7 @@ export default async function LocationPage({ searchParams }: { searchParams: Pro
   return (
     <>
       <SubTop en={t.en} title={t.title} desc={t.desc} />
+      <div className="mr-loc-dark">
       <section className="sub_con sec_loc">
         <div className="wrap">
           <div className="tt taC aos">
@@ -46,6 +47,7 @@ export default async function LocationPage({ searchParams }: { searchParams: Pro
           <p className="mr-notice">정확한 주소·임대 조건·매출 자료 등 상세 정보는 상담 신청 시 담당자가 개별 안내해 드립니다.</p>
         </div>
       </section>
+      </div>
     </>
   );
 }
