@@ -6,7 +6,6 @@ export function Badges({ l }: { l: Listing }) {
     <>
       <span className={`mr-badge ${l.type}`}>{typeLabel(l.type)}</span>
       <span className="mr-badge cat">{l.category}</span>
-      {l.isSample ? <span className="mr-badge sample">예시</span> : null}
       {l.status === "closed" ? <span className="mr-badge" style={{ background: "#777" }}>거래완료</span> : null}
     </>
   );

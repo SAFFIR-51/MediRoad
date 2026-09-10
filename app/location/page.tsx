@@ -22,7 +22,6 @@ export default async function LocationPage({ searchParams }: { searchParams: Pro
   const t = TITLES[type];
   const lc = content.location;
   const items = allListings();
-  const hasSample = items.some((l) => l.isSample);
 
   return (
     <>
@@ -43,7 +42,6 @@ export default async function LocationPage({ searchParams }: { searchParams: Pro
       <section className="sub_con sec_list" id="list">
         <div className="wrap">
           <ListingBrowser items={items} initialType={type} />
-          {hasSample && <p className="mr-notice">※ &quot;예시&quot; 표시 매물은 데모 데이터입니다. 실제 매물은 서버 연동 후 교체됩니다.</p>}
           <p className="mr-notice">정확한 주소·임대 조건·매출 자료 등 상세 정보는 상담 신청 시 담당자가 개별 안내해 드립니다.</p>
         </div>
       </section>

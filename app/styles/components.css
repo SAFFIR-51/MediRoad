@@ -55,6 +55,13 @@
 .sec_service .con .item .txt i{margin:26px 0 0;width:48px;font-size:1em;border:1px solid rgba(255,255,255,0.5);background:transparent;}
 @media all and (max-width:1024px){ .sec_service .con .item .txt{padding:0 22px 22px;} .sec_service .con .item .txt h4{font-size:1.3em;padding:8px 0;} .sec_service .con .item .txt i{margin-top:12px;width:36px;} }
 
+/* ---- 매물 카드 배지: 둥근 반투명 태그로 정리 (예시 배지는 표시하지 않음) ---- */
+.mr-card .pic .badges{display:flex;gap:6px;}
+.mr-badge{height:26px;padding:0 11px;border-radius:26px;font-size:0.62em;font-weight:600;letter-spacing:0.02em;color:#fff;background:var(--accent);backdrop-filter:blur(4px);}
+.mr-badge.sale{background:var(--gold);}
+.mr-badge.cat{background:rgba(255,255,255,0.9);color:#111;font-weight:500;}
+.mr-badge.sample{display:none;}
+
 /* ---- 개원 실적 (함께 개원한 병·의원) ---- */
 .sec_portfolio{background:#f7f8fa;}
 .main_con.sec_portfolio .tt{padding-bottom:50px;}
