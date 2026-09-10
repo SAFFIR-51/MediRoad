@@ -13,7 +13,7 @@
    - 버튼: 완전 둥근 알약 대신 모서리 8px
    - 서브 비주얼: 영문 라벨 위 짧고 굵은 하늘색 선
    - 푸터: 네이비 배경, 퀵메뉴: 하나의 흰 막대
-   - 홈 컨설팅 카드: 블러 대신 그라데이션 + 좌하단 정렬
+   - 홈 컨설팅 카드: 블러 배경 + 그라데이션 + 좌하단 정렬
    ===================================================================== */
 .main_con .tt h4.en,.sub_con .tt h4.en{padding-top:12px;font-family:'gont';font-size:0.78em;font-weight:500;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);}
 .main_con .tt.wht h4.en{color:var(--light) !important;}
@@ -41,8 +41,9 @@
   .quick-nav li.last{margin-top:6px;padding-top:6px;border-top:1px solid #eee;}
   .quick-nav li.last a{width:52px;height:52px;border-radius:12px;background:var(--gold);}
 }
-.sec_service .con .item .bg{filter:none;transform:none;}
-.sec_service .con .item:hover .bg{transform:scale(1.05);filter:none;}
+/* 원본처럼 배경을 살짝 흐리게 두고, 마우스를 올리면 선명해진다 */
+.sec_service .con .item .bg{filter:blur(7px);transform:scale(1.08);}
+.sec_service .con .item:hover .bg{filter:none;transform:scale(1.02);}
 .sec_service .con .item a:before{content:'';position:absolute;inset:0;background:linear-gradient(to top, rgba(11,37,69,0.94) 0%, rgba(11,37,69,0.62) 50%, rgba(11,37,69,0.35) 100%);transition:background .4s;}
 .sec_service .con .item:hover a:before{background:linear-gradient(to top, rgba(30,75,122,0.94) 0%, rgba(30,75,122,0.55) 50%, rgba(30,75,122,0.3) 100%);}
 .sec_service .con .item a{align-items:flex-end;justify-content:flex-start;}
