@@ -2,7 +2,7 @@
 
 /**
  * 원본 헤더 구조/동작 그대로:
- *  - PC: 메뉴 hover 시 헤더 아래로 전체 메뉴 패널(.gnb-all)이 펼쳐지고 헤더는 흰 배경(body.scrolled)으로 전환
+ *  - PC: 메뉴 항목에 마우스를 올리면 그 항목의 하위 메뉴만 바로 아래로 펼쳐진다 (원본 #gnb > ul > li > div 구조)
  *  - 모바일/전체메뉴: 햄버거 클릭 시 body.nav-opened + .site-map 표시, 헤더 요소 숨김
  */
 import { useEffect, useRef, useState } from "react";
@@ -15,7 +15,6 @@ export default function Header() {
   const [open, setOpen] = useState(false);
   const headerRef = useRef<HTMLElement>(null);
   const gnbRef = useRef<HTMLElement>(null);
-  const [menuOpen, setMenuOpen] = useState(false);
 
   // 경로가 바뀌면 전체메뉴 닫기
   useEffect(() => { setOpen(false); }, [pathname]);
@@ -38,19 +37,12 @@ export default function Header() {
     }
   }, [open]);
 
-  // PC: 메뉴에 마우스를 올리면 헤더 아래로 전체 메뉴 패널이 펼쳐진다 (헤더는 흰 배경으로 전환)
-  useEffect(() => {
-    document.body.classList.toggle("menu-open", menuOpen);
-    if (menuOpen) document.body.classList.add("scrolled");
-    else if (window.scrollY <= 40) document.body.classList.remove("scrolled");
-  }, [menuOpen]);
-  useEffect(() => { setMenuOpen(false); }, [pathname]);
 
   const tel = site.contact.headerTel;
 
   return (
     <>
-      <header id="header" ref={headerRef} onMouseLeave={() => setMenuOpen(false)}>
+      <header id="header" ref={headerRef}>
         <div className="container-fluid">
           <h1 className="logo">
             <Link href="/">
@@ -58,25 +50,22 @@ export default function Header() {
               <img src={site.brand.logo.white} alt={site.brand.name} className="pc" />
             </Link>
           </h1>
-          <nav id="gnb" ref={gnbRef} onMouseEnter={() => setMenuOpen(true)}>
+          <nav id="gnb" ref={gnbRef}>
             <ul className="depth1">
               {menuItems.map((m) => (
                 <li key={m.href} className={m.children ? "has-child" : ""}>
                   <Link href={m.href}>{m.label}</Link>
+                  {m.children && (
+                    <div>
+                      <ul className="depth2">
+                        {m.children.map((c) => <li key={c.href}><Link href={c.href}>{c.label}</Link></li>)}
+                      </ul>
+                    </div>
+                  )}
                 </li>
               ))}
             </ul>
           </nav>
-          <div className="gnb-all" aria-hidden={!menuOpen}>
-            <div className="inner">
-              {menuItems.map((m) => (
-                <div className="col" key={m.href}>
-                  <h5><Link href={m.href}>{m.label}</Link>{m.en ? <small>{m.en}</small> : null}</h5>
-                  {m.children?.map((c) => <Link key={c.href} href={c.href}>{c.label}</Link>)}
-                </div>
-              ))}
-            </div>
-          </div>
           <div className="btn-area">
             <div className="sns">
               <ul>
