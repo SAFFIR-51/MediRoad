@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import SubTop from "@/components/layout/SubTop";
 import Faq from "@/components/ui/Faq";
+import RoadmapSections from "@/components/consulting/RoadmapSections";
 import { services } from "@/lib/site";
 
 type Props = { params: Promise<{ slug: string }> };
@@ -64,6 +65,7 @@ export default async function ServicePage({ params }: Props) {
           </div>
         </div>
       </section>
+      {s.slug === "opening" && <RoadmapSections />}
       <section className="sub_con sec_faq">
         <div className="wrap">
           <div className="tt taC">
@@ -75,7 +77,6 @@ export default async function ServicePage({ params }: Props) {
             <h5>다른 컨설팅 분야</h5>
             <div className="list">
               {others.map((o) => <Link key={o.slug} href={`/consulting/${o.slug}`}>{o.title}<i className="xi-long-arrow-right"></i></Link>)}
-              <Link href="/consulting/roadmap">개원 로드맵<i className="xi-long-arrow-right"></i></Link>
             </div>
           </div>
         </div>

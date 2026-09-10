@@ -34,7 +34,7 @@ npm run build && npm start     # 운영
 | `/about` · `/about/greeting` · `/about/location` | 회사소개(슬로건·MISSION/VISION/ACTION·CEO 메시지·INFORMATION), 인사말, 오시는 길(지도·교통·방문 안내) |
 | `/consulting` | 개원컨설팅: 5개 분야, 개원 프로세스, 다섯 가지 약속, FAQ, 상담 CTA |
 | `/consulting/opening` `transfer` `closure` `marketing` | 홈 4개 카드에서 이동하는 분야별 상세 페이지 (소개·6가지 서비스·절차·FAQ). 문구는 `content/services.json` |
-| `/consulting/roadmap` | 개원 로드맵: 대표님 자료(6단계 체크리스트·분야별 타임라인). 내용은 `content/roadmap.json` (서버 연동 후 회원 전용 전환 예정) |
+| `/consulting/opening#roadmap` | 개원 로드맵: 대표님 자료(6단계 체크리스트·분야별 타임라인)를 병·의원 개원 컨설팅 페이지 안에 배치. 내용은 `content/roadmap.json`. 옛 주소 `/consulting/roadmap` 은 여기로 리다이렉트 |
 | `/location` · `/location?type=lease|sale` · `/location/[매물번호]` | 개원입지: 지도(Leaflet/OSM) + 유형 탭 + 지역·업종 필터, 매물 상세 (전체 공개) |
 | `/contact` | 상담신청: 안내 사이드(연락처·혜택) + 4단계 폼 + 상담 절차 + FAQ. 하단 CTA 띠는 각 페이지에서 제거하고 이 페이지와 플로팅 버튼으로 통일 |
 | `/terms` · `/privacy` | 이용약관 · 개인정보처리방침 |
@@ -42,7 +42,7 @@ npm run build && npm start     # 운영
 ## 콘텐츠·사업자 정보 수정
 
 - `content/site.config.json` — 상호, 연락처, 주소, 사업자번호, 메뉴, 페이지 상단 문구, 홈 카드 문구. 사업자등록증 기준으로 상호·대표·사업자번호·주소·이메일을 넣어 두었고, 전화·팩스(`02-0000-0000`)와 SNS 링크(`#`)만 자리표시입니다. 주소가 실제 주소이면 회사소개·오시는 길에 Google 지도가, 자리표시이면 OpenStreetMap 기본 지도가 표시됩니다.
-- `content/services.json` · `content/roadmap.json` — 분야별 컨설팅 페이지 문구, 회원 전용 개원 로드맵·타임라인.
+- `content/services.json` · `content/roadmap.json` — 분야별 컨설팅 페이지 문구, 개원 로드맵·타임라인(개원 컨설팅 페이지 하단).
 - `content/content.json` — 히어로 슬라이드, 메시지, 가치, 프로세스, 컨설팅 분야·약속·FAQ, 인사말, 약관 등 문구.
 - `content/listings.json` — 매물 데이터(현재 예시 8건). `sample: true` 면 카드에 "예시" 배지가 붙습니다.
 - `content/popup.json` — 홈 오픈 팝업 (`active`, 게시 기간, 이미지, 링크).

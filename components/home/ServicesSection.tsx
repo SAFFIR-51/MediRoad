@@ -2,7 +2,7 @@ import Link from "next/link";
 import { site } from "@/lib/site";
 import { Lines } from "@/components/ui/Text";
 
-/** 홈 개원컨설팅 4분야 (원본 sec_service 2x2 이미지 카드) → 분야별 페이지로 이동 */
+/** 홈 개원컨설팅 5분야 (원본 sec_service 이미지 카드, PC 3+2 배치) → 분야별 페이지로 이동 */
 export default function ServicesSection() {
   const s = site.home.services;
   return (

@@ -32,6 +32,22 @@
 .main_visual .hero-count b{color:#fff;font-weight:600;}
 @media all and (max-width: 1024px) { .main_visual .hero-count{display:none;} .main_visual .slick-dots{bottom:22px;} }
 
+/* ---- 홈 개원컨설팅 5개 카드 (위 3 + 아래 2, 모두 화면 폭을 꽉 채움) ---- */
+.sec_service .con{display:grid;grid-template-columns:repeat(6, minmax(0,1fr));}
+.sec_service .con .item{width:auto;height:520px;grid-column:span 2;}
+.sec_service .con .item04,.sec_service .con .item05{grid-column:span 3;}
+.sec_service .con .item .txt{padding:0 24px;}
+.sec_service .con .item .txt h4{padding:30px 0 26px;font-size:2em;}
+.sec_service .con .item .txt p{font-size:0.85em;line-height:170%;}
+.sec_service .con .item .txt i{margin-top:30px;width:64px;}
+.sec_service .con .item01 .bg{background-image:url(/images/photo-service-hospital.jpg);}
+.sec_service .con .item02 .bg{background:url(/images/photo-field-pharmacy.jpg) no-repeat center center/cover;}
+.sec_service .con .item03 .bg{background:url(/images/photo-service-handshake.jpg) no-repeat center center/cover;}
+.sec_service .con .item04 .bg{background:url(/images/photo-service-sign.jpg) no-repeat center center/cover;}
+.sec_service .con .item05 .bg{background:url(/images/photo-service-team.jpg) no-repeat center center/cover;}
+@media all and (max-width:1400px){ .sec_service .con .item{height:440px;} .sec_service .con .item .txt h4{font-size:1.6em;} }
+@media all and (max-width:1024px){ .sec_service .con{display:block;} .sec_service .con .item{height:250px;} .sec_service .con .item .txt h4{font-size:1.4em;padding:16px 0 12px;} .sec_service .con .item .txt p{font-size:0.8em;} .sec_service .con .item .txt i{margin-top:16px;width:48px;} }
+
 /* ---- 매물 목록/상세/컨설팅 섹션 배경 ---- */
 .sec_loc{background:url(/images/bg-dark-lines.jpg) no-repeat center center/cover;}
 .sec_loc .tt h4{color:#fff;}
