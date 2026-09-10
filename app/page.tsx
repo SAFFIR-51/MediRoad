@@ -1,7 +1,6 @@
 import HeroSlider from "@/components/home/HeroSlider";
 import MessageSection from "@/components/home/MessageSection";
 import ValuesSection from "@/components/home/ValuesSection";
-import HistorySection from "@/components/home/HistorySection";
 import ServicesSection from "@/components/home/ServicesSection";
 import StepsSection from "@/components/home/StepsSection";
 import ExpertSection from "@/components/home/ExpertSection";
@@ -15,7 +14,6 @@ export default function HomePage() {
       <HeroSlider />
       <MessageSection />
       <ValuesSection />
-      <HistorySection />
       <ServicesSection />
       <StepsSection />
       <ExpertSection />

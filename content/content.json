@@ -102,7 +102,7 @@
     { "title": "데이터로 검증한 <br class=\"monly\">병·의원 전용 매물", "subtitle": "임대 · 분양 · 병원매매 정보", "desc": "경쟁 병원, 배후 세대, 유동인구를 분석해 <br class=\"monly\">진료과에 맞는 자리만 선별합니다", "button": "개원입지 보기", "href": "/location", "bg": "/images/photo-hero-tower.jpg" },
     { "title": "계획부터 개원 후 운영까지, <br class=\"monly\">한 창구에서", "subtitle": "개원 프로세스 5단계", "desc": "입지, 계약, 인허가, 인테리어, 장비, 마케팅을 <br class=\"monly\">메디로드가 하나로 연결합니다", "button": "상담 신청하기", "href": "/contact", "bg": "/images/photo-hero-meeting.jpg" }
   ],
-  "history": {
+  "history_unused": {
     "_comment": "실적 숫자는 확정 전까지 0으로 표시됩니다. value 에 숫자만 넣으면 카운트 애니메이션이 됩니다.",
     "title": "숫자로 보는 메디로드",
     "en": "History & Achievements",

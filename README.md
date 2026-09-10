@@ -30,7 +30,7 @@ npm run build && npm start     # 운영
 
 | 경로 | 내용 |
 | --- | --- |
-| `/` | 홈: 히어로 슬라이드(3), 브랜드 메시지, 3대 가치, 연혁·실적, 개원컨설팅 4분야, 개원 프로세스, 전문가 그룹, 추천 개원지(최신 매물 6건), 상담 안내(→ /contact), 오픈 팝업 |
+| `/` | 홈: 히어로 슬라이드(3), 브랜드 메시지, 3대 가치, 개원컨설팅 4분야, 개원 프로세스, 전문가 그룹, 추천 개원지(최신 매물 6건), 상담 안내(→ /contact), 오픈 팝업 |
 | `/about` · `/about/greeting` · `/about/location` | 회사소개(슬로건·MISSION/VISION/ACTION·CEO 메시지·INFORMATION), 인사말, 오시는 길(지도·교통·방문 안내) |
 | `/consulting` | 개원컨설팅: 5개 분야, 개원 프로세스, 다섯 가지 약속, FAQ, 상담 CTA |
 | `/consulting/opening` `transfer` `closure` `marketing` | 홈 4개 카드에서 이동하는 분야별 상세 페이지 (소개·6가지 서비스·절차·FAQ). 문구는 `content/services.json` |
@@ -43,7 +43,7 @@ npm run build && npm start     # 운영
 
 - `content/site.config.json` — 상호, 연락처, 주소, 사업자번호, 메뉴, 페이지 상단 문구, 홈 카드 문구. 사업자등록증 기준으로 상호·대표·사업자번호·주소·이메일을 넣어 두었고, 전화·팩스(`02-0000-0000`)와 SNS 링크(`#`)만 자리표시입니다. 주소가 실제 주소이면 회사소개·오시는 길에 Google 지도가, 자리표시이면 OpenStreetMap 기본 지도가 표시됩니다.
 - `content/services.json` · `content/roadmap.json` — 분야별 컨설팅 페이지 문구, 회원 전용 개원 로드맵·타임라인.
-- `content/content.json` — 히어로 슬라이드, 메시지, 가치, 프로세스, 컨설팅 분야·약속·FAQ, 연혁·실적 숫자, 인사말, 약관 등 문구.
+- `content/content.json` — 히어로 슬라이드, 메시지, 가치, 프로세스, 컨설팅 분야·약속·FAQ, 인사말, 약관 등 문구.
 - `content/listings.json` — 매물 데이터(현재 예시 8건). `sample: true` 면 카드에 "예시" 배지가 붙습니다.
 - `content/popup.json` — 홈 오픈 팝업 (`active`, 게시 기간, 이미지, 링크).
 - `lib/privacy.ts` — 개인정보처리방침 본문.
