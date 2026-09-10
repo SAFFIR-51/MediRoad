@@ -76,27 +76,29 @@ proxy.ts           회원·관리자 경로 접근 제어
 
 - **Node 서버 (권장, 카페24 Node 호스팅·VPS 등)**: `npm run build` 후 `npm start`. SQLite 파일(`data/mediroad.db`)과 `public/uploads/` 가 서버 디스크에 남습니다.
 - **Vercel 등 서버리스**: 디스크가 유지되지 않으므로 `DATABASE_URL` 을 Turso(libsql) 주소로 바꾸고, 업로드는 Vercel Blob 같은 외부 스토리지로 교체해야 합니다 (`lib/upload.ts` 한 곳만 수정).
-- 카페24 일반 PHP 호스팅에서는 Next.js 를 실행할 수 없습니다. 그 경우에는 이전 HTML+PHP 버전(상위 폴더의 `메디로드 웹사이트 (이전 PHP 버전)/legacy-php`)을 사용하세요. 프로젝트 안에 두면 `next build` 가 그 파일까지 추적하므로 밖에 보관합니다.
+- 카페24 일반 PHP 호스팅에서는 Next.js 를 실행할 수 없습니다. 이전 HTML+PHP 버전은 2026-09-10 정리 때 삭제했습니다(휴지통 `MediRoad_정리_*` 폴더).
 
 ## 프로젝트 위치
 
-이 프로젝트의 정본은 `~/Projects/mediroad-website` 입니다. 처음에 `~/Desktop/Git/메디로드 웹사이트` 에서 만들었지만 iCloud 동기화가 소스 파일까지 클라우드로 내려보내(evict) 읽기가 멈추는 문제가 있어 iCloud 밖으로 옮겼습니다. Desktop 쪽 폴더는 손상된 사본이므로 삭제해도 됩니다 (`메디로드 웹사이트 (이전 PHP 버전)` 폴더에는 이전 PHP 버전과 로고·스톡 원본이 있습니다).
+- 프로젝트: `~/Desktop/Website/1. MediRoad/mediroad-website` (이 폴더). 2026-09-10 에 `~/Projects` 사본과 구버전·PHP 버전을 정리하고 이 폴더 하나만 남겼습니다.
+- 원본 자료: `~/Desktop/Website/1. MediRoad/자료` — 로고, 견적서, 영업스토리, 브랜드·스톡 원본(`브랜드원본/`).
 
 ## iCloud 폴더에서 작업할 때
 
 이 폴더는 iCloud 가 동기화하는 Desktop 안에 있습니다. `node_modules` 를 그대로 두면 수만 개 파일이 iCloud 로 올라가며 Mac 이 느려지고, 클라우드로 내려간(evict) 파일은 읽기가 멈춥니다.
-그래서 실제 폴더는 `node_modules.nosync`(iCloud 제외)이고 `node_modules` 는 그 심볼릭 링크입니다. 새로 설치할 때도 같은 구조를 유지하세요:
+그래서 실제 폴더는 `node_modules.nosync` · `.next.nosync`(iCloud 제외)이고 `node_modules` · `.next` 는 그 심볼릭 링크입니다. 새로 설치할 때도 같은 구조를 유지하세요:
 
 ```bash
 npm install                      # node_modules 링크가 있으면 그대로 사용됨
-# 링크가 없다면: mv node_modules node_modules.nosync && ln -s node_modules.nosync node_modules
+# 링크가 없다면:
+mkdir -p node_modules.nosync .next.nosync
+ln -sfn node_modules.nosync node_modules && ln -sfn .next.nosync .next
+npm install
 ```
-
-가능하면 프로젝트를 iCloud 밖(예: `~/Projects`)으로 옮기는 편이 안전합니다.
 
 ## 자산 메모
 
 사진은 Unsplash 무료 스톡을 가공한 것이며 `public/images/` 에 있습니다. 로고는 전달받은 `메디로드 로고1·2.png` 에서 추출했고, AI 원본을 받으면 `public/brand/` 파일을 같은 이름으로 교체하면 됩니다.
-로고 원본과 스톡 원본은 상위 폴더 `메디로드 웹사이트 (이전 PHP 버전)/brand-source/` 에 있습니다.
+로고 원본과 스톡 원본은 상위 폴더 `자료/브랜드원본/` 에 있습니다.
 
-> 참고: 2026-09-09 Next.js 전환 중 iCloud 가 이전 버전의 이미지 파일을 내려주지 않아, 자료실·오시는 길·인사말 스트립과 매물 상세 일부 사진(21장)은 같은 세트의 다른 사진으로 임시 대체했습니다. `legacy-php/public/images/` 가 정상적으로 열리면 같은 파일명으로 덮어쓰면 됩니다.
+> 참고: 2026-09-09 Next.js 전환 중 iCloud 가 이전 버전의 이미지 파일을 내려주지 않아, 자료실·오시는 길·인사말 스트립과 매물 상세 일부 사진(21장)은 같은 세트의 다른 사진으로 임시 대체했습니다. 원본 사진이 필요하면 `자료/브랜드원본/stock/` 을 참고하세요.
