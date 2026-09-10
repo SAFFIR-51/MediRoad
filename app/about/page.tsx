@@ -24,11 +24,13 @@ export default function AboutPage() {
         </div>
         <div className="wrap">
           <div className="pic aos2"><img src="/images/photo-about-building.jpg" alt="" /></div>
-          <div className="con">
+          <div className="mr-mva aos2">
             {a.cards.map((c, i) => (
-              <div className={`item item0${i + 1} aos2`} key={c.label}>
-                <h5>{c.label}<i>◆</i></h5>
-                <img src={ICONS[i]} alt="" className="icon" />
+              <div className="item" key={c.label}>
+                <div className="head">
+                  <h5><em>0{i + 1}</em>{c.label}<i>◆</i></h5>
+                  <img src={ICONS[i]} alt="" className="icon" />
+                </div>
                 <h6><Lines lines={c.h} /></h6>
                 <p><Lines lines={c.p} /></p>
               </div>

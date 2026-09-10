@@ -1,17 +1,17 @@
 import { content } from "@/lib/site";
 
-/** 개원 프로세스 5단계 (홈 · 개원컨설팅 페이지 공용) */
+/** 개원 프로세스 5단계: 아이콘 흐름도 (홈 · 컨설팅 소개 페이지 공용). 아이콘은 content.json steps.items[].icon (xeicon) */
 export function StepsGrid() {
   return (
-    <div className="mr-steps aos">
+    <ol className="mr-process aos">
       {content.steps.items.map((s) => (
-        <div className="step" key={s.no}>
-          <em>{s.no}</em>
+        <li key={s.no}>
+          <div className="ic"><i className={s.icon}></i><em>{s.no}</em></div>
           <h5>{s.title}</h5>
           <ul>{s.points.map((p) => <li key={p}>{p}</li>)}</ul>
-        </div>
+        </li>
       ))}
-    </div>
+    </ol>
   );
 }
 

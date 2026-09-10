@@ -336,6 +336,21 @@
 .mr-modal .box .head button{font-size:22px;color:#999;}
 .mr-modal .box .body{overflow:auto;padding:20px;font-size:14px;line-height:170%;color:#444;white-space:pre-line;}
 
+/* ---- 회사소개 MISSION · VISION · ACTION: 같은 높이 3열 카드 (원본의 엇갈린 그림자 카드 대신 평면 구성) ---- */
+.mr-mva{display:grid;grid-template-columns:repeat(3, minmax(0,1fr));gap:24px;max-width:1400px;margin:0 auto;padding:0 3vw;padding-top:70px;}
+.mr-mva .item{display:flex;flex-direction:column;padding:40px 38px 44px;border:1px solid #e3e7ec;border-top:2px solid #111;border-radius:16px;background:#fff;transition:all .3s;}
+.mr-mva .item:hover{border-color:var(--gold);border-top-color:var(--gold);transform:translateY(-4px);box-shadow:0 24px 50px rgba(11,37,69,0.08);}
+.mr-mva .head{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;padding-bottom:26px;}
+.mr-mva .head h5{display:flex;align-items:center;gap:10px;font-family:'gont';font-size:1.25em;font-weight:500;letter-spacing:0.06em;color:#111;}
+.mr-mva .head h5 em{font-size:0.7em;font-weight:400;color:#999;}
+.mr-mva .head h5 i{font-size:0.7em;color:var(--gold);}
+.mr-mva .head .icon{width:56px;height:56px;object-fit:contain;flex:none;}
+.mr-mva h6{padding-bottom:20px;margin-bottom:20px;border-bottom:1px solid #eee;font-size:1.15em;font-weight:700;line-height:150%;color:#111;word-break:keep-all;}
+.mr-mva p{font-size:0.85em;line-height:180%;color:#666;word-break:keep-all;}
+.mr-mva p b{font-weight:500;color:#222;}
+@media all and (max-width:1280px){ .mr-mva{grid-template-columns:1fr;max-width:640px;} }
+@media all and (max-width:1024px){ .mr-mva{padding:30px 0 0;gap:14px;} .mr-mva .item{padding:26px 22px 30px;border-radius:12px;} .mr-mva .head{padding-bottom:16px;} .mr-mva .head .icon{width:44px;height:44px;} .mr-mva h6{font-size:1.02em;padding-bottom:14px;margin-bottom:14px;} }
+
 /* ---- 회사소개 (원본 소개 페이지 sec01 / sec_ceo / sec02 구조) ---- */
 .sec01{background:url(/images/bg-light-wave.jpg) no-repeat center top/cover;}
 .sec01 .pic{border-radius:20px;overflow:hidden;}
@@ -499,6 +514,21 @@
 .mr-svc-others .list a{display:inline-flex;align-items:center;gap:10px;height:40px;padding:0 18px;border:1px solid #ddd;border-radius:40px;font-size:0.78em;color:#333;}
 .mr-svc-others .list a:hover{border-color:#111;color:#111;}
 @media all and (max-width:1024px){ .mr-svc-intro{grid-template-columns:1fr;gap:26px;} .mr-svc-intro .txt h4{font-size:1.5em;} .mr-svc-points{grid-template-columns:1fr;} .mr-svc-points .item{margin-right:0;border-right:0;padding:22px 0;} }
+
+/* ---- 개원 프로세스: 아이콘 흐름도 (홈 · 컨설팅 소개) ---- */
+.mr-process{display:grid;grid-template-columns:repeat(5, minmax(0,1fr));gap:0;list-style:none;margin:0;padding:0;}
+.mr-process > li{position:relative;padding:0 18px;text-align:center;}
+.mr-process > li + li:before{content:'\e93f';font-family:xeicon;position:absolute;left:-13px;top:36px;font-size:26px;line-height:1;color:#c9d1db;}
+.mr-process .ic{position:relative;width:96px;height:96px;margin:0 auto;border-radius:50%;background:#eef3f8;display:flex;justify-content:center;align-items:center;transition:all .3s;}
+.mr-process .ic i{font-size:2em;color:var(--gold);transition:color .3s;}
+.mr-process .ic em{position:absolute;right:-2px;top:-2px;display:flex;justify-content:center;align-items:center;width:30px;height:30px;border-radius:50%;border:2px solid #fff;font-family:'gont';font-size:0.62em;font-weight:500;color:#fff;background:var(--gold);}
+.mr-process > li:hover .ic{background:var(--gold);}
+.mr-process > li:hover .ic i{color:#fff;}
+.mr-process h5{padding-top:24px;font-size:1em;font-weight:700;line-height:140%;color:#111;min-height:2.8em;}
+.mr-process ul{margin-top:14px;padding-top:14px;border-top:1px solid #e6e6e6;}
+.mr-process ul li{padding:3px 0;font-size:0.74em;line-height:150%;color:#666;word-break:keep-all;}
+@media all and (max-width:1280px){ .mr-process{grid-template-columns:repeat(3, minmax(0,1fr));row-gap:40px;} .mr-process > li:nth-child(4):before{display:none;} }
+@media all and (max-width:1024px){ .mr-process{grid-template-columns:repeat(2, minmax(0,1fr));row-gap:30px;} .mr-process > li{padding:0 8px;} .mr-process > li + li:before{display:none;} .mr-process .ic{width:74px;height:74px;} .mr-process .ic i{font-size:1.5em;} .mr-process h5{padding-top:14px;font-size:0.95em;min-height:0;} .mr-process ul{margin-top:10px;padding-top:10px;} }
 
 /* ---- 개원 로드맵: 아이콘 흐름도 + 분야별 타일 ---- */
 .mr-flow{position:relative;display:grid;grid-template-columns:repeat(6, minmax(0,1fr));gap:0;list-style:none;margin:0;padding:0;}
