@@ -46,7 +46,7 @@ npm run build && npm start     # 운영
 - `content/services.json` · `content/roadmap.json` — 분야별 컨설팅 페이지 문구, 개원 로드맵·타임라인(개원 컨설팅 페이지 하단). 분야 아이콘은 `items[].icon`, 진행 절차 단계 아이콘은 `items[].process[].icon` (xeicon 클래스명).
 - `content/content.json` — 히어로 슬라이드, 메시지, 가치, 프로세스, 컨설팅 분야·약속·FAQ, 인사말, 약관 등 문구.
 - `content/listings.json` — 매물 데이터(현재 예시 8건). `sample: true` 면 카드에 "예시" 배지가 붙습니다.
-- `public/brand/clients/` — 개원 실적 로고월 이미지. **병원명과 똑같은 파일명**으로 넣으면 자동 표시되고, 없는 곳은 병원명 워드마크 타일로 나옵니다 (`public/brand/clients/README.md` 참고). 로고는 각 병·의원의 상표이므로 게시 전 원장님 사용 동의가 필요합니다.
+- `public/brand/clients/` — 개원 실적 로고월 이미지. **병원명과 똑같은 파일명**으로 넣으면 자동 표시되고, 없는 곳은 임시로 메디로드 심볼(`public/brand/symbol-mark.png`)이 나옵니다 (`public/brand/clients/README.md` 참고). 로고는 각 병·의원의 상표이므로 게시 전 원장님 사용 동의가 필요합니다.
 - `content/popup.json` — 홈 오픈 팝업 (`active`, 게시 기간, 이미지, 링크).
 - `lib/privacy.ts` — 개인정보처리방침 본문.
 

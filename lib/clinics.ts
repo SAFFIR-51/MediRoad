@@ -3,7 +3,7 @@
  *
  * 로고 이미지: `public/brand/clients/` 에 **병원명과 똑같은 파일명**으로 넣으면 자동으로 표시된다.
  *   예) public/brand/clients/마곡 삼성키즈소아과의원.png  (png · jpg · jpeg · svg · webp)
- * 파일이 없는 병원은 병원명을 그대로 세운 워드마크 타일로 표시된다.
+ * 파일이 없는 병원은 임시로 메디로드 심볼(public/brand/symbol-mark.png)이 표시된다.
  * 실제 로고는 각 병·의원의 상표이므로 게시 전 원장님 사용 동의를 받아야 한다.
  */
 import fs from "node:fs";

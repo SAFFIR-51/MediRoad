@@ -4,7 +4,7 @@ import { clinics, clinicStats } from "@/lib/clinics";
 
 /**
  * 함께 개원한 병·의원 (개원 실적). 데이터: content/content.json portfolio.groups
- * 요약 숫자 + 로고월(권역 탭). 로고 파일은 public/brand/clients/ 에 병원명으로 넣으면 자동 반영된다.
+ * 요약 숫자 + 로고월(15곳씩 자동으로 넘어가는 슬라이더). 로고 파일은 public/brand/clients/ 에 병원명으로 넣으면 자동 반영된다.
  */
 export default function PortfolioSection({ sub = false }: { sub?: boolean }) {
   const p = content.portfolio;
