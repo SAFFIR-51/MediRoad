@@ -1,28 +1,32 @@
 "use client";
 
-/** 개원입지 목록: 유형 탭 + 지역/업종 필터 + 지도(Leaflet) */
+/** 개원입지 목록: 유형 탭 + 지역/업종 필터 + 매물 카드 */
 import { useEffect, useMemo, useState } from "react";
-import dynamic from "next/dynamic";
 import ListingCard from "./ListingCard";
 import type { Listing } from "@/lib/listing-utils";
-import { TYPE_LABEL } from "@/lib/listing-utils";
+import { TYPE_LABEL, regionKey, regionsOf, categoriesOf } from "@/lib/listing-utils";
 
-const ListingMap = dynamic(() => import("./ListingMap"), { ssr: false, loading: () => <div className="mr-map" /> });
-
-export default function ListingBrowser({ items, initialType }: { items: Listing[]; initialType: "all" | "lease" | "sale" }) {
+export default function ListingBrowser({ items, initialType, initialRegion = "", initialCat = "" }: { items: Listing[]; initialType: "all" | "lease" | "sale"; initialRegion?: string; initialCat?: string }) {
   const [type, setType] = useState<"all" | "lease" | "sale">(initialType);
-  const [region, setRegion] = useState("");
-  const [cat, setCat] = useState("");
+  const [region, setRegion] = useState(initialRegion);
+  const [cat, setCat] = useState(initialCat);
 
   useEffect(() => { setType(initialType); }, [initialType]);
+  useEffect(() => { setRegion(initialRegion); }, [initialRegion]);
+  useEffect(() => { setCat(initialCat); }, [initialCat]);
   useEffect(() => {
-    const q = type === "all" ? "" : `?type=${type}`;
-    window.history.replaceState(null, "", window.location.pathname + q + window.location.hash);
-  }, [type]);
+    // 홈 히어로 검색바에서 넘어온 조건도 주소에 유지한다
+    const q = new URLSearchParams();
+    if (type !== "all") q.set("type", type);
+    if (region) q.set("region", region);
+    if (cat) q.set("cat", cat);
+    const s = q.toString();
+    window.history.replaceState(null, "", window.location.pathname + (s ? `?${s}` : "") + window.location.hash);
+  }, [type, region, cat]);
 
-  const regions = useMemo(() => [...new Set(items.map((l) => (l.region || "").trim().split(" ")[0]).filter(Boolean))], [items]);
-  const cats = useMemo(() => [...new Set(items.map((l) => l.category))], [items]);
-  const filtered = items.filter((l) => (type === "all" || l.type === type) && (!region || (l.region || "").trim().split(" ")[0] === region) && (!cat || l.category === cat));
+  const regions = useMemo(() => regionsOf(items), [items]);
+  const cats = useMemo(() => categoriesOf(items), [items]);
+  const filtered = items.filter((l) => (type === "all" || l.type === type) && (!region || regionKey(l.region) === region) && (!cat || l.category === cat));
 
   const tab = (k: "all" | "lease" | "sale", label: string) => (
     <button type="button" className={type === k ? "on" : ""} onClick={() => setType(k)} key={k}>{label}</button>
@@ -30,7 +34,6 @@ export default function ListingBrowser({ items, initialType }: { items: Listing[
 
   return (
     <>
-      <ListingMap items={filtered} />
       <div className="mr-filter">
         <div className="tabs">{tab("all", "전체")}{tab("lease", TYPE_LABEL.lease)}{tab("sale", TYPE_LABEL.sale)}</div>
         <div className="sel">

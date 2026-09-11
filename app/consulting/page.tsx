@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import SubTop from "@/components/layout/SubTop";
-import { StepsGrid } from "@/components/home/StepsSection";
+import { StepsTimeline } from "@/components/home/StepsSection";
 import Faq from "@/components/ui/Faq";
 import { content, subtopFor } from "@/lib/site";
 
@@ -14,18 +14,17 @@ export default function ConsultingPage() {
   return (
     <>
       <SubTop {...top} />
-      <section className="sub_con sec_cintro">
-        <div className="tt taC aos">
-          <em>OUR SERVICE</em>
-          <h4 dangerouslySetInnerHTML={{ __html: c.intro.title }} />
-          <p dangerouslySetInnerHTML={{ __html: c.intro.desc }} />
-        </div>
-      </section>
       <section className="sub_con sec_fields">
         <div className="wrap">
-          <div className="tt taC">
-            <h3><span><b>컨설팅 분야</b></span></h3>
-            <p>병·의원과 약국 개원의 전 과정을 다섯 개 영역으로 나누어 체계적으로 지원합니다.</p>
+          <div className="mr-fields-head">
+            <div className="l aos">
+              <em>OUR SERVICE</em>
+              <h4 dangerouslySetInnerHTML={{ __html: c.intro.title }} />
+            </div>
+            <div className="r aos2">
+              <p dangerouslySetInnerHTML={{ __html: c.intro.desc }} />
+              <span className="cnt"><b>05</b> 개 영역</span>
+            </div>
           </div>
           <div className="mr-fields">
             {c.fields.map((f) => (
@@ -50,7 +49,7 @@ export default function ConsultingPage() {
             <h3><span><b>{st.title}</b></span></h3>
             <p>{st.desc}</p>
           </div>
-          <StepsGrid />
+          <StepsTimeline />
         </div>
       </section>
       <section className="sub_con sec_promise">

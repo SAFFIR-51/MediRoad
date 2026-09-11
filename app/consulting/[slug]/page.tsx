@@ -20,9 +20,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 /**
- * 컨설팅 분야별 페이지. 구성은 참고 사이트(닥터힐 핵심 서비스 페이지)를 따른다:
- * 서브비주얼 → 소개(배지·헤드라인·큰 사진) → 필요성과 가치 → 핵심 제공 서비스(어두운 배경 카드 캐러셀)
- * → 진행 절차 → 약속(사진 배경 인용문 + CONTACT) → (개원만) 개원 로드맵 → FAQ
+ * 컨설팅 분야별 페이지.
+ * 서브비주얼 → 소개(배지·헤드라인·큰 사진) → 필요성과 가치 → 진행 절차
+ * → 핵심 제공 서비스(어두운 배경 카드 캐러셀) → 약속(사진 배경 인용문 + CONTACT) → (개원만) 개원 로드맵 → FAQ
+ * 참고 사이트는 "가치 → 서비스 → 절차" 순이라, 절차를 먼저 보여 흐름을 다르게 가져간다.
  */
 export default async function ServicePage({ params }: Props) {
   const { slug } = await params;
@@ -40,13 +41,33 @@ export default async function ServicePage({ params }: Props) {
             <span>{s.headline.light}</span>
             <b dangerouslySetInnerHTML={{ __html: s.headline.bold }} />
           </h4>
-          <div className="mr-svc-photo aos2"><img src={s.image} alt={s.title} /></div>
-          <div className="mr-svc-value aos2">
-            <div className="lb">
-              <i className="xi-long-arrow-right"></i>
-              <div><h5>필요성과 가치</h5><em>[ Significance &amp; Value ]</em></div>
+          <div className="mr-svc-intro aos2">
+            <div className="mr-svc-photo"><img src={s.image} alt={s.title} /></div>
+            <div className="mr-svc-value">
+              <div className="lb">
+                <i className={s.icon}></i>
+                <div><em>Significance &amp; Value</em><h5>필요성과 가치</h5></div>
+              </div>
+              <p dangerouslySetInnerHTML={{ __html: s.value }} />
             </div>
-            <p dangerouslySetInnerHTML={{ __html: s.value }} />
+          </div>
+        </div>
+      </section>
+
+      <section className="sub_con sec_process">
+        <div className="wrap">
+          <div className="tt taC">
+            <em>PROCESS</em>
+            <h3><span><b>진행 절차</b></span></h3>
+          </div>
+          <div className="mr-svc-steps aos">
+            {s.process.map((st) => (
+              <div className="step" key={st.no}>
+                <div className="top"><i className={st.icon}></i><em>{st.no}</em></div>
+                <h5>{st.title}</h5>
+                <p>{st.desc}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -58,20 +79,6 @@ export default async function ServicePage({ params }: Props) {
             <p className="aos2" dangerouslySetInnerHTML={{ __html: s.keysDesc }} />
           </div>
           <KeyCards items={s.points} />
-        </div>
-      </section>
-
-      <section className="sub_con sec_process">
-        <div className="wrap">
-          <div className="tt taC">
-            <em>PROCESS</em>
-            <h3><span><b>진행 절차</b></span></h3>
-          </div>
-          <div className="mr-steps aos">
-            {s.process.map((st) => (
-              <div className="step" key={st.no}><em>{st.no}</em><h5>{st.title}</h5><ul><li>{st.desc}</li></ul></div>
-            ))}
-          </div>
         </div>
       </section>
 

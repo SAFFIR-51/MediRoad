@@ -35,3 +35,8 @@ export function priceLabel(deposit: string | null | undefined) {
   const label = /매매가/.test(d) ? "매매가" : /분양가/.test(d) ? "분양가" : "보증금";
   return { label, value: d.replace(/^(매매가|분양가) /, "") };
 }
+
+/** 지역 대분류(첫 어절)·업종 목록 — 홈 히어로 검색바와 입지 목록 필터가 같은 기준을 쓴다 */
+export const regionKey = (region: string | null | undefined) => (region || "").trim().split(" ")[0];
+export const regionsOf = (items: Listing[]) => [...new Set(items.map((l) => regionKey(l.region)).filter(Boolean))];
+export const categoriesOf = (items: Listing[]) => [...new Set(items.map((l) => l.category).filter(Boolean))];

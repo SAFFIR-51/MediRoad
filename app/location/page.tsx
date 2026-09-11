@@ -10,14 +10,16 @@ const TITLES: Record<string, { en: string; title: string; desc: string }> = {
   sale: { en: "Hospital M&A", title: "병원매매정보", desc: "양수·양도가 가능한 병·의원 매물을 안내합니다" },
 };
 
-export async function generateMetadata({ searchParams }: { searchParams: Promise<{ type?: string }> }): Promise<Metadata> {
+type Query = { type?: string; region?: string; cat?: string };
+
+export async function generateMetadata({ searchParams }: { searchParams: Promise<Query> }): Promise<Metadata> {
   const { type } = await searchParams;
   const t = TITLES[type === "lease" || type === "sale" ? type : "all"];
   return { title: t.title, description: t.desc };
 }
 
-export default async function LocationPage({ searchParams }: { searchParams: Promise<{ type?: string }> }) {
-  const { type: q } = await searchParams;
+export default async function LocationPage({ searchParams }: { searchParams: Promise<Query> }) {
+  const { type: q, region, cat } = await searchParams;
   const type = q === "lease" || q === "sale" ? q : "all";
   const t = TITLES[type];
   const lc = content.location;
@@ -41,7 +43,7 @@ export default async function LocationPage({ searchParams }: { searchParams: Pro
       </section>
       <section className="sub_con sec_list" id="list">
         <div className="wrap">
-          <ListingBrowser items={items} initialType={type} />
+          <ListingBrowser items={items} initialType={type} initialRegion={region ?? ""} initialCat={cat ?? ""} />
           <p className="mr-notice">정확한 주소·임대 조건·매출 자료 등 상세 정보는 상담 신청 시 담당자가 개별 안내해 드립니다.</p>
         </div>
       </section>

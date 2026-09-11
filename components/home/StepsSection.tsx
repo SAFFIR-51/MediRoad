@@ -28,3 +28,21 @@ export default function StepsSection() {
     </section>
   );
 }
+
+/** 개원 프로세스 세로 타임라인 (컨설팅 소개 페이지용 — 홈의 가로 아이콘 흐름과 구분한다) */
+export function StepsTimeline() {
+  return (
+    <ol className="mr-ptimeline aos">
+      {content.steps.items.map((s) => (
+        <li key={s.no}>
+          <div className="no"><em>{s.no}</em></div>
+          <div className="body">
+            <h5>{s.title}</h5>
+            <ul>{s.points.map((p) => <li key={p}>{p}</li>)}</ul>
+          </div>
+          <div className="ic"><i className={s.icon}></i></div>
+        </li>
+      ))}
+    </ol>
+  );
+}

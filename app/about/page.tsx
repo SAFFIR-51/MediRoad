@@ -1,72 +1,60 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import SubTop from "@/components/layout/SubTop";
-import CeoBlock from "@/components/about/CeoBlock";
 import PortfolioSection from "@/components/home/PortfolioSection";
 import { Lines } from "@/components/ui/Text";
-import PlaceMap from "@/components/ui/PlaceMap";
-import { content, site, subtopFor, hasRealAddress } from "@/lib/site";
+import { content, site, subtopFor } from "@/lib/site";
 
 export const metadata: Metadata = { title: "회사소개", description: site.pages["/about"].desc };
 
 const ICONS = ["/images/icons/mission.svg", "/images/icons/vision.svg", "/images/icons/action.svg"];
 
+/**
+ * 회사소개: 슬로건 + MISSION/VISION/ACTION 을 한 섹션(좌측 스테이트먼트 · 우측 항목)으로 묶고,
+ * 개원 실적으로 마무리한다. 대표 인사말 전문은 /about/greeting, 오시는 길은 /about/location 에 둔다.
+ */
 export default function AboutPage() {
   const a = content.about;
-  const info = site.info;
-  const real = hasRealAddress(info.address);
+  const g = content.greeting;
   return (
     <>
       <SubTop {...subtopFor("/about")} />
-      <section className="sub_con sec01">
-        <div className="tt taC aos">
-          <em>SLOGAN</em>
-          <h4><b dangerouslySetInnerHTML={{ __html: a.slogan.title }} /></h4>
-          <p>{a.slogan.desc}</p>
-        </div>
+      <section className="sub_con sec_about">
         <div className="wrap">
-          <div className="pic aos2"><img src="/images/photo-about-building.jpg" alt="" /></div>
-          <div className="mr-mva aos2">
-            {a.cards.map((c, i) => (
-              <div className="item" key={c.label}>
-                <div className="head">
-                  <h5><em>0{i + 1}</em>{c.label}<i>◆</i></h5>
-                  <img src={ICONS[i]} alt="" className="icon" />
+          <div className="mr-about">
+            <div className="lead aos">
+              <em>SLOGAN</em>
+              <h3 dangerouslySetInnerHTML={{ __html: a.slogan.title }} />
+              <p>{a.slogan.desc}</p>
+              <figure className="shot">
+                <img src="/images/photo-about-building.jpg" alt="" />
+                <figcaption>서울 · 경기 개원입지 컨설팅</figcaption>
+              </figure>
+              <div className="ceo">
+                <img src={g.photo} alt="" />
+                <div className="who">
+                  <strong>{g.signature}</strong>
+                  <Link href="/about/greeting">인사말 전문 보기<i className="xi-long-arrow-right"></i></Link>
                 </div>
-                <h6><Lines lines={c.h} /></h6>
-                <p><Lines lines={c.p} /></p>
               </div>
-            ))}
-          </div>
-        </div>
-      </section>
-      <CeoBlock />
-      <PortfolioSection sub />
-      <section className="sub_con sec02" id="info">
-        <div className="wrap">
-          <div className="tt">
-            <div className="line"><i></i></div>
-            <h3><span>Information</span></h3>
-            <p>찾아오시는 길과 연락처를 안내해 드립니다.</p>
-          </div>
-          <div className="pic">
-            <img src="/images/collage-buildings.png" alt="" className="imgpc" />
-            <img src="/images/collage-buildings-m.png" alt="" className="imgmo" />
-          </div>
-          <div className="box aos">
-            <div className="mapw"><PlaceMap address={info.address} real={real} label={info.name} /></div>
-            <div className="txt">
-              <em>INFORMATION</em>
-              <h5>{info.name}</h5>
-              <p>{info.address}</p>
-              <div className="contact">
-                <dl><dt>Tel.</dt><dd>{info.tel}</dd></dl>
-                <dl><dt>Fax.</dt><dd>{info.fax}</dd></dl>
-                <dl><dt>E-mail</dt><dd>{info.email}</dd></dl>
-              </div>
+            </div>
+            <div className="mva aos2">
+              {a.cards.map((c, i) => (
+                <div className="item" key={c.label}>
+                  <div className="head">
+                    <em>0{i + 1}</em>
+                    <span>{c.label}</span>
+                    <img src={ICONS[i]} alt="" />
+                  </div>
+                  <h5><Lines lines={c.h} /></h5>
+                  <p><Lines lines={c.p} /></p>
+                </div>
+              ))}
             </div>
           </div>
         </div>
       </section>
+      <PortfolioSection sub />
     </>
   );
 }
