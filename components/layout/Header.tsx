@@ -70,7 +70,7 @@ export default function Header() {
             <div className="sns">
               <ul>
                 <li className="contact"><Link href={site.menu.contactButton.href}><span>{site.menu.contactButton.label}</span></Link></li>
-                <li className="tel"><a href={`tel:${tel}`}><i className="xi-call"></i><span>{tel}</span></a></li>
+                <li className="tel"><a href={`tel:${tel}`} aria-label={`전화 ${tel}`}><i className="xi-call"></i><span>전화</span></a></li>
               </ul>
             </div>
             <button type="button" className={`btn-nav${open ? " btn-close" : ""}`} aria-label={open ? "메뉴 닫기" : "메뉴 열기"} onClick={() => setOpen((v) => !v)}>

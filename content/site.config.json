@@ -57,7 +57,7 @@
     "effectiveDate": "2026년 00월 00일"
   },
   "menu": {
-    "_comment": "헤더 메뉴 4개 (홈·회사소개·컨설팅·입지). 상담신청은 CONTACT US 버튼과 플로팅 버튼으로 이동. en 은 PC 메뉴 아래 영문 표기.",
+    "_comment": "헤더 메뉴 4개 (홈·회사소개·컨설팅·입지). 상담신청은 헤더 '상담신청' 버튼과 플로팅 버튼으로 이동. en 은 현재 화면에 표시하지 않음.",
     "items": [
       {
         "label": "홈",
@@ -131,7 +131,7 @@
       }
     ],
     "contactButton": {
-      "label": "CONTACT US",
+      "label": "상담신청",
       "href": "/contact"
     }
   },

@@ -45,10 +45,13 @@ export default function ContactSection({ sub = false, steps = [] }: { sub?: bool
     startTransition(() => action(fd));
   };
 
+  // /contact 페이지에서는 폼이 스크롤 연출(.aos: 스크롤 전 opacity 0)에 가려지지 않도록 처음부터 표시
+  const fade = sub ? "" : " aos";
+
   return (
     <section className={`${sub ? "sub_con" : "main_con"} sec_contact`} id="contact">
       <div className="wrap">
-        <div className="pic aos"><img src={c.image} alt="" /></div>
+        <div className={`pic${fade}`}><img src={c.image} alt="" /></div>
         <div className="tt wht">
           <div>
             <h3><span><b>{c.title}</b></span></h3>
@@ -56,7 +59,7 @@ export default function ContactSection({ sub = false, steps = [] }: { sub?: bool
           </div>
           <p>{c.desc}</p>
         </div>
-        <div className="con aos">
+        <div className={`con${fade}`}>
           {state?.ok ? (
             <div className="mr-done">
               <i className="xi-check-circle-o"></i>

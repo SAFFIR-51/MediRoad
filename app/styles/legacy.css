@@ -424,7 +424,6 @@
                         -webkit-transition-delay: 0s;
                         transition-delay: 0s; }
                         
-                        #gnb > ul > li > a:after{display:block;font-size:0.85em;letter-spacing:0;opacity:0.5;}
                         
                         
                         body.scrolled #gnb > ul > li > a{color:#222;}
@@ -439,11 +438,6 @@
                         padding: 16px 30px;
                         text-align: left;
                         background-color: rgba(30,75,122,0.6); }
-                        #gnb > ul > li:nth-child(1) a:after{content:'[ Home ]';}
-                        #gnb > ul > li:nth-child(2) a:after{content:'[ About Us ]';}
-                        #gnb > ul > li:nth-child(3) a:after{content:'[ Consulting ]';}
-                        #gnb > ul > li:nth-child(4) a:after{content:'[ Location ]';}
-                        #gnb > ul > li:nth-child(5) a:after{content:'[ Archive ]';}
                         #gnb > ul > li > div > ul{display:flex;justify-content:center;gap:26px;}
                         #gnb > ul > li > div > ul > li > a {
                           position: relative;

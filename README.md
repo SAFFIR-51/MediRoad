@@ -42,7 +42,7 @@ npm run build && npm start     # 운영
 
 ## 콘텐츠·사업자 정보 수정
 
-- `content/site.config.json` — 상호, 연락처, 주소, 사업자번호, 메뉴(홈·회사소개·컨설팅·입지 4개, 상담신청은 CONTACT US 버튼), 페이지 상단 문구, 홈 카드 문구. 홈 상담 CTA 문구는 `home.contact` (`headline` 이 CTA 제목). 사업자등록증 기준으로 상호·대표·사업자번호·주소·이메일을 넣어 두었고, 전화·팩스(`02-0000-0000`)와 SNS 링크(`#`)만 자리표시입니다. 주소가 실제 주소이면 회사소개·오시는 길에 Google 지도가, 자리표시이면 OpenStreetMap 기본 지도가 표시됩니다.
+- `content/site.config.json` — 상호, 연락처, 주소, 사업자번호, 메뉴(홈·회사소개·컨설팅·입지 4개, 상담신청은 헤더 오른쪽 `상담신청`·`전화` 버튼), 페이지 상단 문구, 홈 카드 문구. 홈 상담 CTA 문구는 `home.contact` (`headline` 이 CTA 제목). 사업자등록증 기준으로 상호·대표·사업자번호·주소·이메일을 넣어 두었고, 전화·팩스(`02-0000-0000`)와 SNS 링크(`#`)만 자리표시입니다. 주소가 실제 주소이면 회사소개·오시는 길에 Google 지도가, 자리표시이면 OpenStreetMap 기본 지도가 표시됩니다.
 - `content/services.json` · `content/roadmap.json` — 분야별 컨설팅 페이지 문구, 개원 로드맵·타임라인(개원 컨설팅 페이지 하단). 분야 아이콘은 `items[].icon`, 진행 절차 단계 아이콘은 `items[].process[].icon` (xeicon 클래스명).
 - `content/content.json` — 히어로 슬라이드, 메시지, 가치, 프로세스, 컨설팅 분야·약속·FAQ, 인사말, 약관 등 문구.
 - `content/listings.json` — 매물 데이터(현재 예시 8건). `sample: true` 면 카드에 "예시" 배지가 붙습니다.
