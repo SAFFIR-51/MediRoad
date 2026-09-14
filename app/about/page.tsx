@@ -1,7 +1,5 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import SubTop from "@/components/layout/SubTop";
-import PortfolioSection from "@/components/home/PortfolioSection";
 import { Lines } from "@/components/ui/Text";
 import { content, site, subtopFor } from "@/lib/site";
 
@@ -10,12 +8,11 @@ export const metadata: Metadata = { title: "회사소개", description: site.pag
 const ICONS = ["/images/icons/mission.svg", "/images/icons/vision.svg", "/images/icons/action.svg"];
 
 /**
- * 회사소개: 슬로건 + MISSION/VISION/ACTION 을 한 섹션(좌측 스테이트먼트 · 우측 항목)으로 묶고,
- * 개원 실적으로 마무리한다. 대표 인사말 전문은 /about/greeting, 오시는 길은 /about/location 에 둔다.
+ * 회사소개 (간소화): 슬로건 + MISSION/VISION/ACTION 을 한 섹션(좌측 스테이트먼트 · 우측 항목)으로 묶는다.
+ * 개원 실적은 홈에서 보여준다. 대표 인사말은 /about/greeting, 오시는 길은 /about/location 에 둔다.
  */
 export default function AboutPage() {
   const a = content.about;
-  const g = content.greeting;
   return (
     <>
       <SubTop {...subtopFor("/about")} />
@@ -30,13 +27,6 @@ export default function AboutPage() {
                 <img src="/images/photo-about-building.jpg" alt="" />
                 <figcaption>서울 · 경기 개원입지 컨설팅</figcaption>
               </figure>
-              <div className="ceo">
-                <img src={g.photo} alt="" />
-                <div className="who">
-                  <strong>{g.signature}</strong>
-                  <Link href="/about/greeting">인사말 전문 보기<i className="xi-long-arrow-right"></i></Link>
-                </div>
-              </div>
             </div>
             <div className="mva aos2">
               {a.cards.map((c, i) => (
@@ -54,7 +44,6 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
-      <PortfolioSection sub />
     </>
   );
 }

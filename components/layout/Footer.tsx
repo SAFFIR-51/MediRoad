@@ -1,5 +1,6 @@
 import { site } from "@/lib/site";
 
+/** 푸터: 메디로드 사업자 정보. 중개사무소 정보는 매물 페이지(목록·상세)에만 표시한다. */
 export default function Footer() {
   const c = site.company;
   return (
@@ -13,7 +14,6 @@ export default function Footer() {
             <li><dl><dt>대표</dt><dd>{c.ceo}</dd></dl></li>
             <li><dl><dt>사업자등록번호</dt><dd>{c.bizNo}</dd></dl></li>
             <li><dl><dt>TEL</dt><dd><a href={`tel:${c.tel}`}>{c.tel}</a></dd></dl></li>
-            <li><dl><dt>FAX</dt><dd>{c.fax}</dd></dl></li>
             <li><dl><dt>E-mail</dt><dd>{c.email}</dd></dl></li>
           </ul>
         </div>

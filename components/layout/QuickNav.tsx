@@ -3,15 +3,13 @@
 import Link from "next/link";
 import { site } from "@/lib/site";
 
-/** 플로팅 퀵메뉴: 온라인 상담 · 전화 상담 · 물건안내 · 블로그 · 유튜브 · TOP (PC 우측 하단 원형, 모바일 하단 바) */
+/** 플로팅 퀵메뉴: 온라인 상담 · 전화 상담 · 매물정보 · TOP (PC 우측 하단 원형, 모바일 하단 바). 블로그·유튜브 등 외부 채널은 운영하지 않음. */
 export default function QuickNav() {
   const tel = site.contact.headerTel;
   const items: { href: string; label: string; icon?: string; img?: string; external?: boolean }[] = [
     { href: "/contact", icon: "xi-comment-o", label: "온라인 상담" },
     { href: `tel:${tel}`, icon: "xi-call", label: "전화 상담" },
-    { href: "/location", img: "/brand/icons/property.png", label: "물건안내" },
-    { href: site.contact.blog, img: "/brand/icons/blog.png", label: "블로그", external: true },
-    { href: site.contact.youtube, img: "/brand/icons/youtube.png", label: "유튜브", external: true },
+    { href: "/location", img: "/brand/icons/property.png", label: "매물정보" },
   ];
   const goTop = () => window.scrollTo({ top: 0, behavior: "smooth" });
 

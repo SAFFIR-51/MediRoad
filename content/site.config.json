@@ -1,12 +1,12 @@
 {
-  "_comment": "사업자 정보를 여기서만 바꾸면 홈/소개/개인정보처리방침/푸터 전체에 반영됩니다. 전화·팩스·SNS 링크는 아직 자리표시(확정 후 교체).",
+  "_comment": "사업자 정보를 여기서만 바꾸면 홈/소개/개인정보처리방침/푸터 전체에 반영됩니다.",
   "siteUrl": "https://www.mediroad.co.kr",
   "brand": {
     "name": "메디로드",
     "nameEn": "MediRoad",
     "title": "메디로드 MediRoad",
-    "description": "입지선정부터 안정적인 운영까지, 병·의원 개원 컨설팅 메디로드",
-    "keywords": "메디로드, 개원컨설팅, 개원입지, 병원 개원, 의원 개원, 임대분양, 병원매매, 양수양도, 병원 마케팅",
+    "description": "입지 분석부터 안정적인 운영까지, 병·의원 개원 컨설팅 메디로드",
+    "keywords": "메디로드, 개원컨설팅, 병원 개원, 의원 개원, 개원 입지 분석, 병원 양수양도, 병원 경영마케팅, 약국 개설",
     "copyright": "MEDIROAD.",
     "colors": {
       "_comment": "메디로드 로고 색상 기준 팔레트. primary(포인트) / dark(호버·진한 배경) / light(어두운 배경 위 강조)",
@@ -27,18 +27,14 @@
     }
   },
   "contact": {
-    "headerTel": "02-0000-0000",
-    "youtube": "#",
-    "blog": "#",
-    "propertyMap": "#",
-    "naverMap": "#"
+    "_comment": "대표 전화. 카카오톡 채널·유튜브·블로그 등 외부 채널은 운영하지 않음 (2026.09 대표님 확인).",
+    "headerTel": "010-9019-0170"
   },
   "info": {
-    "_comment": "소개 페이지 하단 INFORMATION 박스와 오시는 길. 주소가 자리표시(00구)이면 OSM 기본 지도, 실제 주소이면 Google 지도.",
+    "_comment": "오시는 길 정보. 주소가 자리표시(00구)이면 OSM 기본 지도, 실제 주소이면 Google 지도.",
     "name": "메디로드 개원 컨설팅",
     "address": "서울특별시 강서구 마곡중앙6로 42, 11층 1122호 (마곡동, 사이언스타)",
-    "tel": "02-0000-0000",
-    "fax": "02-0000-0000",
+    "tel": "010-9019-0170",
     "email": "su6975@naver.com"
   },
   "company": {
@@ -47,9 +43,16 @@
     "address": "서울특별시 강서구 마곡중앙6로 42, 11층 1122호 (마곡동, 사이언스타)",
     "ceo": "김상수",
     "bizNo": "778-52-00719",
-    "tel": "02-0000-0000",
-    "fax": "02-0000-0000",
+    "tel": "010-9019-0170",
     "email": "su6975@naver.com"
+  },
+  "broker": {
+    "_comment": "입지 메뉴 매물의 표시·광고·중개 주체. 공인중개사법 제18조의2·시행령 제17조의2 명시사항(명칭·소재지·연락처·등록번호·대표자 성명)으로 매물 상세·목록에만 표시된다 (메디로드 페이지와 구분하려고 푸터에는 넣지 않음). 중개사무소등록증과 등록관청(강서구청)에 신고된 내용과 글자 그대로 맞출 것 (주소의 층·호수, 신고된 전화번호).",
+    "name": "로드맵공인중개사사무소",
+    "ceo": "박현경",
+    "regNo": "11500-2023-00049",
+    "tel": "010-9161-2213",
+    "address": "서울특별시 강서구 마곡중앙6로 42, 1122호"
   },
   "privacy": {
     "companyName": "메디로드 개원 컨설팅",
@@ -97,20 +100,16 @@
             "href": "/consulting/opening"
           },
           {
-            "label": "약국 컨설팅",
-            "href": "/consulting/pharmacy"
-          },
-          {
             "label": "병·의원 양수양도",
             "href": "/consulting/transfer"
           },
           {
-            "label": "병·의원 폐업컨설팅",
-            "href": "/consulting/closure"
-          },
-          {
             "label": "병·의원 경영마케팅",
             "href": "/consulting/marketing"
+          },
+          {
+            "label": "약국 개설 컨설팅",
+            "href": "/consulting/pharmacy"
           }
         ]
       },
@@ -140,17 +139,17 @@
     "/about": {
       "en": "About MediRoad",
       "title": "메디로드 소개",
-      "desc": "개원 현장 경험과 데이터로 입지 선정부터 개원 후 운영까지 함께 설계하는 개원 파트너입니다"
+      "desc": "개원 현장 경험과 데이터로 입지 분석부터 개원 후 운영까지 함께 설계하는 개원 파트너입니다"
     },
     "/consulting": {
       "en": "Consulting",
       "title": "컨설팅",
-      "desc": "병·의원과 약국의 개원, 양수양도, 폐업, 경영마케팅까지 전 과정을 함께합니다"
+      "desc": "병·의원 개원과 양수양도, 경영마케팅, 약국 개설까지 함께합니다"
     },
     "/contact": {
       "en": "Contact Us",
       "title": "상담신청",
-      "desc": "진료과·희망 지역·예산을 알려주시면 가능한 입지와 일정을 정리해 드립니다"
+      "desc": "진료과·희망 지역·예산을 알려주시면 개원 방향과 일정을 정리해 드립니다"
     },
     "/terms": {
       "en": "Terms",
@@ -164,71 +163,60 @@
     }
   },
   "home": {
-    "_comment": "홈 화면 섹션 문구. services 는 4개 카드(디자인상 2x2 배치) → 각각 /consulting/<slug> 로 이동.",
+    "_comment": "홈 화면 섹션 문구.",
     "services": {
+      "_comment": "홈 컨설팅 분야. 좌측 인덱스 목록 + 우측 대형 비주얼(img) 구성. 약국은 짧은 상세 페이지(소개 + 핵심 서비스)로 연결.",
       "title": "컨설팅",
       "en": "Consulting",
-      "desc": "병·의원과 약국의 개원부터 양수양도, 폐업, 경영마케팅까지 원스톱으로 지원합니다.",
+      "desc": "병·의원 개원부터 양수양도, 경영마케팅, 약국 개설까지 필요한 부분을 함께합니다.",
       "items": [
         {
           "en": "Clinic Opening Consulting",
           "title": "병·의원 개원 컨설팅",
           "desc": [
-            "병원 개원부터 운영까지",
-            "전반적인 과정에 걸친 맞춤형 컨설팅을 제공합니다."
+            "입지 분석부터 개원 준비까지",
+            "전 과정의 일정을 함께 관리합니다."
           ],
           "href": "/consulting/opening",
           "img": "/images/photo-service-hospital.jpg"
         },
         {
-          "en": "Pharmacy Consulting",
-          "title": "약국 컨설팅",
-          "desc": [
-            "약국 개설을 위한 입지 분석,",
-            "인허가 절차, 초기 운영을 지원해 드립니다."
-          ],
-          "href": "/consulting/pharmacy",
-          "img": "/images/photo-field-pharmacy.jpg"
-        },
-        {
           "en": "Transfer & Acquisition",
           "title": "병·의원 양수양도",
           "desc": [
-            "포괄양수양도 및 일반양수양도,",
-            "영업권리분석, 자산평가 등",
-            "사안 별로 정확하게 진단하고 도와드립니다."
+            "매출·자산 현황을 분석하고",
+            "세무·법률 전문가와 함께",
+            "안전한 진행 방향을 제시합니다."
           ],
           "href": "/consulting/transfer",
           "img": "/images/photo-service-handshake.jpg"
-        },
-        {
-          "en": "Closure Consulting",
-          "title": "병·의원 폐업컨설팅",
-          "desc": [
-            "불가피한 상황으로 병·의원 폐업 시",
-            "자산매각 및 폐업 절차 등",
-            "깔끔하게 마무리 할 수 있도록 도와드립니다."
-          ],
-          "href": "/consulting/closure",
-          "img": "/images/photo-service-sign.jpg"
         },
         {
           "en": "Management & Marketing",
           "title": "병·의원 경영마케팅",
           "desc": [
             "신환 유치와 구환 관리를 위한",
-            "효과적인 마케팅 전략을 제공합니다."
+            "마케팅·운영 전략을 제안합니다."
           ],
           "href": "/consulting/marketing",
           "img": "/images/photo-service-team.jpg"
+        },
+        {
+          "en": "Pharmacy Consulting",
+          "title": "약국 개설 컨설팅",
+          "desc": [
+            "약국 개설 입지의 상권을 분석하고",
+            "개설등록 절차를 안내합니다."
+          ],
+          "href": "/consulting/pharmacy",
+          "img": "/images/photo-field-pharmacy.jpg"
         }
-      ],
-      "_comment": "홈 컨설팅 5개 분야. 좌측 인덱스 목록 + 우측 대형 비주얼(img) 구성."
+      ]
     },
     "location": {
       "en": "Location",
-      "title": "추천 개원지",
-      "desc": "메디로드가 직접 확인한 병·의원 전용 임대·분양 매물과 병원 매매 정보를 선별해 소개합니다",
+      "title": "개원 매물 정보",
+      "desc": "로드맵공인중개사사무소가 의뢰받아 게시하는 병·의원 임대·분양 및 병원 매매 매물입니다",
       "more": "/location"
     },
     "contact": {
@@ -237,96 +225,6 @@
       "headline": "개원, 어디서부터 시작해야 할지 막막하신가요?",
       "desc": "진료과와 희망 지역, 예산만 알려주시면 1영업일 안에 담당자가 연락드립니다.",
       "image": "/images/photo-contact-building.jpg"
-    },
-    "expert_unused": {
-      "title": "전문가 그룹",
-      "en": "Expert Advisory",
-      "desc": "다양한 분야의 전문가 그룹이 협업하여 체계적인 솔루션을 제시합니다.",
-      "items": [
-        {
-          "label": "부동산 자문",
-          "en": [
-            "Clinic Location",
-            "Strategy"
-          ],
-          "href": "/location",
-          "img": "/images/photo-expert-docs.jpg"
-        },
-        {
-          "label": "지적재산권 자문",
-          "en": [
-            "Brand &",
-            "IP Protection"
-          ],
-          "href": "/consulting/marketing",
-          "img": "/images/photo-expert-steth.jpg"
-        },
-        {
-          "label": "세무 자문",
-          "en": [
-            "Tax Planning",
-            "for Doctors"
-          ],
-          "href": "/consulting/marketing",
-          "img": "/images/photo-expert-laptop.jpg"
-        },
-        {
-          "label": "금융 자문",
-          "en": [
-            "Opening Finance",
-            "Consulting"
-          ],
-          "href": "/consulting/opening",
-          "img": "/images/photo-expert-desk.jpg"
-        },
-        {
-          "label": "인테리어 자문",
-          "en": [
-            "Clinic Interior",
-            "Planning"
-          ],
-          "href": "/consulting/opening",
-          "img": "/images/photo-expert-room.jpg"
-        },
-        {
-          "label": "의료장비 자문",
-          "en": [
-            "Medical Equipment",
-            "Planning"
-          ],
-          "href": "/consulting/opening",
-          "img": "/images/photo-expert-reception.jpg"
-        },
-        {
-          "label": "노무 자문",
-          "en": [
-            "HR & Staff",
-            "Compliance"
-          ],
-          "href": "/consulting/marketing",
-          "img": "/images/photo-expert-team.jpg"
-        },
-        {
-          "label": "법률 자문",
-          "en": [
-            "Medical Legal",
-            "Support"
-          ],
-          "href": "/consulting/transfer",
-          "img": "/images/photo-expert-sign.jpg"
-        }
-      ],
-      "box": {
-        "h": [
-          "<b>검증된 전문가 그룹</b>이",
-          "함께 만들어내는 신뢰할 수 있는",
-          "솔루션을 제공합니다"
-        ],
-        "p": [
-          "브랜드 성장과 경영 성공을 설계하는",
-          "메디컬 파트너, 메디로드"
-        ]
-      }
     }
   }
 }

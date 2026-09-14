@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import SubTop from "@/components/layout/SubTop";
-import { IconRow } from "@/components/ui/PhotoStrip";
-import { content, subtopFor, site } from "@/lib/site";
+import { subtopFor, site } from "@/lib/site";
 import { privacySections } from "@/lib/privacy";
 
 export const metadata: Metadata = { title: "개인정보처리방침" };
@@ -10,7 +9,6 @@ export default function PrivacyPage() {
   return (
     <>
       <SubTop {...subtopFor("/privacy")} compact />
-      <IconRow items={content.policyIcons} />
       <section className="sub_con sec_white">
         <div className="wrap">
           <div className="mr-doc">

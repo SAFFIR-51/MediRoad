@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { fmtDate, listingUrl, priceLabel, typeLabel, type Listing } from "@/lib/listing-utils";
+import { site } from "@/lib/site";
 
 export function Badges({ l }: { l: Listing }) {
   return (
@@ -26,6 +27,7 @@ export default function ListingCard({ l }: { l: Listing }) {
           <div><dt>{label}</dt><dd>{value}</dd></div>
           {l.rent && l.rent !== "-" ? <div><dt>{l.type === "sale" ? "임대료" : "월임대료"}</dt><dd>{l.rent}</dd></div> : null}
         </dl>
+        <p className="broker">중개 · {site.broker.name}</p>
         <span className="more"><i className="xi-long-arrow-right"></i></span>
       </div>
     </Link>

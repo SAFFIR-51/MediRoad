@@ -52,13 +52,3 @@ export function clinics(): Clinic[] {
     })),
   );
 }
-
-/** 실적 요약 숫자 */
-export function clinicStats(list: Clinic[]) {
-  return {
-    total: list.length,
-    depts: new Set(list.map((c) => c.dept).filter((d) => d !== "기타")).size,
-    areas: new Set(list.map((c) => c.area)).size,
-    regions: content.portfolio.groups.length,
-  };
-}

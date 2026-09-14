@@ -1,13 +1,13 @@
 "use client";
 
-/** 모든 하위 페이지 마지막에 붙는 공통 CTA (홈은 자체 상담 안내 섹션, 상담신청 페이지는 제외) */
+/** 모든 하위 페이지 마지막에 붙는 공통 CTA (홈은 자체 상담 안내 섹션, 입지 목록은 목록 아래 자체 CTA, 상담신청 페이지는 제외) */
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { site } from "@/lib/site";
 
 export default function CtaBand() {
   const pathname = usePathname();
-  if (pathname === "/" || pathname.startsWith("/contact")) return null;
+  if (pathname === "/" || pathname === "/location" || pathname.startsWith("/contact")) return null;
   const tel = site.contact.headerTel;
   return (
     <section className="sub_con mr-cta mr-cta-band">

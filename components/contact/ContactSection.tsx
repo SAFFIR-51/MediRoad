@@ -2,11 +2,10 @@
 
 /**
  * 상담신청 폼 (/contact). 원본 sec_contact 마크업/필드 구성 그대로. 서버 액션 submitConsult 와 필드명 동일.
- * 매물 상세에서 넘어오면 sessionStorage(mr_listing) 또는 ?listing= 값을 요청사항에 채운다.
+ * 매물 문의는 이 폼이 아니라 매물 상세의 중개사무소 연락처로 받는다 (메디로드는 중개하지 않음).
  */
-import { startTransition, useActionState, useEffect, useRef, useState } from "react";
+import { startTransition, useActionState, useEffect, useState } from "react";
 import Link from "next/link";
-import { useSearchParams } from "next/navigation";
 import { site } from "@/lib/site";
 import { submitConsult } from "@/app/actions/consult";
 import PrivacyModal from "@/components/ui/PrivacyModal";
@@ -17,20 +16,6 @@ export default function ContactSection({ sub = false, steps = [] }: { sub?: bool
   const c = site.home.contact;
   const [state, action, pending] = useActionState(submitConsult, null);
   const [showPrivacy, setShowPrivacy] = useState(false);
-  const [listing, setListing] = useState("");
-  const taRef = useRef<HTMLTextAreaElement>(null);
-  const params = useSearchParams();
-
-  useEffect(() => {
-    try {
-      const v = sessionStorage.getItem("mr_listing");
-      const q = params.get("listing");
-      const ta = taRef.current;
-      if (ta && !ta.value && (v || q)) ta.value = (v || `[${q}] 매물 문의`) + "\n";
-      if (v) sessionStorage.removeItem("mr_listing");
-      if (q) setListing(q);
-    } catch {}
-  }, [params]);
 
   useEffect(() => {
     if (!state) return;
@@ -138,7 +123,7 @@ export default function ContactSection({ sub = false, steps = [] }: { sub?: bool
                     <li><input type="radio" name="상담유형" value="약국개설" id="cate04" /> <label htmlFor="cate04">약국 개설</label></li>
                   </ul>
                 </dd></dl>
-                <dl><dt><span>추가 요청사항</span><i></i></dt><dd><textarea className="ta" id="say2" name="say" placeholder="요청사항을 자유롭게 적어주세요" ref={taRef}></textarea></dd></dl>
+                <dl><dt><span>추가 요청사항</span><i></i></dt><dd><textarea className="ta" id="say2" name="say" placeholder="요청사항을 자유롭게 적어주세요"></textarea></dd></dl>
               </div>
               <div className="bottom">
                 <div className="privacy">
@@ -147,7 +132,6 @@ export default function ContactSection({ sub = false, steps = [] }: { sub?: bool
                 </div>
                 <button type="submit" disabled={pending}>{pending ? "접수 중…" : "상담 신청하기"}<i className="xi-long-arrow-right"></i></button>
               </div>
-              <input type="hidden" name="listing" value={listing} />
               <input type="text" name="website" tabIndex={-1} autoComplete="off" style={{ position: "absolute", left: "-9999px" }} aria-hidden="true" />
             </form>
           )}

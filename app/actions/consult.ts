@@ -25,7 +25,7 @@ export async function submitConsult(_prev: ConsultState, formData: FormData): Pr
 
   const fields: Record<string, string> = {};
   for (const k of EXTRA) { const v = s(k); if (v) fields[k] = v; }
-  const payload = { name, phone, ...fields, message: s("say"), listingCode: s("listing") || null, receivedAt: new Date().toISOString() };
+  const payload = { name, phone, ...fields, message: s("say"), receivedAt: new Date().toISOString() };
 
   // 전송: 서버 연동 전까지는 로그만 남긴다.
   console.log("[consult]", JSON.stringify(payload));

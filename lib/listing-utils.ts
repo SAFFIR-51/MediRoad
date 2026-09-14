@@ -16,6 +16,14 @@ export type Listing = {
   rent: string;
   area: string;
   floor: string;
+  /** 인터넷 표시·광고 명시사항: 건축물 용도, 사용승인일, 방향, 주차대수, 관리비, 입주가능일, 위반건축물 여부 */
+  use: string;
+  approvalDate: string;
+  direction: string;
+  parking: string;
+  maintenance: string;
+  moveIn: string;
+  violation: boolean;
   features: string[];
   images: string[];
   description: string;

@@ -4,7 +4,7 @@ import { notFound } from "next/navigation";
 import SubTop from "@/components/layout/SubTop";
 import ListingCard, { Badges } from "@/components/listings/ListingCard";
 import Gallery from "@/components/listings/Gallery";
-import ConsultLink from "@/components/listings/ConsultLink";
+import BrokerInfo from "@/components/listings/BrokerInfo";
 import { allListings, findListing, relatedListings, fmtDate, typeLabel, priceLabel } from "@/lib/listings";
 import { site } from "@/lib/site";
 
@@ -20,6 +20,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return l ? { title: l.title, description: `${typeLabel(l.type)} · ${l.category} · ${l.region}` } : { title: "매물" };
 }
 
+/**
+ * 매물 상세. 표에는 인터넷 표시·광고 명시사항(소재지·면적·가격·용도·거래형태·층수·사용승인일·방향·주차·관리비·입주가능일, 위반건축물)을 보여주고,
+ * 광고·중개 주체인 중개사무소 정보를 함께 표시한다. 매물 문의는 메디로드 상담 폼이 아니라 중개사무소로 연결한다.
+ */
 export default async function ListingDetailPage({ params }: Props) {
   const { code } = await params;
   const l = findListing(decodeURIComponent(code));
@@ -27,17 +31,24 @@ export default async function ListingDetailPage({ params }: Props) {
   const tLabel = typeLabel(l.type);
   const others = relatedListings(l, 3);
   const { label, value } = priceLabel(l.deposit);
+  const b = site.broker;
   const rows: [string, React.ReactNode][] = [
     ["매물번호", l.code],
-    ["구분", `${tLabel} · ${l.category}`],
-    ["지역", l.region],
-    ["소재지", <>{l.address} <small style={{ color: "#999" }}>(상담 후 상세 안내)</small></>],
+    ["거래형태", `${tLabel} · ${l.category}`],
+    ["소재지", l.address],
+    ["건축물 용도", l.use],
+    ...(l.violation ? [["위반건축물", <b key="v" style={{ color: "#c0392b" }}>위반건축물 (건축물대장 기재)</b>] as [string, React.ReactNode]] : []),
     ["면적", l.area],
     ["층수", l.floor],
     [label, value],
     ...(l.rent && l.rent !== "-" ? [[l.type === "sale" ? "임대료" : "월임대료", l.rent] as [string, React.ReactNode]] : []),
+    ["관리비", l.maintenance],
+    ["방향", l.direction],
+    ["주차대수", l.parking],
+    ["사용승인일", l.approvalDate],
+    ["입주가능일", l.moveIn],
     ["등록일", fmtDate(l.dateListed)],
-  ];
+  ].filter(([, v]) => v !== "" && v != null) as [string, React.ReactNode][];
 
   return (
     <>
@@ -51,7 +62,7 @@ export default async function ListingDetailPage({ params }: Props) {
               <div className="mr-desc aos2">
                 <h4>매물 소개</h4>
                 <p>{l.description}</p>
-                <div className="note">정확한 주소, 임대 조건, 매출 자료 등 상세 정보는 상담 신청 후 담당자가 개별 안내해 드립니다. 현장 투어를 원하시면 상담 시 말씀해 주세요.</div>
+                <div className="note">이 매물 정보는 {b.name}가 의뢰받아 게시한 정보입니다. 매물 문의·현장 안내·계약은 중개사무소에서 진행하며, {site.company.name}은 부동산 중개를 하지 않습니다.</div>
               </div>
             </div>
             <aside className="mr-summary aos2">
@@ -60,8 +71,8 @@ export default async function ListingDetailPage({ params }: Props) {
               <div className="region">{l.region}</div>
               <table><tbody>{rows.map(([k, v]) => <tr key={k}><th>{k}</th><td>{v}</td></tr>)}</tbody></table>
               <div className="tags">{l.features.map((f) => <span key={f}>{f}</span>)}</div>
-              <ConsultLink code={l.code} note={`[${l.code}] ${l.title} (${l.region}) 문의`} />
-              <span className="tel">전화 문의 <b>{site.contact.headerTel}</b></span>
+              <a className="btn" href={`tel:${b.tel}`}><span>중개사무소 전화 문의</span><i className="xi-call"></i></a>
+              <BrokerInfo />
             </aside>
           </div>
           {others.length > 0 && (

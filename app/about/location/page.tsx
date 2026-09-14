@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import SubTop from "@/components/layout/SubTop";
-import PhotoStrip from "@/components/ui/PhotoStrip";
 import PlaceMap from "@/components/ui/PlaceMap";
 import { content, site, hasRealAddress } from "@/lib/site";
 
@@ -21,7 +20,6 @@ export default function DirectionsPage() {
               <h5>{info.name}</h5>
               <dl><dt>주소</dt><dd>{info.address}</dd></dl>
               <dl><dt>전화</dt><dd>{info.tel}</dd></dl>
-              <dl><dt>팩스</dt><dd>{info.fax}</dd></dl>
               <dl><dt>이메일</dt><dd>{info.email}</dd></dl>
               <div className="btns">
                 <a href={`tel:${info.tel}`}><i className="xi-call"></i> 전화하기</a>
@@ -37,7 +35,6 @@ export default function DirectionsPage() {
           </div>
         </div>
       </section>
-      <PhotoStrip en="VISIT" title="방문 안내" items={d.strip} noTop />
     </>
   );
 }

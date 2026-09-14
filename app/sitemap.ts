@@ -4,7 +4,7 @@ import { allListings, listingUrl } from "@/lib/listings";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const base = process.env.NEXT_PUBLIC_SITE_URL || site.siteUrl;
-  const pages = ["/", "/about", "/about/greeting", "/about/location", "/consulting", "/location", "/location?type=lease", "/location?type=sale", "/consulting/opening", "/consulting/transfer", "/consulting/closure", "/consulting/marketing", "/contact", "/terms", "/privacy"];
+  const pages = ["/", "/about", "/about/greeting", "/about/location", "/consulting", "/location", "/location?type=lease", "/location?type=sale", "/consulting/opening", "/consulting/transfer", "/consulting/marketing", "/consulting/pharmacy", "/contact", "/terms", "/privacy"];
   const listings = allListings();
   return [
     ...pages.map((p) => ({ url: base + p, changeFrequency: "weekly" as const, priority: p === "/" ? 1 : 0.7 })),
