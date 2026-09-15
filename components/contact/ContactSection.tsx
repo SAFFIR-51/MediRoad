@@ -1,42 +1,61 @@
 "use client";
 
 /**
- * 상담신청 폼 (/contact). 원본 sec_contact 마크업/필드 구성 그대로. 서버 액션 submitConsult 와 필드명 동일.
+ * 상담신청 폼 (/contact/). 원본 sec_contact 마크업을 유지하고 PHP API(/api/inquiry.php)로 접수한다.
+ * 접수된 문의는 관리자 > 상담 문의에서 확인한다.
  * 매물 문의는 이 폼이 아니라 매물 상세의 중개사무소 연락처로 받는다 (메디로드는 중개하지 않음).
  */
-import { startTransition, useActionState, useEffect, useState } from "react";
+import { useState } from "react";
 import Link from "next/link";
-import { site } from "@/lib/site";
-import { submitConsult } from "@/app/actions/consult";
+import { content, site } from "@/lib/site";
+import { api, ApiError } from "@/lib/api";
 import PrivacyModal from "@/components/ui/PrivacyModal";
 
 type Step = { img: string; no?: string; title: string; desc: string };
 
-export default function ContactSection({ sub = false, steps = [] }: { sub?: boolean; steps?: Step[] }) {
+const DEFAULT_TYPES = ["개원 입지 분석", "약국 개국 입지", "병원 양수·양도", "인증·인허가", "경영마케팅", "폐업 정리"];
+
+export default function ContactSection({ steps = [] }: { steps?: Step[] }) {
   const c = site.home.contact;
-  const [state, action, pending] = useActionState(submitConsult, null);
+  const types = (content as unknown as { contactForm?: { consultTypes?: string[] } }).contactForm?.consultTypes ?? DEFAULT_TYPES;
+  const [pending, setPending] = useState(false);
+  const [done, setDone] = useState(false);
+  const [error, setError] = useState("");
   const [showPrivacy, setShowPrivacy] = useState(false);
 
-  useEffect(() => {
-    if (!state) return;
-    const el = document.querySelector(state.ok ? ".mr-done" : ".sec_contact .mr-flash");
-    el?.scrollIntoView({ behavior: "smooth", block: "center" });
-  }, [state]);
-
-  // form action 대신 onSubmit 에서 직접 호출: 서버가 오류를 돌려줘도 입력값이 초기화되지 않는다 (React 19 form reset 회피)
-  const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const fd = new FormData(e.currentTarget);
-    startTransition(() => action(fd));
+    const v = (k: string) => String(fd.get(k) ?? "").trim();
+    if (!fd.get("agree")) {
+      setError("개인정보 수집 및 이용에 동의해 주세요.");
+      return;
+    }
+    setPending(true);
+    setError("");
+    try {
+      await api("inquiry.php", {
+        body: {
+          name: v("name"), phone: v("phone"), email: v("email"), department: v("department"), region: v("region"),
+          openTiming: v("openTiming"), budget: v("budget"), deposit: v("deposit"), rent: v("rent"), facilityCost: v("facilityCost"),
+          area: v("area"), facility: v("facility"), consultType: v("consultType"), message: v("message"), agree: true, website: v("website"),
+        },
+      });
+      setDone(true);
+      requestAnimationFrame(() => document.querySelector(".mr-done")?.scrollIntoView({ behavior: "smooth", block: "center" }));
+    } catch (err) {
+      const msg = err instanceof ApiError ? (err.errors ? Object.values(err.errors)[0] : err.message) : "접수하지 못했습니다. 잠시 후 다시 시도해 주세요.";
+      setError(msg);
+      requestAnimationFrame(() => document.querySelector(".sec_contact .mr-flash")?.scrollIntoView({ behavior: "smooth", block: "center" }));
+    } finally {
+      setPending(false);
+    }
   };
 
-  // /contact 페이지에서는 폼이 스크롤 연출(.aos: 스크롤 전 opacity 0)에 가려지지 않도록 처음부터 표시
-  const fade = sub ? "" : " aos";
-
   return (
-    <section className={`${sub ? "sub_con" : "main_con"} sec_contact`} id="contact">
+    <section className="sub_con sec_contact" id="contact">
       <div className="wrap">
-        <div className={`pic${fade}`}><img src={c.image} alt="" /></div>
+        <div className="pic"><img src={c.image} alt="" /></div>
         <div className="tt wht">
           <div>
             <h3><span><b>{c.title}</b></span></h3>
@@ -44,49 +63,56 @@ export default function ContactSection({ sub = false, steps = [] }: { sub?: bool
           </div>
           <p>{c.desc}</p>
         </div>
-        <div className={`con${fade}`}>
-          {state?.ok ? (
+        <div className="con">
+          {done ? (
             <div className="mr-done">
               <i className="xi-check-circle-o"></i>
               <h4>상담 신청이 접수되었습니다</h4>
               <p>담당자가 확인 후 1영업일 내 연락드리겠습니다. 급한 문의는 {site.contact.headerTel} 로 전화 주세요.</p>
-              <div className="btns"><Link className="mr-btn" href="/">홈으로</Link><Link className="mr-btn line" href="/location">매물 보기</Link></div>
+              <div className="btns">
+                <Link className="mr-btn" href="/">홈으로</Link>
+                <Link className="mr-btn line" href="/analysis/">입지 분석 보기</Link>
+              </div>
             </div>
           ) : (
             <form onSubmit={onSubmit}>
-              {state && !state.ok && state.message ? <div className="mr-flash error" role="alert">{state.message}</div> : null}
+              {error ? <div className="mr-flash error" role="alert">{error}</div> : null}
               <div className="inner">
-                <dl><dt><span>성함</span><i>*</i></dt><dd><input type="text" name="name" id="name1" placeholder="성함을 입력하세요" required /></dd></dl>
-                <dl><dt><span>연락처 (휴대폰번호)</span><i>*</i></dt><dd><input type="text" name="phone" id="phone4_cc" placeholder="휴대폰번호를 입력하세요" required /></dd></dl>
-                <dl><dt><span>이메일 주소</span><i>*</i></dt><dd><input type="text" name="이메일" id="email2" placeholder="이메일주소를 입력하세요" required /></dd></dl>
-                <dl><dt><span>진료과목</span><i>*</i></dt><dd><input type="text" name="진료과목" id="clinic" placeholder="진료과목을 알려주세요" required /></dd></dl>
-                <dl><dt><span>희망 개원 지역</span><i>*</i></dt><dd><input type="text" name="희망 개원 지역" id="area" placeholder="희망 개원 지역을 알려주세요" required /></dd></dl>
-                <dl><dt><span>개원 예정 시기</span><i>*</i></dt><dd>
-                  <select name="개원 예정 시기" id="date" required defaultValue="">
-                    <option value="">개원 예정 시기를 선택해주세요</option>
+                <dl><dt><span>성함</span><i>*</i></dt><dd><input type="text" name="name" id="name1" placeholder="성함을 입력하세요" maxLength={50} required /></dd></dl>
+                <dl><dt><span>연락처 (휴대폰번호)</span><i>*</i></dt><dd><input type="tel" name="phone" id="phone4_cc" placeholder="휴대폰번호를 입력하세요" maxLength={30} required /></dd></dl>
+                <dl><dt><span>이메일 주소</span><i>*</i></dt><dd><input type="email" name="email" id="email2" placeholder="이메일주소를 입력하세요" maxLength={120} required /></dd></dl>
+                <dl><dt><span>진료과목</span><i>*</i></dt><dd><input type="text" name="department" id="clinic" placeholder="진료과목을 알려주세요 (약국은 '약국')" maxLength={50} required /></dd></dl>
+                <dl><dt><span>희망 지역</span><i>*</i></dt><dd><input type="text" name="region" id="area" placeholder="개원·개국을 희망하는 지역을 알려주세요" maxLength={100} required /></dd></dl>
+                <dl><dt><span>개원·개국 예정 시기</span><i>*</i></dt><dd>
+                  <select name="openTiming" id="date" required defaultValue="">
+                    <option value="">예정 시기를 선택해주세요</option>
                     <option value="3개월 이내">3개월 이내</option>
                     <option value="6개월 이내">6개월 이내</option>
+                    <option value="1년 이내">1년 이내</option>
                     <option value="1년 이후">1년 이후</option>
+                    <option value="미정">아직 정하지 않음</option>
                   </select>
                 </dd></dl>
                 <dl><dt><span>자금 규모</span><i>*</i></dt><dd>
-                  <select name="자금 규모" id="money" required defaultValue="">
+                  <select name="budget" id="money" required defaultValue="">
                     <option value="">자금 규모를 선택해주세요</option>
                     <option value="3억 미만">3억 미만</option>
                     <option value="3 ~ 5억">3 ~ 5억</option>
                     <option value="5억 이상">5억 이상</option>
+                    <option value="미정">아직 정하지 않음</option>
                   </select>
                 </dd></dl>
                 <dl><dt><span>보증금</span><i></i></dt><dd>
-                  <select name="보증금" id="deposit" defaultValue="">
+                  <select name="deposit" id="deposit" defaultValue="">
                     <option value="">보증금을 선택해주세요 (선택사항)</option>
+                    <option value="1억 미만">1억 미만</option>
                     <option value="1억~3억">1억~3억</option>
                     <option value="3억~5억">3억~5억</option>
                     <option value="5억 이상">5억 이상</option>
                   </select>
                 </dd></dl>
                 <dl><dt><span>임대료</span><i></i></dt><dd>
-                  <select name="임대료" id="rent" defaultValue="">
+                  <select name="rent" id="rent" defaultValue="">
                     <option value="">임대료를 선택해주세요 (선택사항)</option>
                     <option value="1000만원 미만">1000만원 미만</option>
                     <option value="1000만원~2000만원">1000만원~2000만원</option>
@@ -94,7 +120,7 @@ export default function ContactSection({ sub = false, steps = [] }: { sub?: bool
                   </select>
                 </dd></dl>
                 <dl><dt><span>시설비</span><i></i></dt><dd>
-                  <select name="시설비" id="facility" defaultValue="">
+                  <select name="facilityCost" id="facility" defaultValue="">
                     <option value="">시설비를 선택해주세요 (선택사항)</option>
                     <option value="5천 이하">5천 이하</option>
                     <option value="5천~1억">5천~1억</option>
@@ -102,28 +128,28 @@ export default function ContactSection({ sub = false, steps = [] }: { sub?: bool
                   </select>
                 </dd></dl>
                 <dl><dt><span>예상 연면적</span><i></i></dt><dd>
-                  <select name="예상 연면적" id="floorarea" defaultValue="">
+                  <select name="area" id="floorarea" defaultValue="">
                     <option value="">예상 연면적을 선택해주세요 (선택사항)</option>
-                    <option value="100평 이하">100평 이하</option>
+                    <option value="30평 이하">30평 이하</option>
+                    <option value="30평~100평">30평~100평</option>
                     <option value="100평~150평">100평~150평</option>
                     <option value="150평 이상">150평 이상</option>
                   </select>
                 </dd></dl>
                 <dl><dt><span>시설 유무</span><i></i></dt><dd>
                   <ul>
-                    <li><input type="radio" name="시설유무" value="있음" id="surgery01" defaultChecked /> <label htmlFor="surgery01">있음</label></li>
-                    <li><input type="radio" name="시설유무" value="없음" id="surgery02" /> <label htmlFor="surgery02">없음</label></li>
+                    <li><input type="radio" name="facility" value="있음" id="surgery01" /> <label htmlFor="surgery01">있음</label></li>
+                    <li><input type="radio" name="facility" value="없음" id="surgery02" defaultChecked /> <label htmlFor="surgery02">없음</label></li>
                   </ul>
                 </dd></dl>
                 <dl><dt><span>상담유형</span><i></i></dt><dd>
                   <ul>
-                    <li><input type="radio" name="상담유형" value="신규개원" id="cate01" defaultChecked /> <label htmlFor="cate01">신규개원</label></li>
-                    <li><input type="radio" name="상담유형" value="병원양도" id="cate02" /> <label htmlFor="cate02">병원 양도</label></li>
-                    <li><input type="radio" name="상담유형" value="병원양수" id="cate03" /> <label htmlFor="cate03">병원 양수</label></li>
-                    <li><input type="radio" name="상담유형" value="약국개설" id="cate04" /> <label htmlFor="cate04">약국 개설</label></li>
+                    {types.map((t, i) => (
+                      <li key={t}><input type="radio" name="consultType" value={t} id={`cate${i}`} defaultChecked={i === 0} /> <label htmlFor={`cate${i}`}>{t}</label></li>
+                    ))}
                   </ul>
                 </dd></dl>
-                <dl><dt><span>추가 요청사항</span><i></i></dt><dd><textarea className="ta" id="say2" name="say" placeholder="요청사항을 자유롭게 적어주세요"></textarea></dd></dl>
+                <dl><dt><span>추가 요청사항</span><i></i></dt><dd><textarea className="ta" id="say2" name="message" maxLength={2000} placeholder="검토 중인 후보지 주소나 요청사항을 자유롭게 적어주세요"></textarea></dd></dl>
               </div>
               <div className="bottom">
                 <div className="privacy">
@@ -139,7 +165,7 @@ export default function ContactSection({ sub = false, steps = [] }: { sub?: bool
       </div>
       {steps.length > 0 && (
         <div className="wrap mr-csteps aos2">
-          <div className="head"><em>PROCESS</em><h4>상담은 이렇게 진행됩니다</h4><p>접수부터 입지 투어까지, 세 단계로 빠르게 답을 드립니다.</p></div>
+          <div className="head"><em>PROCESS</em><h4>상담은 이렇게 진행됩니다</h4><p>접수부터 입지 분석 결과 정리까지, 세 단계로 답을 드립니다.</p></div>
           <div className="list">
             {steps.map((st) => (
               <div className="item" key={st.title}>

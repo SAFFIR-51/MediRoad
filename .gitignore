@@ -32,3 +32,14 @@ yarn-error.log*
 .vercel
 
 /.next.nosync
+
+# 카페24 패키지 결과물 · 서버 설정 · 로그/세션 · 로컬 업로드
+/dist
+/server/app/config.php
+/server/app/storage/*
+!/server/app/storage/.htaccess
+!/server/app/storage/.gitkeep
+/server/uploads/listings
+
+# AI 생성 이미지 원본 (tools/images.py 가 크롭·압축해 public/images 로 내보냄)
+/images_src

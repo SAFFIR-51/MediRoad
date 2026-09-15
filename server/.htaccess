@@ -1,0 +1,40 @@
+# 메디로드 웹사이트 (카페24 웹호스팅)
+# Next.js 정적 페이지(out/) + PHP API(api/) + MariaDB
+# 페이지 요청(디렉터리·.html·없는 경로)은 router.php 가 로그인·노출 설정을 확인한 뒤 정적 HTML 을 내보낸다.
+
+AddDefaultCharset UTF-8
+
+<IfModule mod_headers.c>
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  Header always set X-Frame-Options "SAMEORIGIN"
+</IfModule>
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+
+  # SSL 인증서 적용 후 주석을 풀면 http → https 로 이동합니다.
+  # RewriteCond %{HTTPS} off
+  # RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
+
+  # 숨김 파일(.env, .git 등) 차단 (.well-known 은 인증서 발급용으로 허용)
+  RewriteCond %{REQUEST_URI} !^/\.well-known/
+  RewriteRule (^|/)\. - [F,L]
+
+  # PHP 공용 코드·설정, SQL·로그·잠금 파일, 설치용 시드 데이터 차단
+  RewriteRule ^app(/|$) - [F,L]
+  RewriteRule \.(sql|log|lock|ini|sh|md|bak)$ - [F,L]
+  RewriteRule ^install/seed-listings\.json$ - [F,L]
+
+  # 최초 설치 페이지
+  RewriteRule ^install/?$ install/index.php [L]
+
+  # 실제 파일(API PHP, _next, 이미지, 폰트, 업로드 사진 등)은 그대로 서빙
+  RewriteCond %{REQUEST_FILENAME} -f
+  RewriteCond %{REQUEST_URI} !\.html$
+  RewriteRule ^ - [L]
+
+  # 나머지(디렉터리, .html, 없는 경로)는 페이지 라우터로
+  RewriteRule ^ router.php [L,QSA]
+</IfModule>

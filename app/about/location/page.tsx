@@ -1,9 +1,9 @@
-import type { Metadata } from "next";
 import SubTop from "@/components/layout/SubTop";
 import PlaceMap from "@/components/ui/PlaceMap";
-import { content, site, hasRealAddress } from "@/lib/site";
+import { content, site, hasRealAddress, type Visual } from "@/lib/site";
+import { pageMeta } from "@/lib/seo";
 
-export const metadata: Metadata = { title: "오시는 길" };
+export const metadata = pageMeta("/about/location", { title: "오시는 길" });
 
 export default function DirectionsPage() {
   const d = content.directions;
@@ -11,7 +11,7 @@ export default function DirectionsPage() {
   const real = hasRealAddress(info.address);
   return (
     <>
-      <SubTop en={d.en} title={d.title} desc={d.desc} />
+      <SubTop en={d.en} title={d.title} desc={d.desc} visual={((d as { visual?: Visual }).visual) || "map"} bg="about" />
       <section className="sub_con sec_dir sec_white">
         <div className="wrap">
           <div className="map aos"><PlaceMap address={info.address} real={real} label={info.name} /></div>

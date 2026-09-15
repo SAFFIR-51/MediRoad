@@ -1,0 +1,19 @@
+# 매물 사진 업로드 폴더: 스크립트 실행 차단 (사진 파일만 서빙)
+<FilesMatch "\.(php\d?|phtml|phar|pl|py|cgi|shtml|sh|asp|aspx|jsp)$">
+  <IfModule mod_authz_core.c>
+    Require all denied
+  </IfModule>
+  <IfModule !mod_authz_core.c>
+    Order allow,deny
+    Deny from all
+  </IfModule>
+</FilesMatch>
+<IfModule mod_php.c>
+  php_flag engine off
+</IfModule>
+<IfModule mod_php7.c>
+  php_flag engine off
+</IfModule>
+<IfModule mod_php5.c>
+  php_flag engine off
+</IfModule>

@@ -1,41 +1,38 @@
 "use client";
 
-/** 개원입지 목록: 유형 탭 + 지역/업종 필터 + 매물 카드 */
+/** 매물 목록: 유형 탭(임대·분양 / 병원 매매) + 지역·업종 필터 + 매물 카드 */
 import { useEffect, useMemo, useState } from "react";
 import ListingCard from "./ListingCard";
-import type { Listing } from "@/lib/listing-utils";
-import { TYPE_LABEL, regionKey, regionsOf, categoriesOf } from "@/lib/listing-utils";
+import { TAB_LABEL, tabOf, regionKey, regionsOf, categoriesOf, type Listing, type Tab } from "@/lib/listing-utils";
 
-export default function ListingBrowser({ items, initialType, initialRegion = "", initialCat = "" }: { items: Listing[]; initialType: "all" | "lease" | "sale"; initialRegion?: string; initialCat?: string }) {
-  const [type, setType] = useState<"all" | "lease" | "sale">(initialType);
+export default function ListingBrowser({ items, initialType, initialRegion = "", initialCat = "" }: { items: Listing[]; initialType: Tab; initialRegion?: string; initialCat?: string }) {
+  const [type, setType] = useState<Tab>(initialType);
   const [region, setRegion] = useState(initialRegion);
   const [cat, setCat] = useState(initialCat);
 
   useEffect(() => { setType(initialType); }, [initialType]);
-  useEffect(() => { setRegion(initialRegion); }, [initialRegion]);
-  useEffect(() => { setCat(initialCat); }, [initialCat]);
   useEffect(() => {
-    // 홈 히어로 검색바에서 넘어온 조건도 주소에 유지한다
+    // 필터 조건을 주소에 유지한다 (새로고침·공유 시 같은 목록)
     const q = new URLSearchParams();
     if (type !== "all") q.set("type", type);
     if (region) q.set("region", region);
     if (cat) q.set("cat", cat);
     const s = q.toString();
-    window.history.replaceState(null, "", window.location.pathname + (s ? `?${s}` : "") + window.location.hash);
+    window.history.replaceState(window.history.state, "", window.location.pathname + (s ? `?${s}` : "") + window.location.hash);
   }, [type, region, cat]);
 
   const regions = useMemo(() => regionsOf(items), [items]);
   const cats = useMemo(() => categoriesOf(items), [items]);
-  const filtered = items.filter((l) => (type === "all" || l.type === type) && (!region || regionKey(l.region) === region) && (!cat || l.category === cat));
-
-  const tab = (k: "all" | "lease" | "sale", label: string) => (
-    <button type="button" className={type === k ? "on" : ""} onClick={() => setType(k)} key={k}>{label}</button>
-  );
+  const filtered = items.filter((l) => (type === "all" || tabOf(l.dealType) === type) && (!region || regionKey(l.region) === region) && (!cat || l.category === cat));
 
   return (
     <>
       <div className="mr-filter">
-        <div className="tabs">{tab("all", "전체")}{tab("lease", TYPE_LABEL.lease)}{tab("sale", TYPE_LABEL.sale)}</div>
+        <div className="tabs">
+          {(["all", "lease", "sale"] as Tab[]).map((k) => (
+            <button type="button" className={type === k ? "on" : ""} onClick={() => setType(k)} key={k}>{TAB_LABEL[k]}</button>
+          ))}
+        </div>
         <div className="sel">
           <select value={region} onChange={(e) => setRegion(e.target.value)} aria-label="지역">
             <option value="">지역 전체</option>
@@ -51,7 +48,7 @@ export default function ListingBrowser({ items, initialType, initialRegion = "",
       <div className="mr-cards" id="cards">
         {filtered.map((l) => <ListingCard l={l} key={l.code} />)}
       </div>
-      <div className={`mr-empty${filtered.length ? "" : " show"}`}>조건에 맞는 매물이 없습니다. 상담을 신청해 주시면 비공개 매물을 안내해 드립니다.</div>
+      <div className={`mr-empty${filtered.length ? "" : " show"}`}>조건에 맞는 매물이 없습니다. 원하시는 지역·진료과를 상담으로 알려주시면 입지 분석과 함께 검토해 드립니다.</div>
     </>
   );
 }

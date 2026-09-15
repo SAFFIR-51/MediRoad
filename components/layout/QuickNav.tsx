@@ -3,13 +3,16 @@
 import Link from "next/link";
 import { site } from "@/lib/site";
 
-/** 플로팅 퀵메뉴: 온라인 상담 · 전화 상담 · 매물정보 · TOP (PC 우측 하단 원형, 모바일 하단 바). 블로그·유튜브 등 외부 채널은 운영하지 않음. */
+/**
+ * 플로팅 퀵메뉴: 온라인 상담 · 전화 상담 · 매물 정보 · TOP (PC 우측 하단 원형, 모바일 하단 바).
+ * 매물 정보는 회원 전용이라 서버 로그인 확인을 거치도록 새로고침 이동(<a>)이고, 노출 설정이 꺼지면 CSS(.loc-only)로 숨는다.
+ */
 export default function QuickNav() {
   const tel = site.contact.headerTel;
-  const items: { href: string; label: string; icon?: string; img?: string; external?: boolean }[] = [
-    { href: "/contact", icon: "xi-comment-o", label: "온라인 상담" },
-    { href: `tel:${tel}`, icon: "xi-call", label: "전화 상담" },
-    { href: "/location", img: "/brand/icons/property.png", label: "매물정보" },
+  const items: { href: string; label: string; icon?: string; img?: string; kind: "page" | "hard" | "tel"; cls?: string }[] = [
+    { href: "/contact/", icon: "xi-comment-o", label: "온라인 상담", kind: "page" },
+    { href: `tel:${tel}`, icon: "xi-call", label: "전화 상담", kind: "tel" },
+    { href: "/location/", img: "/brand/icons/property.png", label: "매물 정보", kind: "hard", cls: "loc-only" },
   ];
   const goTop = () => window.scrollTo({ top: 0, behavior: "smooth" });
 
@@ -24,13 +27,10 @@ export default function QuickNav() {
                 <figcaption>{it.label}</figcaption>
               </figure>
             );
-            const isPage = it.href.startsWith("/");
             return (
-              <li key={it.label}>
-                {isPage
-                  ? <Link href={it.href}>{inner}</Link>
-                  : <a href={it.href} target={it.external && it.href !== "#" ? "_blank" : undefined} rel="noopener">{inner}</a>}
-                {isPage ? <Link href={it.href} className="h">{it.label}</Link> : <a href={it.href} className="h">{it.label}</a>}
+              <li key={it.label} className={it.cls}>
+                {it.kind === "page" ? <Link href={it.href}>{inner}</Link> : <a href={it.href}>{inner}</a>}
+                {it.kind === "page" ? <Link href={it.href} className="h">{it.label}</Link> : <a href={it.href} className="h">{it.label}</a>}
               </li>
             );
           })}

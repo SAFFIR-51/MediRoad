@@ -1,12 +1,11 @@
 {
-  "_comment": "사업자 정보를 여기서만 바꾸면 홈/소개/개인정보처리방침/푸터 전체에 반영됩니다.",
+  "_comment": "사업자 정보를 여기서만 바꾸면 홈/소개/개인정보처리방침/푸터 전체에 반영됩니다. 메인 키워드는 '입지 분석'. 법인 상호(메디로드 개원 컨설팅)는 company·info·privacy 의 상호 자리에서만 쓴다. SEO 키워드·페이지별 메타는 content/seo.json.",
   "siteUrl": "https://www.mediroad.co.kr",
   "brand": {
     "name": "메디로드",
     "nameEn": "MediRoad",
     "title": "메디로드 MediRoad",
-    "description": "입지 분석부터 안정적인 운영까지, 병·의원 개원 컨설팅 메디로드",
-    "keywords": "메디로드, 개원컨설팅, 병원 개원, 의원 개원, 개원 입지 분석, 병원 양수양도, 병원 경영마케팅, 약국 개설",
+    "description": "진료과별 배후 수요와 경쟁 환경을 데이터로 검토하는 병·의원 개원 입지 분석 메디로드",
     "copyright": "MEDIROAD.",
     "colors": {
       "_comment": "메디로드 로고 색상 기준 팔레트. primary(포인트) / dark(호버·진한 배경) / light(어두운 배경 위 강조)",
@@ -24,6 +23,13 @@
       "symbol": "/brand/symbol.png",
       "favicon": "/brand/favicon.png",
       "og": "/brand/og.png"
+    }
+  },
+  "seo": {
+    "_comment": "서치콘솔(google)·서치어드바이저(naver) 소유 확인 메타태그 값. 비우면 출력하지 않는다.",
+    "verification": {
+      "google": "",
+      "naver": ""
     }
   },
   "contact": {
@@ -60,171 +66,204 @@
     "effectiveDate": "2026년 00월 00일"
   },
   "menu": {
-    "_comment": "헤더 메뉴 4개 (홈·회사소개·컨설팅·입지). 상담신청은 헤더 '상담신청' 버튼과 플로팅 버튼으로 이동. en 은 현재 화면에 표시하지 않음.",
+    "_comment": "헤더 메뉴 5개 (홈·회사소개·입지 분석·개원 지원·매물 정보). 상담신청은 헤더 '상담신청' 버튼과 플로팅 버튼. locOnly:true 항목은 관리자에서 매물 정보 메뉴를 끄면 숨겨진다. en 은 현재 화면에 표시하지 않음.",
     "items": [
-      {
-        "label": "홈",
-        "en": "Home",
-        "href": "/"
-      },
+      { "label": "홈", "en": "Home", "href": "/" },
       {
         "label": "회사소개",
         "en": "About Us",
-        "href": "/about",
+        "href": "/about/",
         "children": [
-          {
-            "label": "회사소개",
-            "href": "/about"
-          },
-          {
-            "label": "인사말",
-            "href": "/about/greeting"
-          },
-          {
-            "label": "오시는 길",
-            "href": "/about/location"
-          }
+          { "label": "회사소개", "href": "/about/" },
+          { "label": "인사말", "href": "/about/greeting/" },
+          { "label": "오시는 길", "href": "/about/location/" }
         ]
       },
       {
-        "label": "컨설팅",
-        "en": "Consulting",
-        "href": "/consulting",
+        "label": "입지 분석",
+        "en": "Site Analysis",
+        "href": "/analysis/",
         "children": [
-          {
-            "label": "컨설팅 소개",
-            "href": "/consulting"
-          },
-          {
-            "label": "병·의원 개원 컨설팅",
-            "href": "/consulting/opening"
-          },
-          {
-            "label": "병·의원 양수양도",
-            "href": "/consulting/transfer"
-          },
-          {
-            "label": "병·의원 경영마케팅",
-            "href": "/consulting/marketing"
-          },
-          {
-            "label": "약국 개설 컨설팅",
-            "href": "/consulting/pharmacy"
-          }
+          { "label": "입지 분석 소개", "href": "/analysis/" },
+          { "label": "병·의원 개원 입지 분석", "href": "/analysis/clinic/" },
+          { "label": "약국 개국 입지 분석", "href": "/analysis/pharmacy/" },
+          { "label": "병원 양수·양도 분석", "href": "/analysis/transfer/" }
         ]
       },
       {
-        "label": "입지",
-        "en": "Location",
-        "href": "/location",
+        "label": "개원 지원",
+        "en": "Opening Support",
+        "href": "/support/",
         "children": [
-          {
-            "label": "임대분양정보",
-            "href": "/location?type=lease"
-          },
-          {
-            "label": "병원매매정보",
-            "href": "/location?type=sale"
-          }
+          { "label": "개원 지원 소개", "href": "/support/" },
+          { "label": "인증·개설·허가 지원", "href": "/support/licensing/" },
+          { "label": "병·의원 경영마케팅", "href": "/support/marketing/" },
+          { "label": "폐업 정리 지원", "href": "/support/closure/" }
+        ]
+      },
+      {
+        "label": "매물 정보",
+        "en": "Listings",
+        "href": "/location/",
+        "locOnly": true,
+        "children": [
+          { "label": "임대·분양 정보", "href": "/location/?type=lease", "locOnly": true },
+          { "label": "병원 매매 정보", "href": "/location/?type=sale", "locOnly": true }
         ]
       }
     ],
     "contactButton": {
       "label": "상담신청",
-      "href": "/contact"
+      "href": "/contact/"
     }
   },
   "pages": {
-    "_comment": "하위 페이지 상단 비주얼 문구.",
+    "_comment": "하위 페이지 상단 비주얼 문구. visual 은 분석 보드 종류 (비우면 문구만). 분야별 상세 페이지 문구는 services.json, 인사말·오시는 길은 content.json greeting·directions.",
     "/about": {
       "en": "About MediRoad",
       "title": "메디로드 소개",
-      "desc": "개원 현장 경험과 데이터로 입지 분석부터 개원 후 운영까지 함께 설계하는 개원 파트너입니다"
+      "desc": "진료과별 배후 수요와 경쟁 환경을 데이터로 검토해 개원 입지 결정을 돕는 병·의원 입지 분석 파트너입니다",
+      "visual": "report"
     },
-    "/consulting": {
-      "en": "Consulting",
-      "title": "컨설팅",
-      "desc": "병·의원 개원과 양수양도, 경영마케팅, 약국 개설까지 함께합니다"
+    "/analysis": {
+      "en": "Site Analysis",
+      "title": "입지 분석",
+      "desc": "병·의원 개원, 약국 개국, 병원 양수·양도까지 결정 전에 필요한 입지 근거를 정리합니다",
+      "visual": "competition"
+    },
+    "/support": {
+      "en": "Opening Support",
+      "title": "개원 지원",
+      "desc": "인증·인허가, 경영마케팅, 폐업 정리까지 필요한 부분을 전문 파트너와 이어 드립니다",
+      "visual": "licensing"
     },
     "/contact": {
       "en": "Contact Us",
       "title": "상담신청",
-      "desc": "진료과·희망 지역·예산을 알려주시면 개원 방향과 일정을 정리해 드립니다"
+      "desc": "진료과·희망 지역·예산을 알려주시면 입지 분석 방향과 일정을 정리해 드립니다",
+      "visual": "report"
+    },
+    "/location": {
+      "en": "Listings",
+      "title": "매물 정보",
+      "desc": "로드맵공인중개사사무소가 의뢰받아 게시하는 병·의원 매물 정보입니다 (회원 전용)",
+      "visual": "catchment"
+    },
+    "/login": {
+      "en": "Login",
+      "title": "로그인",
+      "desc": "매물 정보는 회원만 확인하실 수 있습니다",
+      "visual": ""
+    },
+    "/signup": {
+      "en": "Join",
+      "title": "회원가입",
+      "desc": "간단한 가입 후 병·의원 매물 정보를 확인하세요",
+      "visual": ""
+    },
+    "/forgot-password": {
+      "en": "Find Password",
+      "title": "비밀번호 찾기",
+      "desc": "가입하신 이메일로 비밀번호 재설정 링크를 보내 드립니다",
+      "visual": ""
+    },
+    "/reset-password": {
+      "en": "Reset Password",
+      "title": "비밀번호 재설정",
+      "desc": "새로 사용할 비밀번호를 입력해 주세요",
+      "visual": ""
     },
     "/terms": {
       "en": "Terms",
       "title": "이용약관",
-      "desc": ""
+      "desc": "",
+      "visual": ""
     },
     "/privacy": {
       "en": "Privacy Policy",
       "title": "개인정보처리방침",
-      "desc": ""
+      "desc": "",
+      "visual": ""
+    },
+    "/admin": {
+      "en": "Admin",
+      "title": "관리자",
+      "desc": "",
+      "visual": ""
     }
   },
   "home": {
     "_comment": "홈 화면 섹션 문구.",
     "services": {
-      "_comment": "홈 컨설팅 분야. 좌측 인덱스 목록 + 우측 대형 비주얼(img) 구성. 약국은 짧은 상세 페이지(소개 + 핵심 서비스)로 연결.",
-      "title": "컨설팅",
-      "en": "Consulting",
-      "desc": "병·의원 개원부터 양수양도, 경영마케팅, 약국 개설까지 필요한 부분을 함께합니다.",
+      "_comment": "홈 분야 목록 6개 (입지 분석 3 + 개원 지원 3). 좌측 인덱스 목록 + 우측 대형 비주얼(img).",
+      "title": "입지 분석",
+      "en": "Site Analysis",
+      "desc": "입지 분석을 중심으로, 개원에 필요한 절차와 운영까지 이어 드립니다.",
       "items": [
         {
-          "en": "Clinic Opening Consulting",
-          "title": "병·의원 개원 컨설팅",
-          "desc": [
-            "입지 분석부터 개원 준비까지",
-            "전 과정의 일정을 함께 관리합니다."
-          ],
-          "href": "/consulting/opening",
-          "img": "/images/photo-service-hospital.jpg"
+          "en": "Clinic Site Analysis",
+          "title": "병·의원 개원 입지 분석",
+          "desc": ["배후 세대·연령 구조·경쟁 의료기관을", "같은 기준으로 비교해", "진료과에 맞는 자리를 찾습니다."],
+          "href": "/analysis/clinic/",
+          "img": "/images/field-clinic.jpg",
+          "group": "analysis"
         },
         {
-          "en": "Transfer & Acquisition",
-          "title": "병·의원 양수양도",
-          "desc": [
-            "매출·자산 현황을 분석하고",
-            "세무·법률 전문가와 함께",
-            "안전한 진행 방향을 제시합니다."
-          ],
-          "href": "/consulting/transfer",
-          "img": "/images/photo-service-handshake.jpg"
+          "en": "Pharmacy Site Analysis",
+          "title": "약국 개국 입지 분석",
+          "desc": ["인근 의원의 처방 흐름과", "환자 동선을 분석해", "약국 자리를 검토합니다."],
+          "href": "/analysis/pharmacy/",
+          "img": "/images/field-pharmacy.jpg",
+          "group": "analysis"
+        },
+        {
+          "en": "Transfer Analysis",
+          "title": "병원 양수·양도 분석",
+          "desc": ["매출 추이와 상권 변화,", "잔여 임대 조건을 함께 분석해", "판단 근거를 정리합니다."],
+          "href": "/analysis/transfer/",
+          "img": "/images/field-transfer.jpg",
+          "group": "analysis"
+        },
+        {
+          "en": "Licensing & Certification",
+          "title": "인증·개설·허가 지원",
+          "desc": ["전문 행정사와 함께", "개설신고·허가·인증·외국인환자 유치", "서류 절차를 도와드립니다."],
+          "href": "/support/licensing/",
+          "img": "/images/field-licensing.jpg",
+          "group": "support"
         },
         {
           "en": "Management & Marketing",
           "title": "병·의원 경영마케팅",
-          "desc": [
-            "신환 유치와 구환 관리를 위한",
-            "마케팅·운영 전략을 제안합니다."
-          ],
-          "href": "/consulting/marketing",
-          "img": "/images/photo-service-team.jpg"
+          "desc": ["경영마케팅 전문기업 플라노바와 함께", "상권에 맞는 마케팅 전략을 세웁니다."],
+          "href": "/support/marketing/",
+          "img": "/images/field-marketing.jpg",
+          "group": "support"
         },
         {
-          "en": "Pharmacy Consulting",
-          "title": "약국 개설 컨설팅",
-          "desc": [
-            "약국 개설 입지의 상권을 분석하고",
-            "개설등록 절차를 안내합니다."
-          ],
-          "href": "/consulting/pharmacy",
-          "img": "/images/photo-field-pharmacy.jpg"
+          "en": "Closure Support",
+          "title": "폐업 정리 지원",
+          "desc": ["양도 전환 검토부터 신고·이관까지", "손실을 줄이는 순서로 정리합니다."],
+          "href": "/support/closure/",
+          "img": "/images/field-closure.jpg",
+          "group": "support"
         }
       ]
     },
     "location": {
-      "en": "Location",
+      "en": "Listings",
       "title": "개원 매물 정보",
       "desc": "로드맵공인중개사사무소가 의뢰받아 게시하는 병·의원 임대·분양 및 병원 매매 매물입니다",
-      "more": "/location"
+      "more": "/location/",
+      "lockedTitle": "매물 정보는 회원 전용입니다",
+      "lockedDesc": "로그인하시면 로드맵공인중개사사무소가 게시한 병·의원 임대·분양·매매 매물을 확인하실 수 있습니다."
     },
     "contact": {
       "title": "상담신청",
       "en": "CONSULTATION",
-      "headline": "개원, 어디서부터 시작해야 할지 막막하신가요?",
+      "headline": "개원 자리, 데이터로 먼저 확인해 보세요",
       "desc": "진료과와 희망 지역, 예산만 알려주시면 1영업일 안에 담당자가 연락드립니다.",
-      "image": "/images/photo-contact-building.jpg"
+      "image": "/images/contact-bg.jpg"
     }
   }
 }

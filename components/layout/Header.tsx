@@ -4,11 +4,37 @@
  * 원본 헤더 구조/동작 그대로:
  *  - PC: 메뉴 항목에 마우스를 올리면 그 항목의 하위 메뉴만 바로 아래로 펼쳐진다 (원본 #gnb > ul > li > div 구조)
  *  - 모바일/전체메뉴: 햄버거 클릭 시 body.nav-opened + .site-map 표시, 헤더 요소 숨김
+ * 매물 정보 메뉴(locOnly)는 .loc-only 로 표시해 관리자 설정(data-loc="off")에서 CSS 로 숨긴다.
+ * 매물 링크는 서버(router.php)의 로그인 확인을 거치도록 새로고침 이동(<a>)을 쓴다.
+ * 로그인 · 로그아웃 · 관리자 링크는 <html data-auth> 에 따라 CSS 로 전환된다.
  */
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { menuItems, site } from "@/lib/site";
+import { menuItems, site, type MenuChild } from "@/lib/site";
+import { loginHref } from "@/lib/api";
+import { logout } from "@/lib/auth-client";
+
+function NavLink({ item, onClick }: { item: MenuChild; onClick?: () => void }) {
+  if (item.locOnly) return <a href={item.href} onClick={onClick}>{item.label}</a>;
+  return <Link href={item.href} onClick={onClick}>{item.label}</Link>;
+}
+
+function AuthLinks({ onNavigate }: { onNavigate?: () => void }) {
+  const toLogin = (e: React.MouseEvent) => {
+    e.preventDefault();
+    onNavigate?.();
+    window.location.href = loginHref();
+  };
+  return (
+    <>
+      <li className="auth auth-guest"><a href="/login/" onClick={toLogin}><span>로그인</span></a></li>
+      <li className="auth auth-guest"><a href="/signup/" onClick={onNavigate}><span>회원가입</span></a></li>
+      <li className="auth auth-admin"><a href="/admin/" onClick={onNavigate}><span>관리자</span></a></li>
+      <li className="auth auth-member"><button type="button" onClick={() => logout()}><span>로그아웃</span></button></li>
+    </>
+  );
+}
 
 export default function Header() {
   const pathname = usePathname();
@@ -37,8 +63,8 @@ export default function Header() {
     }
   }, [open]);
 
-
   const tel = site.contact.headerTel;
+  const close = () => setOpen(false);
 
   return (
     <>
@@ -53,12 +79,12 @@ export default function Header() {
           <nav id="gnb" ref={gnbRef}>
             <ul className="depth1">
               {menuItems.map((m) => (
-                <li key={m.href} className={m.children ? "has-child" : ""}>
-                  <Link href={m.href}>{m.label}</Link>
+                <li key={m.href} className={`${m.children ? "has-child" : ""}${m.locOnly ? " loc-only" : ""}`}>
+                  <NavLink item={m} />
                   {m.children && (
                     <div>
                       <ul className="depth2">
-                        {m.children.map((c) => <li key={c.href}><Link href={c.href}>{c.label}</Link></li>)}
+                        {m.children.map((c) => <li key={c.href} className={c.locOnly ? "loc-only" : undefined}><NavLink item={c} /></li>)}
                       </ul>
                     </div>
                   )}
@@ -69,6 +95,7 @@ export default function Header() {
           <div className="btn-area">
             <div className="sns">
               <ul>
+                <AuthLinks />
                 <li className="contact"><Link href={site.menu.contactButton.href}><span>{site.menu.contactButton.label}</span></Link></li>
                 <li className="tel"><a href={`tel:${tel}`} aria-label={`전화 ${tel}`}><i className="xi-call"></i><span>전화</span></a></li>
               </ul>
@@ -86,17 +113,21 @@ export default function Header() {
           <div className="v-align">
             <ul className="depth1">
               {menuItems.map((m) => (
-                <li key={m.href} className={m.children ? "has-child" : ""}>
-                  <Link href={m.href} onClick={() => setOpen(false)}>{m.label}</Link>
+                <li key={m.href} className={`${m.children ? "has-child" : ""}${m.locOnly ? " loc-only" : ""}`}>
+                  <NavLink item={m} onClick={close} />
                   {m.children && (
                     <div>
                       <ul className="depth2">
-                        {m.children.map((c) => <li key={c.href}><Link href={c.href} onClick={() => setOpen(false)}>{c.label}</Link></li>)}
+                        {m.children.map((c) => <li key={c.href} className={c.locOnly ? "loc-only" : undefined}><NavLink item={c} onClick={close} /></li>)}
                       </ul>
                     </div>
                   )}
                 </li>
               ))}
+            </ul>
+            <ul className="util">
+              <li><Link href={site.menu.contactButton.href} onClick={close}><span>{site.menu.contactButton.label}</span></Link></li>
+              <AuthLinks onNavigate={close} />
             </ul>
           </div>
         </div>

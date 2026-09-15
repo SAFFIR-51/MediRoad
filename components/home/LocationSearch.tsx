@@ -1,11 +1,9 @@
 "use client";
 
-/** 추천 개원지 섹션의 지역·업종 검색바. 검색하면 조건이 걸린 개원입지 목록(/location)으로 이동한다. */
+/** 홈 매물 섹션의 지역·업종 검색바. 검색하면 조건이 걸린 매물 목록(/location/)으로 이동한다 (서버 로그인 확인을 거치도록 새로고침 이동). */
 import { useState } from "react";
-import { useRouter } from "next/navigation";
 
 export default function LocationSearch({ regions, categories }: { regions: string[]; categories: string[] }) {
-  const router = useRouter();
   const [region, setRegion] = useState("");
   const [cat, setCat] = useState("");
 
@@ -15,7 +13,7 @@ export default function LocationSearch({ regions, categories }: { regions: strin
     if (region) q.set("region", region);
     if (cat) q.set("cat", cat);
     const s = q.toString();
-    router.push(`/location${s ? `?${s}` : ""}#list`);
+    window.location.href = `/location/${s ? `?${s}` : ""}#list`;
   };
 
   return (
@@ -34,7 +32,7 @@ export default function LocationSearch({ regions, categories }: { regions: strin
           {categories.map((c) => <option key={c} value={c}>{c}</option>)}
         </select>
       </div>
-      <button type="submit"><i className="xi-search"></i><span>개원입지 검색</span></button>
+      <button type="submit"><i className="xi-search"></i><span>매물 검색</span></button>
     </form>
   );
 }

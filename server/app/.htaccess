@@ -1,0 +1,8 @@
+# PHP 공용 코드·설정·로그·세션: 웹에서 직접 접근 차단
+<IfModule mod_authz_core.c>
+  Require all denied
+</IfModule>
+<IfModule !mod_authz_core.c>
+  Order allow,deny
+  Deny from all
+</IfModule>

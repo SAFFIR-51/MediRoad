@@ -1,0 +1,38 @@
+# 로컬 테스트 환경 (카페24 웹호스팅 흉내): PHP 8.2 + Apache + MariaDB 10.6
+#   npm run package          # out/ + server/ → dist/cafe24
+#   docker compose up -d --build
+#   http://localhost:8080/install/  (최초 1회 관리자 계정 생성)
+# config.php 없이 아래 환경변수로 설정을 읽는다 (app/config.sample.php). 메일은 app/storage/mail.log 에 기록.
+services:
+  web:
+    build: ./docker/php
+    ports:
+      - "8080:80"
+    volumes:
+      - ./dist/cafe24:/var/www/html
+    environment:
+      MR_DB_HOST: db
+      MR_DB_NAME: mediroad
+      MR_DB_USER: mediroad
+      MR_DB_PASS: mediroad
+      MR_SITE_URL: http://localhost:8080
+      MR_MAIL_MODE: log
+      MR_NOTIFY_EMAIL: notify@example.com
+    depends_on:
+      - db
+
+  db:
+    image: mariadb:10.6
+    environment:
+      MARIADB_DATABASE: mediroad
+      MARIADB_USER: mediroad
+      MARIADB_PASSWORD: mediroad
+      MARIADB_ROOT_PASSWORD: mediroad-root
+    command: ["--character-set-server=utf8mb4", "--collation-server=utf8mb4_unicode_ci"]
+    ports:
+      - "3307:3306"
+    volumes:
+      - mediroad-db:/var/lib/mysql
+
+volumes:
+  mediroad-db:

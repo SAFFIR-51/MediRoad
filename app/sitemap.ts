@@ -1,13 +1,17 @@
 import type { MetadataRoute } from "next";
-import { site } from "@/lib/site";
-import { allListings, listingUrl } from "@/lib/listings";
+import { services, serviceHref } from "@/lib/site";
+import { siteUrl } from "@/lib/seo";
 
-export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const base = process.env.NEXT_PUBLIC_SITE_URL || site.siteUrl;
-  const pages = ["/", "/about", "/about/greeting", "/about/location", "/consulting", "/location", "/location?type=lease", "/location?type=sale", "/consulting/opening", "/consulting/transfer", "/consulting/marketing", "/consulting/pharmacy", "/contact", "/terms", "/privacy"];
-  const listings = allListings();
+export const dynamic = "force-static";
+
+/** 공개 페이지만 넣는다. 매물 정보(회원 전용)·로그인·관리자는 검색엔진에 노출하지 않는다. */
+export default function sitemap(): MetadataRoute.Sitemap {
+  const top = ["/", "/about/", "/about/greeting/", "/about/location/", "/analysis/", "/support/", "/contact/"];
+  const fields = services.map(serviceHref);
+  const docs = ["/terms/", "/privacy/"];
   return [
-    ...pages.map((p) => ({ url: base + p, changeFrequency: "weekly" as const, priority: p === "/" ? 1 : 0.7 })),
-    ...listings.filter((l) => l.status === "open").map((l) => ({ url: base + listingUrl(l.code), lastModified: l.dateListed, changeFrequency: "weekly" as const, priority: 0.6 })),
+    ...top.map((p) => ({ url: siteUrl + p, changeFrequency: "weekly" as const, priority: p === "/" ? 1 : 0.8 })),
+    ...fields.map((p) => ({ url: siteUrl + p, changeFrequency: "monthly" as const, priority: 0.8 })),
+    ...docs.map((p) => ({ url: siteUrl + p, changeFrequency: "yearly" as const, priority: 0.2 })),
   ];
 }
