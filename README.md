@@ -80,6 +80,6 @@ components/   layout · home · analysis(분석 보드) · service(분야 페이
 lib/          site(설정·문구) · seo · api(PHP API 호출) · auth-client · listing-utils · image-resize · privacy · clinics
 content/      site.config · content · services · seo · listings(예시) · popup · roadmap · images
 server/       카페24 웹 루트에 올라가는 PHP (router.php · api/ · app/ · install/ · uploads/)
-tools/        package.mjs(카페24 패키지) · import-images.py(AI 이미지 반영) · images.py(구 스톡 사진 생성기)
+tools/        package.mjs(카페24 패키지) · import-images.py(AI 이미지 반영) · e2e-test.mjs(통합 테스트)
 docs/         개편 사양 · 카페24 배포 가이드 · 이미지 제작 목록
 ```

@@ -983,35 +983,7 @@ body.scrolled #header .container-fluid .btn-area .sns li.mr-member a,body.scroll
 .mr-timeline li p{font-size:0.9em;color:#444;}
 @media all and (max-width: 1024px) { .mr-stat-row{grid-template-columns:repeat(2, minmax(0,1fr));margin-bottom:40px;} .mr-stat-row .item{padding:24px 12px;border-bottom:1px solid #e6e6e6;} .mr-stat-row .item:nth-child(2n){border-right:0;} .mr-stat-row .item b{font-size:1.9em;} .mr-timeline li{gap:16px;padding:14px 0;} .mr-timeline li em{width:56px;} }
 
-/* ---- home block 10 ---- */
-.sec_service{padding-bottom:0;}
-.sec_service .con{display:flex;flex-wrap:wrap;}
-.sec_service .con .item{position:relative;width:50%;height:597px;overflow:hidden;}
-.sec_service .con .item a{position:relative;z-index:1;display:flex;justify-content:center;align-items:center;width:100%;height:100%;}
-.sec_service .con .item .bg{position:absolute;top:0;left:0;width:100%;height:100%;transform:scale(1.1);filter:blur(9px);transition:all 0.5s;}
-.sec_service .con .item:hover .bg{transform:scale(1.01);filter:none;}
-.sec_service .con .item01 .bg{background:url(/images/photo-service-hospital.jpg) no-repeat center center/cover;}
-.sec_service .con .item02 .bg{background:url(/images/photo-service-handshake.jpg) no-repeat center center/cover;}
-.sec_service .con .item03 .bg{background:url(/images/photo-service-sign.jpg) no-repeat center center/cover;}
-.sec_service .con .item04 .bg{background:url(/images/photo-service-team.jpg) no-repeat center center/cover;}
-.sec_service .con .item .txt{position:relative;z-index:1;text-align:center;}
-.sec_service .con .item .txt *{color:#fff;}
-.sec_service .con .item .txt h4{padding:40px 0 34px;font-size:2.5em;font-weight:600;}
-.sec_service .con .item .txt p{font-size:0.9em;color:rgba(255,255,255,0.5);}
-.sec_service .con .item .txt i{display:flex;justify-content:center;align-items:center;width:74px;aspect-ratio:1;margin:0 auto;margin-top:40px;font-size:1.2em;border-radius:50%;background:rgba(255,255,255,0.1);}
-
-@media all and (max-width: 1024px) {
-    
-    .sec_service{padding-bottom:70px;}
-    .sec_service .con{display:block;}
-    .sec_service .con .item{width:100%;max-width:420px;height:250px;margin:0 auto;}
-    .sec_service .con .item + .item{margin-top:20px;}
-    .sec_service .con .item .bg{filter:none;}
-    .sec_service .con .item .txt em{font-size:0.75em;}
-    .sec_service .con .item .txt h4{padding:14px 0 12px;font-size:1.4em;}
-    .sec_service .con .item .txt p{font-size:0.8em;}
-    .sec_service .con .item .txt i{width:34px;margin-top:12px;font-size:0.8em;}
-}
+/* home block 10: 홈 이미지 카드(.sec_service) — 좌측 인덱스 목록(.mr-svcindex)으로 대체되어 삭제 (2026-09) */
 
 /* ---- home block 11 ---- */
 /* ===== 메디로드 추가 컴포넌트 (원본 디자인 문법: 얇은 선 · 평면 · 작은 필 버튼) ===== */
@@ -1165,90 +1137,7 @@ body.scrolled #header .container-fluid .btn-area .sns li.mr-member a,body.scroll
     .mr-cards{grid-template-columns:1fr;}
 }
 
-/* ---- home block 12 ---- */
-.sec_expert{background:url(/images/bg-light-lines.jpg) no-repeat center center/cover;}
-.sec_expert .con{position:relative;max-width:950px;margin:0 auto;margin-top:80px;}
-.sec_expert .con .donut-wrap{max-width:950px;margin:0 auto;}
-.sec_expert .con svg{display:block;width:100%;height:auto;}
-.sec_expert .con .slice{cursor:pointer;stroke:none;}
-.sec_expert .con .slice:focus{outline:none;}
-
-/* 각 아이템용 래퍼: .con 기준으로 전체를 덮는 캔버스 */
-.sec_expert .con .slice-wrap{
-  pointer-events:none;        /* 기본은 아래 SVG로 이벤트 통과 */
-}
-
-/* 아이템별 컨텐츠: 각 slice-wrap 기준으로 absolute 배치 */
-.sec_expert .con .item-pop{
-  position:absolute;
-  width:250px;aspect-ratio:1;border-radius:50%;
-  background:rgba(255,255,255,0.6);
-  box-shadow:0 0 25px 15px rgba(0,0,0,0.15);
-  opacity:0;
-  transition:opacity .15s ease;
-  backdrop-filter:blur(10px);
-  pointer-events:auto;
-}
-.sec_expert #item1{top:-20px;left:700px;}
-.sec_expert #item2{top:340px;left:840px;}
-.sec_expert #item3{top:700px;left:720px;}
-.sec_expert #item4{top:780px;left:350px;}
-.sec_expert #item5{top:700px;left:-20px;}
-.sec_expert #item6{top:340px;left:-160px;}
-.sec_expert #item7{top:-20px;left:-20px;}
-.sec_expert #item8{top:-120px;left:350px;}
-.sec_expert .con .item-pop a{display:flex;justify-content:center;align-items:center;width:100%;height:100%;}
-.sec_expert .con .item-pop dl{padding-top:10px;text-align:center;}
-.sec_expert .con .item-pop dt{font-size:1.2em;font-weight:600;}
-.sec_expert .con .item-pop dd{padding-top:14px;font-size:0.9em;line-height:130%;}
-.sec_expert .con .item-pop span{position:absolute;bottom:14px;right:-10px;display:flex;justify-content:center;align-items:center;gap:4px;width:64px;aspect-ratio:1;font-size:0.8em;border-radius:50%;background:var(--gold);color:#fff;}
-.sec_expert .con .item-pop span img{display:block;width:20px;}
-.sec_expert .con .item-pop.on{ opacity:1; }
-
-.sec_expert .con .box{position:absolute;top:50%;left:50%;transform:translate(-50%, -50%);width:450px;aspect-ratio:1;padding:8px;border-radius:50%;background:url(/images/bg-ring.jpg) no-repeat center center/100% 100%;box-shadow:0 0 40px 0 rgba(0,0,0,0.15);}
-.sec_expert .con .box > div{display:flex;justify-content:center;align-items:center;width:100%;height:100%;border-radius:50%;background:#fff;}
-.sec_expert .con .box .txt{text-align:center;}
-.sec_expert .con .box .txt h5{font-size:1.4em;font-weight:700;line-height:140%;}
-.sec_expert .con .box .txt h5 b{color:var(--gold);}
-.sec_expert .con .box .txt p{padding-top:15px;color:#707070;}
-
-@media all and (max-width: 1200px) {
-    
-    .sec_expert .con{margin-top:0;}
-    .sec_expert .con .donut-wrap{display:none;}
-    .sec_expert .con .cont{display:grid;grid-template-columns:repeat(3, minmax(100px, 250px));justify-content:center;gap:30px;}
-    .sec_expert .con .item-pop{position:relative;top:unset !important;left:unset !important;opacity:1;box-shadow:none;}
-    .sec_expert .con .item-pop:before{content:'';position:absolute;top:0;left:0;width:100%;height:100%;border-radius:50%;background:rgba(0,0,0,0.4);}
-    .sec_expert #item1{background:url(/images/photo-expert-docs.jpg) no-repeat center center/cover;}
-    .sec_expert #item2{background:url(/images/photo-expert-steth.jpg) no-repeat center center/cover;}
-    .sec_expert #item3{background:url(/images/photo-expert-laptop.jpg) no-repeat center center/cover;}
-    .sec_expert #item4{background:url(/images/photo-expert-desk.jpg) no-repeat center center/cover;}
-    .sec_expert #item5{background:url(/images/photo-expert-room.jpg) no-repeat center center/cover;}
-    .sec_expert #item6{background:url(/images/photo-expert-reception.jpg) no-repeat center center/cover;}
-    .sec_expert #item7{background:url(/images/photo-expert-team.jpg) no-repeat center center/cover;}
-    .sec_expert #item8{background:url(/images/photo-expert-sign.jpg) no-repeat center center/cover;}
-    .sec_expert .con .item-pop a{position:relative;z-index:1;}
-    .sec_expert .con .item-pop dl *{color:#fff;}
-    
-    .sec_expert .con .box{position:unset;transform:none;width:100%;aspect-ratio:unset;padding:5px;margin:0 auto;margin-top:60px;border-radius:20px;}
-    .sec_expert .con .box > div{padding:40px 20px;border-radius:20px;}
-}
-@media all and (max-width: 1024px) {
-    
-    .sec_expert .con .cont{grid-template-columns:repeat(2, minmax(100px, 152px));gap:14px;}
-    .sec_expert .con .item-pop{width:150px;}
-    .sec_expert .con .item-pop dt{font-size:0.9em;}
-    .sec_expert .con .item-pop dd{padding-top:8px;font-size:0.65em;}
-    .sec_expert .con .item-pop span{bottom:0;right:0;gap:3px;width:40px;font-size:0.7em;}
-    .sec_expert .con .item-pop span img{width:10px;}
-    
-    .sec_expert .con .box{border-radius:10px;padding:3px;margin-top:40px;}
-    .sec_expert .con .box > div{padding:30px 14px;border-radius:10px;}
-    .sec_expert .con .box .txt h5{font-size:0.9em;}
-    .sec_expert .con .box .txt h5 br{display:none;}
-    .sec_expert .con .box .txt p{padding-top:10px;font-size:0.75em;}
-    .sec_expert .con .box .txt p br{display:none;}
-}
+/* home block 12: 전문가 그룹 도넛(.sec_expert) — 섹션 삭제로 함께 제거 (2026-09) */
 
 /* ---- home block 13 ---- */
 .sec_pf{}
