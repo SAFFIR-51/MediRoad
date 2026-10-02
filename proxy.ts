@@ -23,6 +23,14 @@ export function proxy(req: NextRequest) {
     return NextResponse.redirect(url);
   }
 
+  // 매물 상세는 데모 상태에서도 회원만 볼 수 있다
+  if (pathname.startsWith("/location/view") && !loggedIn) {
+    const url = req.nextUrl.clone();
+    url.pathname = "/login/";
+    url.search = `?next=${encodeURIComponent(pathname + search)}`;
+    return NextResponse.redirect(url);
+  }
+
   if (pathname.startsWith("/location") && dbReady && !loggedIn) {
     const url = req.nextUrl.clone();
     url.pathname = "/login/";
