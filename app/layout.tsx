@@ -8,6 +8,7 @@ import QuickNav from "@/components/layout/QuickNav";
 import CtaBand from "@/components/layout/CtaBand";
 import ScrollEffects from "@/components/effects/ScrollEffects";
 import BodyClass from "@/components/effects/BodyClass";
+import AuthState from "@/components/effects/AuthState";
 import JsonLd from "@/components/seo/JsonLd";
 
 const verification = (site as { seo?: { verification?: { google?: string; naver?: string } } }).seo?.verification ?? {};
@@ -57,11 +58,12 @@ const business = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    // data-auth · data-loc 속성은 카페24 서버(router.php)가 응답할 때 넣는다
-    <html lang="ko" suppressHydrationWarning>
+    // data-auth · data-loc 는 AuthState 가 브라우저에서 채운다 (헤더·퀵메뉴·홈 매물 섹션이 CSS 로 이 값을 본다)
+    <html lang="ko" data-auth="guest" data-loc="on" suppressHydrationWarning>
       <body>
         <JsonLd data={business} />
         <BodyClass />
+        <AuthState />
         <Header />
         {children}
         <CtaBand />
