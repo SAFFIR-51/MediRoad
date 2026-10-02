@@ -18,7 +18,7 @@ export type MenuChild = { label: string; href: string; locOnly?: boolean };
 export type MenuItem = { label: string; en?: string; href: string; locOnly?: boolean; children?: MenuChild[] };
 export type SubTopText = { en: string; title: string; desc: string; visual?: Visual };
 
-export type ServiceGroup = "analysis" | "support";
+export type ServiceGroup = "analysis" | "support" | "partners";
 export type ProcessStep = { no: string; icon: string; title: string; desc: string };
 export type Service = {
   slug: string;
@@ -34,7 +34,8 @@ export type Service = {
   value: string;
   analysis?: { title: string; desc?: string; items: { icon: string; label: string; desc: string }[] };
   report?: { title: string; desc?: string; items: string[] };
-  partner?: { label?: string; name: string; headline: string; desc: string; items?: string[]; note?: string; logo?: string };
+  /** wordmark: 로고가 없을 때 표시할 이름(HTML). 긴 이름의 줄바꿈 위치를 <br>로 지정 */
+  partner?: { label?: string; name: string; wordmark?: string; headline: string; desc: string; items?: string[]; note?: string; logo?: string };
   process?: ProcessStep[];
   keysDesc?: string;
   points?: { title: string; desc: string; image: string }[];
@@ -49,9 +50,11 @@ export const popups = popupJson.items;
 export const menuItems = site.menu.items as MenuItem[];
 export const pageTexts = site.pages as unknown as Record<string, SubTopText>;
 
-export const GROUPS: Record<ServiceGroup, { title: string; en: string; href: string; visual: Visual }> = {
-  analysis: { title: "입지 분석", en: "Site Analysis", href: "/analysis/", visual: "report" },
-  support: { title: "개원 지원", en: "Opening Support", href: "/support/", visual: "licensing" },
+/** bg: 서브 비주얼 배경 사진 (SubTop data-bg). 파트너는 전용 사진이 없어 개원 지원 사진을 쓴다. */
+export const GROUPS: Record<ServiceGroup, { title: string; en: string; href: string; visual: Visual; bg: "analysis" | "support" }> = {
+  partners: { title: "파트너", en: "Partners", href: "/partners/", visual: "", bg: "support" },
+  analysis: { title: "입지 분석", en: "Site Analysis", href: "/analysis/", visual: "report", bg: "analysis" },
+  support: { title: "개원 지원", en: "Opening Support", href: "/support/", visual: "licensing", bg: "support" },
 };
 
 export const servicesIn = (group: ServiceGroup) => services.filter((s) => s.group === group);

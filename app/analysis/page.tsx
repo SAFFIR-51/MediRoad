@@ -13,7 +13,7 @@ export default function AnalysisPage() {
   const top = subtopFor("/analysis", {});
   return (
     <>
-      <SubTop {...top} visual={top.visual || GROUPS.analysis.visual} bg="analysis" />
+      <SubTop {...top} visual={top.visual || GROUPS.analysis.visual} bg={GROUPS.analysis.bg} />
       <FieldIndex group="analysis" intro={c.analysisIntro} />
       <AnalysisMethod sub />
       {c.analysisProcess?.length ? (
@@ -41,7 +41,7 @@ export default function AnalysisPage() {
             <div>
               <em>{GROUPS.support.en}</em>
               <h4>입지를 정한 다음, 개원까지 필요한 절차도 함께 챙깁니다</h4>
-              <p>전문 행정사와 함께하는 인증·개설·허가 절차, 플라노바와 함께하는 경영마케팅, 폐업 정리까지 이어서 지원합니다.</p>
+              <p>개원 타임라인과 단계별 체크리스트, 전문 행정사와 함께하는 인증·개설·허가 절차, 폐업 정리까지 이어서 지원합니다.</p>
             </div>
             <Link className="mr-btn" href={GROUPS.support.href}>개원 지원 보기</Link>
           </div>

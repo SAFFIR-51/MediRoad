@@ -1,0 +1,8 @@
+{
+  "redirects": [
+    { "source": "/support/marketing", "destination": "/partners/marketing/", "permanent": true },
+    { "source": "/support/marketing/", "destination": "/partners/marketing/", "permanent": true },
+    { "source": "/consulting/marketing", "destination": "/partners/marketing/", "permanent": true },
+    { "source": "/consulting/marketing/", "destination": "/partners/marketing/", "permanent": true }
+  ]
+}

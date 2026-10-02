@@ -13,7 +13,7 @@ import PrivacyModal from "@/components/ui/PrivacyModal";
 
 type Step = { img: string; no?: string; title: string; desc: string };
 
-const DEFAULT_TYPES = ["개원 입지 분석", "약국 개국 입지", "병원 양수·양도", "인증·인허가", "경영마케팅", "폐업 정리"];
+const DEFAULT_TYPES = ["개원 입지 분석", "약국 개국 입지", "병원 양수·양도", "인증·인허가", "개원 일정·준비 전반", "파트너 분야 (마케팅·인테리어·장비 등)", "폐업 정리"];
 
 export default function ContactSection({ steps = [] }: { steps?: Step[] }) {
   const c = site.home.contact;

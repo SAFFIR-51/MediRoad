@@ -6,7 +6,7 @@ export const dynamic = "force-static";
 
 /** 공개 페이지만 넣는다. 매물 정보(회원 전용)·로그인·관리자는 검색엔진에 노출하지 않는다. */
 export default function sitemap(): MetadataRoute.Sitemap {
-  const top = ["/", "/about/", "/about/greeting/", "/about/location/", "/analysis/", "/support/", "/contact/"];
+  const top = ["/", "/about/", "/about/greeting/", "/about/location/", "/analysis/", "/support/", "/partners/", "/contact/"];
   const fields = services.map(serviceHref);
   const docs = ["/terms/", "/privacy/"];
   return [

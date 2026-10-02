@@ -15,7 +15,8 @@ const MR_LEGACY_REDIRECTS = array(
     '/consulting/opening' => '/analysis/clinic/',
     '/consulting/pharmacy' => '/analysis/pharmacy/',
     '/consulting/transfer' => '/analysis/transfer/',
-    '/consulting/marketing' => '/support/marketing/',
+    '/consulting/marketing' => '/partners/marketing/',
+    '/support/marketing' => '/partners/marketing/',
     '/consulting/closure' => '/support/closure/',
     '/consulting/roadmap' => '/analysis/clinic/',
 );

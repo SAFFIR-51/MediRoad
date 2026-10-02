@@ -113,7 +113,7 @@ await t("설치 화면 또는 설치 완료 상태 확인", async () => {
 });
 
 section("1. 라우터 · 정적 페이지");
-const pages = ["/", "/about/", "/about/greeting/", "/about/location/", "/analysis/", "/analysis/clinic/", "/analysis/pharmacy/", "/analysis/transfer/", "/support/", "/support/licensing/", "/support/marketing/", "/support/closure/", "/contact/", "/terms/", "/privacy/", "/login/", "/signup/", "/forgot-password/", "/reset-password/"];
+const pages = ["/", "/about/", "/about/greeting/", "/about/location/", "/analysis/", "/analysis/clinic/", "/analysis/pharmacy/", "/analysis/transfer/", "/support/", "/support/licensing/", "/support/closure/", "/partners/", "/partners/consulting/", "/partners/marketing/", "/partners/interior/", "/partners/equipment/", "/partners/supplies/", "/partners/waste/", "/partners/real-estate/", "/contact/", "/terms/", "/privacy/", "/login/", "/signup/", "/forgot-password/", "/reset-password/"];
 await t(`공개 페이지 ${pages.length}개 200 · 제목 · 설명 · canonical · data-auth 주입`, async () => {
   for (const p of pages) {
     const r = await guest.get(p);
@@ -134,8 +134,8 @@ await t("트레일링 슬래시 301 (/analysis → /analysis/)", async () => {
   const r = await guest.get("/analysis");
   eq(r.status, 301, "상태"); ok(r.location.endsWith("/analysis/"), `location ${r.location}`);
 });
-await t("옛 컨설팅 주소 301 이동", async () => {
-  for (const [from, to] of [["/consulting/", "/analysis/"], ["/consulting/opening/", "/analysis/clinic/"], ["/consulting/pharmacy/", "/analysis/pharmacy/"], ["/consulting/marketing/", "/support/marketing/"], ["/consulting/closure/", "/support/closure/"], ["/consulting/roadmap/", "/analysis/clinic/"]]) {
+await t("옛 컨설팅 · 경영마케팅 주소 301 이동", async () => {
+  for (const [from, to] of [["/consulting/", "/analysis/"], ["/consulting/opening/", "/analysis/clinic/"], ["/consulting/pharmacy/", "/analysis/pharmacy/"], ["/consulting/marketing/", "/partners/marketing/"], ["/support/marketing/", "/partners/marketing/"], ["/consulting/closure/", "/support/closure/"], ["/consulting/roadmap/", "/analysis/clinic/"]]) {
     const r = await guest.get(from);
     eq(r.status, 301, `${from}`); ok(r.location.endsWith(to), `${from} → ${r.location}`);
   }

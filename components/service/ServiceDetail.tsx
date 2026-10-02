@@ -5,6 +5,7 @@ import AnalysisBoard from "@/components/analysis/AnalysisBoard";
 import JsonLd from "@/components/seo/JsonLd";
 import { GROUPS, servicesIn, serviceHref, site, type Service } from "@/lib/site";
 import { siteUrl } from "@/lib/seo";
+import type { ReactNode } from "react";
 
 const strip = (html: string) => html.replace(/<[^>]+>/g, "").replace(/\s+/g, " ").trim();
 
@@ -13,8 +14,9 @@ const strip = (html: string) => html.replace(/<[^>]+>/g, "").replace(/\s+/g, " "
  * 구성: 상단 비주얼(분석 보드) → 소개(헤드라인·사진·필요성과 가치) → 분석 항목 → 리포트 구성 → 협력 파트너
  *      → 진행 절차 → 핵심 제공 서비스 → 자주 묻는 질문 → 같은 그룹 다른 분야. 비어 있는 항목은 섹션을 건너뛴다.
  * 문구는 content/services.json, 페이지 끝 상담 CTA 는 레이아웃 공통 CtaBand.
+ * 파트너 페이지(/partners/<slug>/)도 같은 구성을 쓰고, 분야 가이드 등은 children 으로 FAQ 앞에 넣는다.
  */
-export default function ServiceDetail({ s }: { s: Service }) {
+export default function ServiceDetail({ s, keysTitle = "핵심 제공 서비스", children }: { s: Service; keysTitle?: string; children?: ReactNode }) {
   const g = GROUPS[s.group];
   const others = servicesIn(s.group).filter((o) => o.slug !== s.slug);
   const url = `${siteUrl}${serviceHref(s)}`;
@@ -50,7 +52,7 @@ export default function ServiceDetail({ s }: { s: Service }) {
   return (
     <>
       <JsonLd data={ld} />
-      <SubTop en={s.en} title={s.title} desc={s.desc} visual={s.visual} bg={s.group} />
+      <SubTop en={s.en} title={s.title} desc={s.desc} visual={s.visual} bg={g.bg} />
 
       <section className="sub_con sec_svc_hero">
         <div className="wrap">
@@ -119,7 +121,9 @@ export default function ServiceDetail({ s }: { s: Service }) {
             <div className="mr-partner aos">
               <div className="brand">
                 <em className="mr-pill">{s.partner.label || "PARTNER"}</em>
-                {s.partner.logo ? <img src={s.partner.logo} alt={s.partner.name} /> : <strong className="wordmark">{s.partner.name}</strong>}
+                {s.partner.logo ? <img src={s.partner.logo} alt={s.partner.name} /> : s.partner.wordmark
+                  ? <strong className={`wordmark${s.partner.name.length > 6 ? " long" : ""}`} dangerouslySetInnerHTML={{ __html: s.partner.wordmark }} />
+                  : <strong className={`wordmark${s.partner.name.length > 6 ? " long" : ""}`}>{s.partner.name}</strong>}
               </div>
               <div className="body">
                 <h3 dangerouslySetInnerHTML={{ __html: s.partner.headline }} />
@@ -156,13 +160,15 @@ export default function ServiceDetail({ s }: { s: Service }) {
         <section className="sub_con sec_svc_keys">
           <div className="wrap">
             <div className="mr-keys-head">
-              <div className="l aos"><em className="mr-pill">Our Key Deliverables</em><h3>핵심 제공 서비스</h3></div>
+              <div className="l aos"><em className="mr-pill">Our Key Deliverables</em><h3>{keysTitle}</h3></div>
               {s.keysDesc ? <p className="aos2" dangerouslySetInnerHTML={{ __html: s.keysDesc }} /> : null}
             </div>
             <KeyCards items={s.points} />
           </div>
         </section>
       ) : null}
+
+      {children}
 
       {s.faq?.length ? (
         <section className="sub_con sec_faq">
