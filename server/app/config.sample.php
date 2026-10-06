@@ -17,11 +17,11 @@ return array(
     ),
 
     // 사이트 주소 (비밀번호 재설정 메일 링크에 사용, 끝에 / 없이)
-    'site_url' => getenv('MR_SITE_URL') ?: 'https://www.mediroad.co.kr',
+    'site_url' => getenv('MR_SITE_URL') ?: 'https://www.mediroadmap.com',
 
     // 메일: 'mail' = PHP mail() 로 발송, 'log' = 보내지 않고 app/storage/mail.log 에 기록
     'mail_mode' => getenv('MR_MAIL_MODE') ?: 'mail',
-    'mail_from' => getenv('MR_MAIL_FROM') ?: 'no-reply@mediroad.co.kr',
+    'mail_from' => getenv('MR_MAIL_FROM') ?: 'no-reply@mediroadmap.com',
     'mail_from_name' => '메디로드',
 
     // 새 상담 문의 알림을 받을 주소 (비우면 알림 메일을 보내지 않음)

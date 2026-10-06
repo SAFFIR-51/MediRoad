@@ -9,18 +9,15 @@
     "package": "next build && node tools/package.mjs"
   },
   "dependencies": {
-    "@vercel/blob": "^2.8.0",
     "gsap": "^3.13.0",
     "leaflet": "^1.9.4",
     "next": "16.3.4",
-    "pg": "^8.23.1",
     "react": "19.2.8",
     "react-dom": "19.2.8"
   },
   "devDependencies": {
     "@types/leaflet": "^1.9.0",
     "@types/node": "^20",
-    "@types/pg": "^8.23.1",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "typescript": "^5"

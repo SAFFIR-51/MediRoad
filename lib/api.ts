@@ -26,10 +26,7 @@ export async function api<T = Record<string, unknown>>(path: string, opts: Optio
   }
   let res: Response;
   try {
-    // 경로는 옛 PHP 이름(auth/login.php)으로 들어와도 Next 서버 라우트(/api/auth/login/)로 보낸다.
-    // trailingSlash 설정 때문에 끝에 / 가 필요하다 (없으면 308 로 한 번 더 돈다).
-    const [base, query] = path.replace(/\.php/, "").split("?");
-    res = await fetch(`/api/${base.replace(/\/$/, "")}/${query ? `?${query}` : ""}`, init);
+    res = await fetch(`/api/${path}`, init);
   } catch {
     throw new ApiError(0, "서버에 연결하지 못했습니다. 잠시 후 다시 시도해 주세요.");
   }
