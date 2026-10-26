@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "package": "next build && node tools/package.mjs"
+    "package": "next build && node tools/package.mjs",
+    "deploy": "node tools/deploy.mjs"
   },
   "dependencies": {
     "gsap": "^3.13.0",

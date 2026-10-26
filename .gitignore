@@ -46,3 +46,6 @@ yarn-error.log*
 
 # FTP·DB 접속 정보 (비밀번호 포함, 커밋 금지)
 Ftp.md
+
+# 배포 기록 (tools/deploy.mjs 가 마지막으로 올린 파일 해시)
+.deploy-manifest.json

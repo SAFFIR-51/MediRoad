@@ -324,7 +324,7 @@ function licensing(): Board {
     ["요양기관 현황신고", "건강보험심사평가원", "todo"],
     ["외국인환자 유치의료기관 등록", "한국보건산업진흥원", "option"],
     ["의료기관 인증", "의료기관평가인증원", "option"],
-    ["전문병원 지정", "보건복지부", "option"],
+    ["전문 병의원 지정 컨설팅", "보건복지부", "option"],
   ];
   const gap = 38;
   const yOf = (i: number) => 28 + i * gap;
