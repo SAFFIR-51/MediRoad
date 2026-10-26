@@ -43,3 +43,6 @@ yarn-error.log*
 
 # AI 생성 이미지 원본 (tools/images.py 가 크롭·압축해 public/images 로 내보냄)
 /images_src
+
+# FTP·DB 접속 정보 (비밀번호 포함, 커밋 금지)
+Ftp.md

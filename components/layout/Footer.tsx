@@ -17,6 +17,7 @@ export default function Footer() {
             <li><dl><dt>E-mail</dt><dd>{c.email}</dd></dl></li>
           </ul>
         </div>
+        <p className="legal"><a href="/terms/">이용약관</a><a href="/privacy/"><b>개인정보처리방침</b></a></p>
         <p className="copy">COPYRIGHT &copy; <b>{site.brand.copyright}</b> ALL RIGHTS RESERVED.</p>
       </div>
     </footer>

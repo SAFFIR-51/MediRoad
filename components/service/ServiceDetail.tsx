@@ -5,6 +5,7 @@ import AnalysisBoard from "@/components/analysis/AnalysisBoard";
 import JsonLd from "@/components/seo/JsonLd";
 import { GROUPS, servicesIn, serviceHref, site, type Service } from "@/lib/site";
 import { siteUrl } from "@/lib/seo";
+import { ORG_ID } from "@/lib/aeo";
 import type { ReactNode } from "react";
 
 const strip = (html: string) => html.replace(/<[^>]+>/g, "").replace(/\s+/g, " ").trim();
@@ -29,7 +30,7 @@ export default function ServiceDetail({ s, keysTitle = "핵심 제공 서비스"
       description: strip(s.desc),
       url,
       areaServed: ["서울특별시", "경기도", "인천광역시"],
-      provider: { "@type": "ProfessionalService", name: site.brand.name, url: `${siteUrl}/`, telephone: site.company.tel },
+      provider: { "@type": "ProfessionalService", "@id": ORG_ID, name: site.brand.name, url: `${siteUrl}/`, telephone: site.company.tel },
     },
     {
       "@context": "https://schema.org",

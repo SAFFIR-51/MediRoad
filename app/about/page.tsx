@@ -1,7 +1,9 @@
 import SubTop from "@/components/layout/SubTop";
 import { Lines } from "@/components/ui/Text";
 import { content, subtopFor } from "@/lib/site";
-import { pageMeta } from "@/lib/seo";
+import { pageMeta, siteUrl } from "@/lib/seo";
+import JsonLd from "@/components/seo/JsonLd";
+import { breadcrumbLd, ORG_ID } from "@/lib/aeo";
 
 export const metadata = pageMeta("/about", { title: "회사소개" });
 
@@ -16,6 +18,7 @@ export default function AboutPage() {
   const top = subtopFor("/about");
   return (
     <>
+      <JsonLd data={[breadcrumbLd([["회사소개", "/about/"]]), { "@context": "https://schema.org", "@type": "AboutPage", url: `${siteUrl}/about/`, name: "메디로드 회사소개", about: { "@id": ORG_ID } }]} />
       <SubTop {...top} visual={top.visual || "catchment"} bg="about" />
       <section className="sub_con sec_about">
         <div className="wrap">

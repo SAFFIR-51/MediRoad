@@ -4,6 +4,9 @@ import FieldIndex from "@/components/service/FieldIndex";
 import AnalysisMethod from "@/components/analysis/AnalysisMethod";
 import { content, subtopFor, GROUPS, type ProcessStep } from "@/lib/site";
 import { pageMeta } from "@/lib/seo";
+import HubFaq from "@/components/service/HubFaq";
+import JsonLd from "@/components/seo/JsonLd";
+import { hubFaq, breadcrumbLd, fieldListLd } from "@/lib/aeo";
 
 export const metadata = pageMeta("/analysis", { title: "입지 분석" });
 
@@ -13,6 +16,7 @@ export default function AnalysisPage() {
   const top = subtopFor("/analysis", {});
   return (
     <>
+      <JsonLd data={[breadcrumbLd([["입지 분석", "/analysis/"]]), fieldListLd("analysis")]} />
       <SubTop {...top} visual={top.visual || GROUPS.analysis.visual} bg={GROUPS.analysis.bg} />
       <FieldIndex group="analysis" intro={c.analysisIntro} />
       <AnalysisMethod sub />
@@ -35,6 +39,7 @@ export default function AnalysisPage() {
           </div>
         </section>
       ) : null}
+      <HubFaq items={hubFaq.analysis} title="입지 분석 자주 묻는 질문" />
       <section className="sub_con sec_bridge">
         <div className="wrap">
           <div className="mr-bridge aos">

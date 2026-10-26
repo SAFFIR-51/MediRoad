@@ -324,18 +324,21 @@ function licensing(): Board {
     ["요양기관 현황신고", "건강보험심사평가원", "todo"],
     ["외국인환자 유치의료기관 등록", "한국보건산업진흥원", "option"],
     ["의료기관 인증", "의료기관평가인증원", "option"],
+    ["전문병원 지정", "보건복지부", "option"],
   ];
+  const gap = 38;
+  const yOf = (i: number) => 28 + i * gap;
   const chip = { done: ["완료", C.sky, C.ink], doing: ["진행 중", C.white, C.ink], todo: ["예정", "rgba(255,255,255,0.14)", C.white], option: ["선택", "rgba(242,179,91,0.2)", C.warm] } as const;
   return {
     title: "인허가 진행 현황",
     tag: "LICENSING",
-    stats: [["진행 단계", "3 / 6"], ["서류 작성 · 제출", "전문 행정사"], ["요건 점검 · 일정", "메디로드"]],
+    stats: [["진행 단계", `3 / ${steps.length}`], ["서류 작성 · 제출", "전문 행정사"], ["요건 점검 · 일정", "메디로드"]],
     svg: (
       <>
-        <line x1={30} x2={30} y1={30} y2={250} stroke="rgba(255,255,255,0.2)" strokeWidth={2} />
-        <line x1={30} x2={30} y1={30} y2={118} stroke={C.sky} strokeWidth={2} />
+        <line x1={30} x2={30} y1={yOf(0)} y2={yOf(steps.length - 1)} stroke="rgba(255,255,255,0.2)" strokeWidth={2} />
+        <line x1={30} x2={30} y1={yOf(0)} y2={yOf(2)} stroke={C.sky} strokeWidth={2} />
         {steps.map(([t, org, st], i) => {
-          const y = 30 + i * 44;
+          const y = yOf(i);
           const [label, bg, fg] = chip[st];
           return (
             <g key={t}>

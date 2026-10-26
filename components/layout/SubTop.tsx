@@ -17,7 +17,7 @@ export default function SubTop({ en, title, desc, compact = false, visual = "", 
         <div className="txt">
           <em className="aos">{en}</em>
           <div className="inner aos2">
-            <h2>{title}</h2>
+            <h1>{title}</h1>
             {desc ? <p dangerouslySetInnerHTML={{ __html: desc }} /> : null}
           </div>
         </div>

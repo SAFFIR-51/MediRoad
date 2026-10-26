@@ -38,7 +38,7 @@ export function pageMeta(path: string, fallback: Entry = {}, opts: { noindex?: b
       title: title ? (title.includes(site.brand.name) ? title : `${title} | ${site.brand.name}`) : seoGlobal.title,
       description,
       url,
-      images: [{ url: site.brand.logo.og, width: 1200, height: 630 }],
+      images: [{ url: site.brand.logo.og, width: 1200, height: 630, alt: site.brand.title }],
     },
     ...(opts.noindex ? { robots: { index: false, follow: false } } : {}),
   };

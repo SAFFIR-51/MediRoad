@@ -88,17 +88,17 @@ body.scrolled #header .container-fluid .btn-area .sns li.auth span{color:#1E4B7A
 .subtop.has-visual .subtop-in{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,560px);gap:60px;align-items:center;max-width:1440px;margin:0 auto;padding:110px 60px 0;}
 .subtop.has-visual .txt{padding-top:0;text-align:left;}
 .subtop.has-visual .txt em:after{left:0;transform:none;}
-.subtop.has-visual .txt h2{font-size:2.7em;word-break:keep-all;}
+.subtop.has-visual .txt :is(h1,h2){font-size:2.7em;word-break:keep-all;}
 .subtop.has-visual .txt p{max-width:560px;line-height:175%;word-break:keep-all;}
 .subtop.has-visual .vis{animation:fade_top 1s 0.25s both;}
-@media (max-width:1400px){ .subtop.has-visual .subtop-in{grid-template-columns:minmax(0,1fr) minmax(0,480px);gap:40px;padding:110px 40px 0;} .subtop.has-visual .txt h2{font-size:2.3em;} }
+@media (max-width:1400px){ .subtop.has-visual .subtop-in{grid-template-columns:minmax(0,1fr) minmax(0,480px);gap:40px;padding:110px 40px 0;} .subtop.has-visual .txt :is(h1,h2){font-size:2.3em;} }
 @media (max-width:1024px){
   .subtop .bg,.subtop[data-bg] .bg{background-image:url(/images/sub-mobile.jpg);}
   .subtop.has-visual{height:auto;min-height:calc(var(--vh, 1vh) * 70);padding:96px 0 46px;}
   .subtop.has-visual .subtop-in{grid-template-columns:1fr;gap:26px;padding:0 20px;}
   .subtop.has-visual .txt{text-align:center;}
   .subtop.has-visual .txt em:after{left:50%;transform:translateX(-50%);}
-  .subtop.has-visual .txt h2{font-size:2em;}
+  .subtop.has-visual .txt :is(h1,h2){font-size:2em;}
   .subtop.has-visual .txt p{margin:0 auto;}
   .subtop.has-visual .vis{width:100%;max-width:480px;margin:0 auto;}
 }
@@ -633,3 +633,44 @@ body.scrolled #header .container-fluid .btn-area .sns li.auth span{color:#1E4B7A
 .mr-plan .checks .box i{color:inherit;font-size:0.8em;}
 /* 좁은 화면: 한 칸짜리 막대에도 들어가도록 "STEP" 글자는 숨기고 번호만 */
 @media (max-width:480px){ .mr-gantt .bar .w{display:none;} .mr-gantt .row.head span{font-size:0.78em;} }
+
+/* ---- 헤더 로고: 마크 이미지 + 상호 텍스트 (legacy.css 의 이미지 로고 규칙을 덮어쓴다) ---- */
+#header .container-fluid .logo.brand{width:auto !important;font-size:16px;margin:0;}
+#header .container-fluid .logo.brand .brand-link{display:flex;align-items:center;gap:12px;text-decoration:none;}
+#header .container-fluid .logo.brand .brand-mark{position:relative;display:block;flex:none;width:110px;height:43px;}
+#header .container-fluid .logo.brand .brand-mark img{position:absolute !important;inset:0 !important;top:0 !important;left:0 !important;display:block !important;width:100% !important;height:100%;object-fit:contain;content:normal !important;transition:opacity .3s;}
+#header .container-fluid .logo.brand .brand-mark img.c{opacity:0;}
+#header .container-fluid .logo.brand .brand-mark img.w{opacity:1;}
+#header .container-fluid .logo.brand .brand-name{display:flex;flex-direction:column;line-height:1;white-space:nowrap;}
+#header .container-fluid .logo.brand .brand-name strong{font-size:25px;font-weight:700;letter-spacing:-0.02em;color:#fff;transition:color .3s;}
+#header .container-fluid .logo.brand .brand-name em{margin-top:6px;font-style:normal;font-size:8.5px;font-weight:500;letter-spacing:0.12em;color:rgba(255,255,255,0.55);transition:color .3s;}
+body.scrolled #header .container-fluid .logo.brand .brand-mark img.c{opacity:1;}
+body.scrolled #header .container-fluid .logo.brand .brand-mark img.w{opacity:0;}
+body.scrolled #header .container-fluid .logo.brand .brand-name strong{color:#0B2545;}
+body.scrolled #header .container-fluid .logo.brand .brand-name em{color:#5b6b80;}
+@media (max-width:1279px){
+  #header .container-fluid .logo.brand{position:absolute;top:50%;left:15px;transform:translateY(-50%);}
+  #header .container-fluid .logo.brand .brand-link{gap:8px;}
+  #header .container-fluid .logo.brand .brand-mark{width:64px;height:25px;}
+  #header .container-fluid .logo.brand .brand-name strong{font-size:17px;}
+  #header .container-fluid .logo.brand .brand-name em{display:none;}
+}
+
+/* 통합 FAQ (/faq/) */
+.sec_faq_hub .mr-faq{scroll-margin-top:110px;}
+.sec_faq_hub .mr-faq + .mr-faq{margin-top:90px;}
+.mr-faq-toc{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:70px;}
+.mr-faq-toc a{display:inline-flex;align-items:center;gap:8px;padding:10px 18px;border:1px solid #ddd;border-radius:999px;font-size:0.9em;font-weight:600;color:#111;}
+.mr-faq-toc a:hover{border-color:var(--accent);color:var(--accent);}
+.mr-faq-toc a em{font-style:normal;font-size:0.85em;color:#999;}
+.mr-faq .head .more{display:inline-flex;align-items:center;gap:6px;margin-top:16px;font-size:0.86em;color:#666;}
+.mr-faq .head .more:hover{color:var(--accent);}
+.mr-faq details p .from{display:table;margin-top:10px;font-size:0.95em;font-weight:600;color:var(--accent);}
+.mr-faq details p .from::after{content:" →";}
+@media (max-width:1024px){ .sec_faq_hub .mr-faq + .mr-faq{margin-top:56px;} .mr-faq-toc{margin-bottom:40px;} }
+
+/* 푸터 약관·개인정보처리방침 링크 */
+.footer .legal{display:flex;justify-content:center;gap:16px;margin:0 0 8px;font-size:0.9em;}
+.footer .legal a{color:rgba(255,255,255,0.7);text-decoration:none;}
+.footer .legal a b{color:#fff;font-weight:600;}
+.footer .legal a:hover{text-decoration:underline;}

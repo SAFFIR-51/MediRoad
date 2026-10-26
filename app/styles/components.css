@@ -24,7 +24,7 @@
 .mr-btn,.mr-cta a,.sec_contact .bottom button,.mr-svc-others .list a{border-radius:8px;}
 .subtop .txt em{font-style:normal;padding-bottom:22px;font-size:0.85em;letter-spacing:0.22em;text-transform:uppercase;}
 .subtop .txt em:after{width:28px;height:3px;background:var(--light);}
-.subtop .txt h2{padding-top:26px;}
+.subtop .txt :is(h1,h2){padding-top:26px;}
 /* 푸터: 네이비 배경, 글자는 전부 흰색 */
 .footer{background:var(--dark);border-top:0;}
 .footer .container > img{width:150px;}
@@ -97,7 +97,7 @@
 .subtop .bg:after{content:'';position:absolute;inset:0;background:linear-gradient(to bottom, rgba(0,0,0,0.46) 0%, rgba(0,0,0,0.34) 55%, rgba(0,0,0,0.40) 100%);}
 .subtop.compact{height:380px;}
 .subtop.compact .txt{padding-top:60px;}
-.subtop.compact .txt h2{font-size:2em;}
+.subtop.compact .txt :is(h1,h2){font-size:2em;}
 .subtop .txt em.aos,.subtop .txt .inner.aos2{opacity:1;}
 @media (max-width:1024px){ .subtop.compact{height:260px;} .subtop.compact .txt{padding-top:20px;} }
 

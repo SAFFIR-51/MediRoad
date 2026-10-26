@@ -1,7 +1,9 @@
 import SubTop from "@/components/layout/SubTop";
 import PlaceMap from "@/components/ui/PlaceMap";
 import { content, site, hasRealAddress, type Visual } from "@/lib/site";
-import { pageMeta } from "@/lib/seo";
+import { pageMeta, siteUrl } from "@/lib/seo";
+import JsonLd from "@/components/seo/JsonLd";
+import { breadcrumbLd, ORG_ID } from "@/lib/aeo";
 
 export const metadata = pageMeta("/about/location", { title: "오시는 길" });
 
@@ -11,6 +13,7 @@ export default function DirectionsPage() {
   const real = hasRealAddress(info.address);
   return (
     <>
+      <JsonLd data={[breadcrumbLd([["회사소개", "/about/"], ["오시는 길", "/about/location/"]]), { "@context": "https://schema.org", "@type": "ContactPage", url: `${siteUrl}/about/location/`, name: "메디로드 오시는 길", about: { "@id": ORG_ID } }]} />
       <SubTop en={d.en} title={d.title} desc={d.desc} visual={((d as { visual?: Visual }).visual) || "map"} bg="about" />
       <section className="sub_con sec_dir sec_white">
         <div className="wrap">

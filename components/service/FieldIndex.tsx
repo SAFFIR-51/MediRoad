@@ -23,7 +23,7 @@ export default function FieldIndex({ group, intro }: { group: ServiceGroup; intr
             const bullets = (s.analysis?.items.map((a) => a.label) ?? s.points?.map((p) => p.title) ?? []).slice(0, 4);
             return (
               <div className="field aos" id={s.slug} key={s.slug}>
-                <div className="pic"><img src={s.image} alt="" /><em>{String(i + 1).padStart(2, "0")}</em></div>
+                <div className="pic"><img src={s.image} alt={s.title} /><em>{String(i + 1).padStart(2, "0")}</em></div>
                 <div className="txt">
                   <span>{s.en}</span>
                   <h4>{s.title}</h4>

@@ -64,18 +64,27 @@ export default function Header() {
   }, [open]);
 
   const tel = site.contact.headerTel;
+  const BrandTag = pathname === "/" ? "h1" : "div";
   const close = () => setOpen(false);
 
   return (
     <>
       <header id="header" ref={headerRef}>
         <div className="container-fluid">
-          <h1 className="logo">
-            <Link href="/">
-              <img src={site.brand.logo.color} alt={site.brand.name} className="mo" />
-              <img src={site.brand.logo.white} alt={site.brand.name} className="pc" />
+          {/* 상호를 그림이 아닌 글자로 출력해 검색엔진이 읽을 수 있게 한다 (마크만 이미지) */}
+          {/* 상호는 홈에서만 h1. 하위 페이지는 상단 제목(SubTop)이 h1 이라 로고는 div 로 둔다 (같은 클래스라 모양은 동일) */}
+          <BrandTag className="logo brand">
+            <Link href="/" className="brand-link">
+              <span className="brand-mark" aria-hidden="true">
+                <img src="/brand/mark-color.png" alt="" className="c" />
+                <img src="/brand/mark-white.png" alt="" className="w" />
+              </span>
+              <span className="brand-name">
+                <strong>메디로드 개원컨설팅</strong>
+                <em>MEDI-ROAD OPENING CONSULTATION</em>
+              </span>
             </Link>
-          </h1>
+          </BrandTag>
           <nav id="gnb" ref={gnbRef}>
             <ul className="depth1">
               {menuItems.map((m) => (

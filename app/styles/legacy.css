@@ -113,11 +113,13 @@
             #header.none {background:none;}
             
             #header.none h1,
+            #header.none .logo,
             #header.none #gnb,
             #header.none .btn-area .sns,
             #header.none .btn-area .member{opacity:0;}
             
             #header h1,
+            #header .logo,
             #header #gnb,
             #header .btn-area .sns,
             #header .btn-area .member{transition:all 0.3s;}
@@ -1443,7 +1445,7 @@ body.scrolled #header .container-fluid .btn-area .sns li.mr-member a,body.scroll
 .subtop .txt{position:relative;z-index:1;width:100%;padding-top:100px;text-align:center;}
 .subtop .txt em{position:relative;display:block;padding-bottom:34px;font-size:1.5em;color:#fff;}
 .subtop .txt em:after{content:'';position:absolute;bottom:0;left:50%;transform:translateX(-50%);display:block;width:40px;height:1px;background:#fff;}
-.subtop .txt h2{padding-top:34px;font-size:2.5em;font-weight:700;line-height:130%;color:#fff;}
+.subtop .txt :is(h1,h2){padding-top:34px;font-size:2.5em;font-weight:700;line-height:130%;color:#fff;}
 .subtop .txt p{padding-top:24px;color:rgba(255,255,255,0.8);}
 
 @media all and (max-width: 1024px) {
@@ -1453,6 +1455,6 @@ body.scrolled #header .container-fluid .btn-area .sns li.mr-member a,body.scroll
     .subtop .txt{padding-top:30px;}
     .subtop .txt em{padding-bottom:24px;font-size:1.25em;}
     .subtop .txt em:after{width:30px;}
-    .subtop .txt h2{padding-top:24px;font-size:2.3em;}
+    .subtop .txt :is(h1,h2){padding-top:24px;font-size:2.3em;}
     .subtop .txt p{padding-top:20px;font-size:0.8em;}
 }

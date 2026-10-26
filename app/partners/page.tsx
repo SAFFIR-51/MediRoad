@@ -3,6 +3,9 @@ import SubTop from "@/components/layout/SubTop";
 import FieldIndex from "@/components/service/FieldIndex";
 import { content, subtopFor, GROUPS, type ProcessStep } from "@/lib/site";
 import { pageMeta } from "@/lib/seo";
+import HubFaq from "@/components/service/HubFaq";
+import JsonLd from "@/components/seo/JsonLd";
+import { hubFaq, breadcrumbLd, fieldListLd } from "@/lib/aeo";
 
 export const metadata = pageMeta("/partners", {
   title: "파트너",
@@ -15,6 +18,7 @@ export default function PartnersPage() {
   const top = subtopFor("/partners", {});
   return (
     <>
+      <JsonLd data={[breadcrumbLd([["파트너", "/partners/"]]), fieldListLd("partners")]} />
       <SubTop {...top} bg={GROUPS.partners.bg} />
       <FieldIndex group="partners" intro={c.partnersIntro} />
       <section className="sub_con sec_process">
@@ -35,6 +39,7 @@ export default function PartnersPage() {
           <p className="mr-pf-note">{c.partners.note}</p>
         </div>
       </section>
+      <HubFaq items={hubFaq.partners} title="파트너 자주 묻는 질문" />
       <section className="sub_con sec_bridge">
         <div className="wrap">
           <div className="mr-bridge aos">

@@ -5,6 +5,9 @@ import TimelineOverview from "@/components/support/TimelineOverview";
 import OpeningPlanner from "@/components/support/OpeningPlanner";
 import { content, subtopFor, GROUPS, servicesIn } from "@/lib/site";
 import { pageMeta } from "@/lib/seo";
+import HubFaq from "@/components/service/HubFaq";
+import JsonLd from "@/components/seo/JsonLd";
+import { hubFaq, breadcrumbLd, fieldListLd, openingHowToLd } from "@/lib/aeo";
 
 export const metadata = pageMeta("/support", { title: "개원 지원" });
 
@@ -17,10 +20,12 @@ export default function SupportPage() {
   const top = subtopFor("/support", {});
   return (
     <>
+      <JsonLd data={[breadcrumbLd([["개원 지원", "/support/"]]), fieldListLd("support"), openingHowToLd()]} />
       <SubTop {...top} visual={top.visual || GROUPS.support.visual} bg={GROUPS.support.bg} />
       <TimelineOverview />
       <OpeningPlanner />
       <FieldIndex group="support" intro={c.supportIntro} />
+      <HubFaq items={hubFaq.support} title="개원 준비 자주 묻는 질문" />
       <section className="sub_con sec_bridge">
         <div className="wrap">
           <div className="mr-bridge aos">

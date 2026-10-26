@@ -4,7 +4,7 @@
   "brand": {
     "name": "메디로드",
     "nameEn": "MediRoad",
-    "title": "메디로드 MediRoad",
+    "title": "메디로드 개원컨설팅 입지분석",
     "description": "진료과별 배후 수요와 경쟁 환경을 데이터로 검토하는 병·의원 개원 입지 분석 메디로드",
     "copyright": "MEDIROAD.",
     "colors": {
@@ -22,14 +22,15 @@
       "footer": "/brand/logo-color.png",
       "symbol": "/brand/symbol.png",
       "favicon": "/brand/favicon.png",
-      "og": "/brand/og.png"
+      "og": "/brand/og.jpg",
+      "icon": "/brand/icon-512.png"
     }
   },
   "seo": {
     "_comment": "서치콘솔(google)·서치어드바이저(naver) 소유 확인 메타태그 값. 비우면 출력하지 않는다.",
     "verification": {
       "google": "",
-      "naver": ""
+      "naver": "17ae1e13019f6834490f462eb47fc8eab8eacc1c"
     }
   },
   "contact": {
@@ -63,7 +64,7 @@
   "privacy": {
     "companyName": "메디로드 개원 컨설팅",
     "officer": "김상수",
-    "effectiveDate": "2026년 00월 00일"
+    "effectiveDate": "2026년 10월 26일"
   },
   "menu": {
     "_comment": "헤더 메뉴 6개 (홈·회사소개·입지 분석·개원 지원·파트너·매물 정보). locOnly 항목은 관리자 설정에 따라 표시된다.",
